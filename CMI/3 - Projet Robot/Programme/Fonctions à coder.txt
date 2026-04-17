@@ -1,0 +1,62 @@
+M : execute les instructions
+E : emergency stop
+
+Z : avancer
+S : reculer
+Q : rotation à gauche (sens trigo)
+D : rotation à droite (sens horaire)
+
+C : clear tt la file
+L : clear last element sent
+
+
+void loop() {
+
+	reception valeur Bluetooth
+	check E :
+		-> stop tt mais laisse le calcul des capteurs hall
+	
+	check M :
+		-> commence le déplacement si c'est pas déjà fait
+
+	check Z ou S ou Q ou D :
+		-> ajoute à la file l'instruction
+	
+	check C :
+		-> clear tt la file
+	
+	check L :
+		-> clear le dernier élément de la file envoyé
+	
+	Si no instruction en cour :
+		-> defiler l'instruction et l'ajouter à celle actuelle
+		-> instruction en cour = true
+	
+	
+	lis la valeur des capteurs hall
+	update l'angle (tare)
+	calcul du delta déplacement/rotation depuis la dernière itération.
+	update la valeur de la dernière position des capteurs hall
+	update de la valeur du déplacement à faire
+	
+	Si !emergency stop :
+		-> calcul de la vitesse / acceleration des moteurs en fonction
+		-> envoie instruction moteur
+	
+	Si déplacement restant null
+		-> instruction en cour = false
+
+}
+
+
+
+
+void correctAngle() {
+
+	//corrige l'angle en tarant la valeur selon l'angle de départ :
+	
+	corrected_angle = actual_angle - start_angle;
+	if (corrected_angle < 0) {
+		corrected_angle += 360;
+	}
+}

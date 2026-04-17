@@ -1,0 +1,353 @@
+<HTML>
+	<HEAD>
+	<STYLE>	
+		#table2 {
+			margin-left : auto;
+			margin-right : auto;
+			width : 75%;
+			border : 3px solid black;
+			
+		}
+		
+		td:hover, th:hover {
+			background-color : lightgray;
+		}
+		
+		td, th {
+			border : 1px solid black;
+		}
+		
+		hr {
+			width : 70%;
+			margin-left : 0px;
+		}
+		
+	</STYLE>
+	</HEAD>
+	<BODY>
+		<h1 id="haut"><u>Sommaire :</u></h1>
+		<ul>
+			<li><a href="#texte">Texte</a></li>
+			<li><a href="#code">Code</a></li>
+			<li><a href="#opera">Opera</a></li>
+			<li><a href="#maths">Maths</a></li>
+			<li><a href="#tab1">Tableau 1</a></li>
+			<li><a href="#tab2">Tablea 2</a></li>
+			<li><a href="#tab3">Tablea 3</a></li>
+		</ul>
+		<br><br><br>
+
+		<h2 id="texte"><u>
+			<i>Tokyo</i> la plus chère du monde,
+			<i>Asuncion</i> la moins chère,
+			<i>Paris</i> 17e :
+		</h2></u>
+		<a href="#haut"><i>Retour au sommet</i></a>
+		
+		<p>
+			<q><b>PARIS (AFP)</b> - <b>Tokyo</b> est la ville <b><u>la 
+			plus chère du monde,</u></b> suivie de <b>Londres</b> tandis
+			que <b>Paris</b> arrive à la <b>17e place</b> et <i>Asuncion
+			</i> arrive à <b><u>la dernière place du classement</u></b>
+			</q>, selon une enquête réalisée par <i>le cabinet de conseil 
+			Mercer HRC</i>. <b>La capitale japonaise </b>occupait déjà 
+			<b><u>la première place du classement l'année dernière</u>
+			</b>, en revanche <b>la capitale anglaise</b> est remontée 
+			de la cinquième <b><u>à la deuxième place</u></b>. C'est la 
+			russe <b>Moscou</b> qui monte sur <b><u>la troisième 
+			marche du podium</u></b>, suivie d'une autre ville japonaise
+			<b>Osaka</b> et de <b>Hong-Kong</b> en cinquième position.
+		</p><hr>
+		<p>
+			New York, la ville la plus onéreuse d'Amérique du Nord, 
+			s'affiche à la 12e place du classement. Et c'est au sud du 
+			continent américain, à Asuncion au Paraguay que la vie est 
+			la moins chère du monde, selon cette étude.
+		</p><hr>
+		<blockquote><i>
+			"Les importantes modifications dans le classement sur le 
+			coût de la vie sont dues aux fluctuations monétaires, 
+			notamment à celle du dollar et de l'euro", relève l'enquête.
+			S'agissant de Paris, l'étude note que "le logement reste 
+			très difficile à trouver surtout lorsqu'il s'agit 
+			d'habitations meublées".
+		</blockquote></i>
+		<p><hr>
+			Quatre des cinq villes les moins chères d'Europe font partie
+			des nouveaux entrants de l'Union européenne: Ljubljana 
+			(Slovénie), Vilnius (Lituanie), Limassol (Chypre) et 
+			Bucarest (Roumanie).
+		</p><hr>
+		<p>
+			Parmi les cinquante villes les plus chères, près de la 
+			moitié (24) sont européennes. Dans cette zone géographique,
+			Londres, la plus chère en raison "du logement et du
+			transport", est suivie de Copenhague (Danemark) et de 
+			Milan (Italie).
+		</p><hr>
+		<p>
+			En Amérique Latine, c'est la capitale du Pérou, Lima, qui 
+			se situe à la première place sur le continent.
+		</p><hr>
+		<p>
+			L'étude, qui porte sur 144 villes, se fonde sur des critères
+			relatifs au logement, à la nourriture, à 
+			l'habillement et les appareils ménagers ou encore aux 
+			transports et aux loisirs.
+		</p><hr>
+		<br>
+		<blockquote>
+			Les navigateurs ajoutent automatiquement des guillemets 
+			autour du contenu &ltq&gt, tandis que &ltblockquote&gt est utilisé 
+			pour séparer des blocs plus importants de contenu cité .
+		</blockquote><br>
+		
+		
+		<hr>
+		<h3 id="code">
+			Extrait de code C++ : <a href="#haut"><i>Retour au sommet</i></a>
+		</h3>
+		<pre>
+		<code style="color:blue">
+			#include <iostream>
+			#include <cmath>
+			#include <cstdlib>
+			#include <string>
+			using namespace std;
+
+			class Carte {
+				
+				friend class Jeu;
+				int value;
+				int color;
+				Carte * next;
+				
+				public :
+					Carte();
+					Carte(int v, int c);
+					Carte(Carte &carte);
+					~Carte();
+					void display();
+					int getValue();
+					int getColor();
+					bool operator==(Carte &jeu);
+					bool operator<(Carte &jeu);
+					bool operator<=(Carte &jeu);
+					bool operator>(Carte &jeu);
+					bool operator>=(Carte &jeu);
+				};
+
+			class Jeu {
+				
+				Carte * tete;
+				Carte * queue;
+				
+				public :
+					Jeu();
+					Jeu(int nbr);
+					Jeu(Jeu &new_jeu);
+					~Jeu();
+					void display();
+					Jeu operator=(Jeu &jeu);
+					Carte piocher();
+					void ajouterEnQueue(Carte carte);
+					void ajouterEnTete(Carte carte);
+					bool isShuffled(int nb2, int nb3);
+					void shuffle();
+					Carte* getTete();
+					Carte* getQueue();
+					int getSize();
+					void sort();
+			};
+
+			Jeu* createGame(int nbr_player, int nbr_cards);
+		</code>
+		</pre><br>
+		
+		
+		<hr>
+		<h3 id="opera">
+			Extrait d'un aria de l'opéra <u>Orphée et Eurydice</u> de <i>Gluck</i> :
+			<a href="#haut"><i>Retour au sommet</i></a>
+		</h3>
+		<pre>
+		<blockquote>
+			N° 39 - Duo
+
+			ORPHÉE
+			Viens! Suis un époux qui t'adore.
+
+			EURYDICE
+			Non, ingrat, je préfère encore
+			La mort qui m'éloigne de toi.
+
+			ORPHÉE
+			Vois ma peine!
+
+			EURYDICE
+			Laisse Eurydice!
+
+			ORPHÉE
+			Ah! cruelle! Quelle injustice!
+			Ah viens! je t'implore, suis mes pas!
+
+			EURYDICE
+			Parle, réponds, je t'en supplie!
+
+			ORPHÉE
+			Dut-il m'en coûter la vie,
+			Non, je ne parlerai pas.
+
+			ORPHÉE ET EURYDICE
+			chacun à part
+			Dieux, soyez-moi favorables!
+			Voyez mes pleurs,
+			Dieux secourables!
+			Quels tourments insupportables!
+			Quelles rigueurs
+			Mêlez-vous à vos faveurs!
+		</blockquote>
+		</pre><br>
+		
+		
+		<hr>
+		<h3 id="maths">
+			L'identité d'Euler :
+			<a href="#haut"><i>Retour au sommet</i></a>
+		</h3>
+		<p>
+			<var>e<sup>i&#960</sup></var>+1=0
+		</p>
+		<br>
+		
+		
+		<hr>
+		<h3 id="tab1">
+			Premier tableau :
+			<a href="#haut"><i>Retour au sommet</i></a>
+		</h3>
+		<table style="border:1px solid black">
+			<thead>
+				<tr>
+					<th>Euros</th>
+					<th>Francs</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1 &#8364</td>
+					<td>6.56 F</td>
+				</tr>
+				<tr>
+					<td colspan="2">...ainsi de suite pour chaque nouvelle ligne...</td>
+				</tr>
+				<tr>
+					<td>15.24 &#8364</td>
+					<td>100 F</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		
+		
+		<hr>
+		<h3 id="tab2">
+			Second tableau :
+			<a href="#haut"><i>Retour au sommet</i></a>
+		</h3>
+		<table id="table2">
+			<thead>
+				<tr>
+					<th>Colonne 1</th>
+					<th>Colonne 2</th>
+					<th>Colonne 3</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Contenu 1x1</td>
+					<td>Contenu 1x2</td>
+					<td>Contenu 1x3</td>
+				</tr>
+				<tr>
+					<td colspan="2", align="center">Cellule large</td>
+					<td>Contenu 2x3</td>
+				</tr>
+				<tr>
+					<td>Contenu 3x1</td>
+					<td>Contenu 3x2</td>
+					<td rowspan="2", style="vertical-align:bottom">Cellule longue</td>
+				</tr>
+				<tr>
+					<td>Contenu 4x1</td>
+					<td>Contenu 4x2</td>
+				</tr>
+				<tr>
+					<td>Contenu 5x1</td>
+					<td colspan="2", rowspan="2", style="vertical-align:top; text-align:right">Cellule grosse</td>
+				</tr>
+				<tr>
+					<td>Contenu 6x1</td>
+				</tr>
+				<tr>
+					<td>Contenu 7x1</td>
+					<td>Contenu 7x2</td>
+					<td>Contenu 7x3</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+
+		
+		<hr>
+		<h3 id="tab3">
+			Troisième tableau :
+			<a href="#haut"><i>Retour au sommet</i></a>
+		</h3>
+		<table>
+			<thead>
+				<tr>
+					<th colspan="2" rowspan="2"></th>
+					<th colspan="2">Préférences</th>
+				</tr>
+				<tr>
+					<th>Déguster des Kumquats</th>
+					<th>Pocher un oeil</th>
+				</tr>
+			</thead>
+			<tbody align="center">
+				<tr>
+					<td rowspan="4">Sexe</td>
+					<td>Hommes en dessous de 18 ans</td>
+					<td>94%</td>
+					<td>6%</td>
+				</tr>
+				<tr>
+					<td>Hommes au-dessus de 18 ans</td>
+					<td>73%</td>
+					<td>27%</td>
+				</tr>
+				<tr>
+					<td>Femmes en dessous de 18 ans</td>
+					<td>34%</td>
+					<td>66%</td>
+				</tr>
+				<tr>
+					<td>Femmes au-dessus de 18 ans</td>
+					<td>16%</td>
+					<td>84%</td>
+				</tr>
+			</tbody>
+			<tfoot align="center">
+				<tr>
+					<td colspan="4">
+						Notes : Les yeux pochés n'entrâinent aucune lésion permanente.
+					</td>
+				</tr>
+			</tfoot>
+			<caption>Kumquats contre oeuil poché, par sexe.</caption>
+		</table>
+		<br>
+		<a href="#haut"><i>Retour au sommet</i></a>
+	</BODY>
+</HTML>
