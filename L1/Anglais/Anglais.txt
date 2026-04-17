@@ -1,0 +1,46 @@
+--- | Exo : |---
+
+1)  The room is being painted.
+2)  The problemecould not be solved.
+3)  The window has been broken by someone.
+4)  Is English spoken in this country ?
+5)  A book will be offered to her.
+
+
+
+---| Doc : |---
+
+Doc 1 ->    Step inside the LHC (BBC News, 3'14)                https://www.youtube.com/watch?v=d_OeQxoKocU
+Doc 2 ->    How does the LHC work (Science Channel, 2'25)       https://www.youtube.com/watch?v=bTHzB4h0po4
+Doc 3 ->    CERN VR LHC and Grid Computing (CERN, 2'11)         https://www.youtube.com/watch?v=3r80ylmOCys
+Doc 4 ->    The worldwide LHC Computing Grid WLCG (home.cern)   https://home.cern/science/computing/grid
+
+
+
+---| Work : |---
+
+Topic : The LHC and its computer system
+- O.E : (~3-5 mins)
+- W.E :(250 words +/- 10%)
+
+Scientist around the world want to understand how some physics mechanism work such as The Big Bang, Dark Matter or particules. In order to study those things, they created a giant loop named Large Hadron Collider (LHC) in the European Organization for Nuclear Research (CERN).
+LHC is a 40 miles long and
+
+
+LHC is used to accelerate particules like protons at a speed that is close to the speed of light. When they cross the loop, scientist make them collide billion time per second to create, energy, new particules and to do experiments. However, in order to manage all this data that collisions produce, CERN need to use more than 200.000 computors packed into servers. This number of machine make so much heat, that they need to be placed in specials rooms called data center which are cooled by air flow or even specials liquids. CERN's data centers are spread around the world and they share data with other center of research.
+With
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
