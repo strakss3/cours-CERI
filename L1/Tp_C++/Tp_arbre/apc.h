@@ -52,3 +52,5 @@ class Arbre {
         void writeIn(string file_name);
         void wordWithPrefix(string prefix);
 };
+
+void levenshteinAlgorithm(string str1, string str2);

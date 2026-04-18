@@ -5,9 +5,7 @@ int main() {
 
     /* Arbre Lexicographique : */
     
-    //Arbre tree("dic-moyen.txt");
-    Arbre tree("test.txt");
-    tree.wordWithPrefix("j");
+    levenshteinAlgorithm("azze", "aada");
 
 
 
