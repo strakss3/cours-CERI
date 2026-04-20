@@ -53,4 +53,4 @@ class Arbre {
         void wordWithPrefix(string prefix);
 };
 
-void levenshteinAlgorithm(string str1, string str2);
+int levenshteinAlgorithm(string str1, string str2);

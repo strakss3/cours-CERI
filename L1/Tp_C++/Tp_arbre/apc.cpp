@@ -442,7 +442,7 @@ void Arbre::wordWithPrefix(string prefix) {
 }
 
 
-void levenshteinAlgorithm(string str1, string str2) {
+int levenshteinAlgorithm(string str1, string str2) {
 
     int size_str1 = 0;
     for(int i = 0 ; str1[i] ; i++) {
@@ -456,23 +456,23 @@ void levenshteinAlgorithm(string str1, string str2) {
         size_str2++;
     }
 
-    int tab[size_str1][size_str2];
-    for(int i = 0 ; i < size_str1 ; i++) {
+    int tab[size_str1+1][size_str2+1];
+    for(int i = 0 ; i <= size_str1 ; i++) {
 
         tab[i][0] = i;
     }
 
-    for(int j = 0 ; j < size_str1 ; j++) {
+    for(int j = 0 ; j <= size_str2 ; j++) {
 
         tab[0][j] = j;
     }
 
     int delt;
-    for(int i = 1 ; i < size_str1 ; i++) {
+    for(int i = 1 ; i <= size_str1 ; i++) {
 
-        for(int j = 1 ; j < size_str2 ; j++) {
+        for(int j = 1 ; j <= size_str2 ; j++) {
 
-            if (str1[i] == str2[j]) {
+            if (str1[i-1] == str2[j-1]) {
 
                 delt = 0;
             }
@@ -480,28 +480,31 @@ void levenshteinAlgorithm(string str1, string str2) {
 
                 delt = 1;
             }
-            tab[i][j] = min(
-                tab[i-1][j-1]+1,
-                tab[i-1][j]+1,
-                tab[i][j-1]+delt
-            );
+            tab[i][j] = min(tab[i-1][j-1]+delt, min(tab[i-1][j]+1, tab[i][j-1]+1));
         }
     }
+    /*
+    // display tab
+    cout << "     ";
+    for(int i = 0 ; i < size_str2 ; i++) {
 
+        cout << "   " << str2[i];
+    }
+    cout << endl << "    ";
+    for(int i = 0 ; i <= size_str1 ; i++) {
 
+        if (i != 0) {
 
+            cout << str1[i-1] << "   ";
+        }
 
+        for(int j = 0 ; j <= size_str2 ; j++) {
 
-
-
-
-
-    for(int i = 0 ; i < size_str1 ; i++) {
-
-        for(int j = 0 ; j < size_str2 ; j++) {
-
-            cout << tab[i][j] << " ";
+            cout << tab[i][j] << "   ";
         }
         cout << endl;
     }
+    */
+    return tab[size_str1][size_str2];
 }
+

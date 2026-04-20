@@ -5,7 +5,7 @@ int main() {
 
     /* Arbre Lexicographique : */
     
-    levenshteinAlgorithm("azze", "aada");
+    cout << levenshteinAlgorithm("chien", "sheiu");
 
 
 
