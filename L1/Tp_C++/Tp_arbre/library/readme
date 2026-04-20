@@ -1,0 +1,9 @@
+Vous devez compiler avec:
+g++ saisie_v2.cpp -std=c++11 -lncurses -o saisie_v2
+
+Ce programme permet de saisir du texte, 
+quand vous tapez tabulation, le programme affiche des chiffres 
+que vous pouvez remplacer par les propositions.
+
+Quand vous tapez esc le programme arrete la saisie.
+Le programme ne gère pas le retour à la ligne.

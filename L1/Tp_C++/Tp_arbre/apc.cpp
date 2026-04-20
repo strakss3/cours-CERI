@@ -307,7 +307,7 @@ void Noeud::writeIn(ofstream &flow, string word) {
     }
 }
 
-void Noeud::wordWithPrefix(string prefix) {
+void Noeud::wordWithPrefix(vector<string> * vect, string prefix) {
 
     Noeud * current = this;
     for (int i = 0 ; prefix[i] ; i++) {
@@ -325,9 +325,28 @@ void Noeud::wordWithPrefix(string prefix) {
     }
     if (current != nullptr) {
         
-        current->fils->displayAll(prefix);
+        current->fils->insertFilsInVector(vect, prefix);
     }
 }
+
+void Noeud::insertFilsInVector(vector<string> * vect, string word) {
+
+    if (*this == '\0') {
+
+        vect->insert(vect->end(), word);
+    }
+
+    if (this->fils != nullptr) {
+
+        fils->insertFilsInVector(vect, word + this->info);
+    }
+    
+    if (this->frere != nullptr) {
+
+        frere->insertFilsInVector(vect, word);
+    }
+}
+
 
 
 Arbre::Arbre() {
@@ -436,9 +455,9 @@ void Arbre::writeIn(string file_name) {
     F.close();
 }
 
-void Arbre::wordWithPrefix(string prefix) {
+void Arbre::wordWithPrefix(vector<string> * vect, string prefix) {
 
-    racine->wordWithPrefix(prefix);
+    racine->wordWithPrefix(vect, prefix);
 }
 
 

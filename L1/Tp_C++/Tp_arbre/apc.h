@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -30,7 +31,8 @@ class Noeud {
         int nbrOfWord();
         int maxLength();
         void writeIn(ofstream &flow, string word = "");
-        void wordWithPrefix(string prefix);
+        void wordWithPrefix(vector<string> * vect, string prefix);
+        void insertFilsInVector(vector<string> * vect, string word);
 };
 
 class Arbre {
@@ -50,7 +52,7 @@ class Arbre {
         int nbrOfWord();
         int maxLength();
         void writeIn(string file_name);
-        void wordWithPrefix(string prefix);
+        void wordWithPrefix(vector<string> * vect, string prefix);
 };
 
 int levenshteinAlgorithm(string str1, string str2);

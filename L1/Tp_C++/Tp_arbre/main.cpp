@@ -1,3 +1,4 @@
+#include <vector>
 #include "apc.h"
 #include "tab.h"
 
@@ -5,9 +6,14 @@ int main() {
 
     /* Arbre Lexicographique : */
     
-    cout << levenshteinAlgorithm("chien", "sheiu");
+    Arbre tree("dic-moyen.txt");
+    vector<string> vect;
+    tree.wordWithPrefix(&vect, "a");
 
+    for(string str : vect) {
 
+        cout << str << endl;
+    }
 
 
 
