@@ -1,8 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <ncurses.h>
+#include "apc.h"
 
-using namespace std;
-
-void yap();
+void yap(string file_name, string dic_name);
+void displayWords(Arbre * tree, vector<char> text);

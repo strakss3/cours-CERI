@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <ncurses.h>
 
 using namespace std;
 
@@ -53,6 +54,8 @@ class Arbre {
         int maxLength();
         void writeIn(string file_name);
         void wordWithPrefix(vector<string> * vect, string prefix);
+        void addWordWithText(vector<char> text);
 };
 
 int levenshteinAlgorithm(string str1, string str2);
+void writeTextInFile(string file_name, vector<char> text);

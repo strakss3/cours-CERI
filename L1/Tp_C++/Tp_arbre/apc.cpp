@@ -313,9 +313,9 @@ void Noeud::wordWithPrefix(vector<string> * vect, string prefix) {
     for (int i = 0 ; prefix[i] ; i++) {
 
         current = current->fils;
-
+        
         while (*current != prefix[i]) {
-
+            
             current = current->frere;
             if (current == nullptr) {
 
@@ -457,8 +457,26 @@ void Arbre::writeIn(string file_name) {
 
 void Arbre::wordWithPrefix(vector<string> * vect, string prefix) {
 
-    racine->wordWithPrefix(vect, prefix);
+    if (racine->fils != nullptr) {
+
+        racine->wordWithPrefix(vect, prefix);
+    }
 }
+
+void Arbre::addWordWithText(vector<char> text) {
+
+    int index1 = 0;
+    for(int index2 = 0 ; index2 < (int)text.size() ; index2++) {
+        
+        if (text[index2] == 32 || index2 == (int)text.size()-1) {
+
+            string word(text.begin() + index1, text.begin() + index2+1);
+            this->addWord(word);
+            index1 = index2+1;
+        }
+    }
+}
+
 
 
 int levenshteinAlgorithm(string str1, string str2) {
@@ -525,5 +543,15 @@ int levenshteinAlgorithm(string str1, string str2) {
     }
     */
     return tab[size_str1][size_str2];
+}
+
+void writeTextInFile(string file_name, vector<char> text) {
+
+    ofstream F(file_name, ios::out);
+    for(char letter : text) {
+
+        F << letter;
+    }
+    F.close();
 }
 

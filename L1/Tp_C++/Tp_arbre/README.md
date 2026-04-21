@@ -79,7 +79,9 @@ Méthodes ajoutées :
 - Noeud::wordWithPrefix(string prefix)
 - Noeud::insertFilsInVector(vector<string> * vect, string word)
 - Arbre::wordWithPrefix(vector<string> * vect, string prefix);
+- Arbre::addWordWithText(vector<char> text)
 - levenshteinAlgorithm(string str1, string str2)
+- writeTextInFile(string file_name, vector<char> text)
 
 Méthodes commencées :
-- yap()
+- 

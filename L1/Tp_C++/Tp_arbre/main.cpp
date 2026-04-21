@@ -1,13 +1,16 @@
-#include "input.h"
-#include "apc.h"
 #include "tab.h"
+#include "input.h"
 
 int main() {
 
     /* Arbre Lexicographique : */
-    
-    yap();
 
+    string file_name;
+    cout << "Entrez le nom du fichier : ";
+    cin >> file_name;
+
+    yap(file_name, "dic-moyen.txt");
+    
 
     /* Tableau dynamique :
 

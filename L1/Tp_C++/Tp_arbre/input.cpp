@@ -1,6 +1,6 @@
 #include "input.h"
 
-void yap() {
+void yap(string file_name, string dic_name) {
 
     initscr();
     raw();
@@ -8,11 +8,11 @@ void yap() {
     noecho();
     curs_set(1);
 
+    Arbre tree(dic_name);
     vector<char> text;
     int cursor = 0;
     int ch;
     mvprintw(0, 0, "Début du texte :");
-
     while(true) {
 
         move(1, 0);
@@ -51,29 +51,45 @@ void yap() {
                 text.erase(text.end() - 1);
                 cursor--;
             }
+            displayWords(&tree, text);
         }
         else if (ch >= 32 && ch <= 126) {
 
             text.insert(text.end(), (char)ch);
             cursor++;
-        }
-        else if (ch == '\t') {
+            displayWords(&tree, text);
 
-            int x, y;
-            getyx(stdscr, y, x);
-            int index = text.size()-1;
-
-            while(index >= 0 && text[index] != ' ') {
-
-                index--;
-            }
-
-            string word(text.begin() + index + 1, text.end());
-            mvprintw(y+1, 0, "%s", word.c_str());
-            move(y,x);
         }
     }
     endwin();
+
+    tree.addWordWithText(text);
     string final_text(text.begin(), text.end());
     cout << final_text << endl;
+    tree.writeIn("output.txt");
+    writeTextInFile(file_name, text);
+}
+
+void displayWords(Arbre * tree, vector<char> text) {
+
+    int x, y;
+    getyx(stdscr, y, x);
+    int index = text.size()-1;
+    move(y+2, 0);
+    clrtobot();
+
+    while(index >= 0 && text[index] != ' ') {
+
+        index--;
+    }
+
+    string prefix(text.begin() + index + 1, text.end());
+    vector<string> list_prefix;
+    tree->wordWithPrefix(&list_prefix, prefix);
+
+    for(int i = 0 ; i < (int)list_prefix.size() ; i++) {
+
+        mvprintw(y+i+2, 0, "%s", list_prefix[i].c_str());
+    }
+    move(y,x);
 }
