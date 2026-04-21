@@ -77,8 +77,9 @@ Méthodes commencées :
 # Entre les 2 séances :
 Méthodes ajoutées :
 - Noeud::wordWithPrefix(string prefix)
-- Arbre::wordWithPrefix(string prefix)
+- Noeud::insertFilsInVector(vector<string> * vect, string word)
+- Arbre::wordWithPrefix(vector<string> * vect, string prefix);
 - levenshteinAlgorithm(string str1, string str2)
 
 Méthodes commencées :
-- 
+- yap()

@@ -13,7 +13,6 @@ curs_set(1);          // afficher le curseur
 */
 
 int main() {
-    char buf[30];
     initscr();
     raw();
     keypad(stdscr, TRUE);

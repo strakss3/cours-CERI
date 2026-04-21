@@ -1,4 +1,4 @@
-#include <vector>
+#include "input.h"
 #include "apc.h"
 #include "tab.h"
 
@@ -6,15 +6,7 @@ int main() {
 
     /* Arbre Lexicographique : */
     
-    Arbre tree("dic-moyen.txt");
-    vector<string> vect;
-    tree.wordWithPrefix(&vect, "a");
-
-    for(string str : vect) {
-
-        cout << str << endl;
-    }
-
+    yap();
 
 
     /* Tableau dynamique :
