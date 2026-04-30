@@ -1,5 +1,5 @@
-#include "tab.h"
-#include "input.h"
+#include "table.h"
+#include "interaction.h"
 
 int main() {
 
@@ -9,7 +9,7 @@ int main() {
     cout << "Entrez le nom du fichier : ";
     cin >> file_name;
 
-    yap(file_name, "dic-moyen.txt");
+    writeTextInTerminal(file_name, "dic-moyen.txt");
     
 
     /* Tableau dynamique :

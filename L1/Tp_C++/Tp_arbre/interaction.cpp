@@ -1,6 +1,6 @@
-#include "input.h"
+#include "interaction.h"
 
-void yap(string file_name, string dic_name) {
+void writeTextInTerminal(string file_name, string dic_name) {
 
     initscr();
     raw();
@@ -12,7 +12,7 @@ void yap(string file_name, string dic_name) {
     vector<char> text;
     int cursor = 0;
     int ch;
-    mvprintw(0, 0, "Début du texte :");
+    mvprintw(0, 0, "Debut du texte :");
     while(true) {
 
         move(1, 0);
@@ -57,7 +57,10 @@ void yap(string file_name, string dic_name) {
 
             text.insert(text.end(), (char)ch);
             cursor++;
-            displayWords(&tree, text);
+            if (ch != ' ') {
+
+                displayWords(&tree, text);
+            }
 
         }
     }

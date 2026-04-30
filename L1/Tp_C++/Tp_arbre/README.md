@@ -82,6 +82,12 @@ Méthodes ajoutées :
 - Arbre::addWordWithText(vector<char> text)
 - levenshteinAlgorithm(string str1, string str2)
 - writeTextInFile(string file_name, vector<char> text)
+- writeTextInTerminal(string file_name, string dic_name)
+- displayWords(Arbre * tree, vector<char> text)
+
+# Séance 5 (jeudi 30 avril) :
+Méthodes ajoutées :
+-
 
 Méthodes commencées :
 - 

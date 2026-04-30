@@ -1,4 +1,4 @@
-#include "apc.h"
+#include "arbre.h"
 
 Noeud::Noeud() {
 
@@ -468,13 +468,15 @@ void Arbre::addWordWithText(vector<char> text) {
     int index1 = 0;
     for(int index2 = 0 ; index2 < (int)text.size() ; index2++) {
         
-        if (text[index2] == 32 || index2 == (int)text.size()-1) {
+        if (text[index2] == ' ' || index2 == (int)text.size()-1) {
 
             string word(text.begin() + index1, text.begin() + index2+1);
             this->addWord(word);
             index1 = index2+1;
         }
     }
+    string word(text.begin() + index1, text.end());
+    this->addWord(word);
 }
 
 
