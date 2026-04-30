@@ -5,12 +5,13 @@ int main() {
 
     /* Arbre Lexicographique : */
 
-    string file_name;
+    string file_name = "text.txt";
     cout << "Entrez le nom du fichier : ";
-    cin >> file_name;
+    // cin >> file_name;
 
     writeTextInTerminal(file_name, "dic-moyen.txt");
-    
+
+
 
     /* Tableau dynamique :
 

@@ -86,8 +86,7 @@ Méthodes ajoutées :
 - displayWords(Arbre * tree, vector<char> text)
 
 # Séance 5 (jeudi 30 avril) :
-Méthodes ajoutées :
--
+- makefile modifié
+- reflexion sur l'exercice 14
 
-Méthodes commencées :
-- 
+# ------| README 3 |------

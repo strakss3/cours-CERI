@@ -349,6 +349,7 @@ void Noeud::insertFilsInVector(vector<string> * vect, string word) {
 
 
 
+
 Arbre::Arbre() {
 
     racine = new Noeud();

@@ -61,7 +61,10 @@ void writeTextInTerminal(string file_name, string dic_name) {
 
                 displayWords(&tree, text);
             }
+            else {
 
+                clrtobot();
+            }
         }
     }
     endwin();
@@ -86,13 +89,20 @@ void displayWords(Arbre * tree, vector<char> text) {
         index--;
     }
 
-    string prefix(text.begin() + index + 1, text.end());
-    vector<string> list_prefix;
-    tree->wordWithPrefix(&list_prefix, prefix);
+    string last_word(text.begin() + index + 1, text.end());
+    vector<string> list_of_word;
+    tree->wordWithPrefix(&list_of_word, last_word);
 
-    for(int i = 0 ; i < (int)list_prefix.size() ; i++) {
+    if ((int)list_of_word.size() == 0) {
 
-        mvprintw(y+i+2, 0, "%s", list_prefix[i].c_str());
+        list_of_word.clear();
+
+        
     }
-    move(y,x);
+
+    for(int i = 0 ; i < (int)list_of_word.size() ; i++) {
+    
+            mvprintw(y+i+2, 0, "%s", list_of_word[i].c_str());
+        }
+        move(y,x);
 }
