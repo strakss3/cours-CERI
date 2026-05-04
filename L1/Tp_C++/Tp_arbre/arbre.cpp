@@ -347,6 +347,11 @@ void Noeud::insertFilsInVector(vector<string> * vect, string word) {
     }
 }
 
+void Noeud::listSimilarWord(vector<string> * vect, string word) {
+
+
+}
+
 
 
 
@@ -478,6 +483,14 @@ void Arbre::addWordWithText(vector<char> text) {
     }
     string word(text.begin() + index1, text.end());
     this->addWord(word);
+}
+
+void Arbre::listSimilarWord(vector<string> * vect, string word) {
+
+    if (racine != nullptr) {
+
+        racine->fils->listSimilarWord(vect, word);
+    }
 }
 
 

@@ -18,6 +18,7 @@ Méthodes commencées :
 - Noeud::displayAll()
 - Arbre::display()
 
+
 # Entre les 2 séances :
 Méthodes ajoutées :
 - Noeud::displayAll()
@@ -29,6 +30,7 @@ Méthodes ajoutées :
 Méthodes commencées :
 - Tab::addWordWithBuffer(string * buffer)
 
+
 # Séance 2 (jeudi 2 avril) :
 Méthodes ajoutées :
 - Tab::addWordWithBuffer(string * buffer)
@@ -39,6 +41,7 @@ Méthodes ajoutées :
 
 Méthodes commencées :
 - Noeud::operator=(Noeud & node)
+
 
 # Entre les 2 séances :
 Méthodes ajoutées :
@@ -58,10 +61,12 @@ Méthodes commencées :
 - Noeud::removecées :
 - Noeud::removeWord(string word)
 
+
 # Séance 3 (vendredi 10 avril) :
 Méthode continuées :
 - Arbre::removeWord(string word)
 - Arbre::removeWord(string word)
+
 
 
 # ------| README 2 |------
@@ -74,6 +79,7 @@ Méthodes commencées :
 - Noeud::wordWithPrefix(string prefix)
 - Arbre::wordWithPrefix(string prefix)
 
+
 # Entre les 2 séances :
 Méthodes ajoutées :
 - Noeud::wordWithPrefix(string prefix)
@@ -85,8 +91,18 @@ Méthodes ajoutées :
 - writeTextInTerminal(string file_name, string dic_name)
 - displayWords(Arbre * tree, vector<char> text)
 
+
 # Séance 5 (jeudi 30 avril) :
 - makefile modifié
 - reflexion sur l'exercice 14
 
+
+
 # ------| README 3 |------
+# Entre les 2 séances :
+- makefile modifié
+- fix de l'affichage de la liste des mots via préfix
+- reflexion sur l'exercice 14
+
+# Séance 6 (mardi 5 avril) :
+-

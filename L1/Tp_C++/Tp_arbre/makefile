@@ -4,15 +4,15 @@ FLAGS = -Wall \
 		-Wextra \
 		-Werror \
 
-TRUC = -std=c++11 \
+FLAGS2 = -std=c++11 \
 	   -lncurses \
 	   -o \
 
 all :
-	g++ $(FLAGS) $(SRC) $(TRUC) tp \
-	&& clear \
-	&& ./tp
+	g++ $(SRC) $(FLAGS2) tp && \
+	clear && \
+	./tp
 
 clean :
-	rm -f text.txt tp output.txt \
-	&& clear
+	rm -f text.txt tp output.txt && \
+	clear
