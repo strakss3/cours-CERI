@@ -12,3 +12,7 @@ all :
 	g++ $(FLAGS) $(SRC) $(TRUC) tp \
 	&& clear \
 	&& ./tp
+
+clean :
+	rm -f text.txt tp output.txt \
+	&& clear

@@ -12,6 +12,8 @@ void writeTextInTerminal(string file_name, string dic_name) {
     vector<char> text;
     int cursor = 0;
     int ch;
+    int k = 10;
+    int start = 0;
     mvprintw(0, 0, "Debut du texte :");
     while(true) {
 
@@ -44,6 +46,11 @@ void writeTextInTerminal(string file_name, string dic_name) {
                 cursor++;
             }
         }
+        else if (ch == 9) {
+
+            start = start + k;
+            displayWords(&tree, text, &start, k);
+        }
         else if (ch == KEY_BACKSPACE || ch == 127  || ch == 8) {
 
             if (cursor > 0) {
@@ -51,19 +58,21 @@ void writeTextInTerminal(string file_name, string dic_name) {
                 text.erase(text.end() - 1);
                 cursor--;
             }
-            displayWords(&tree, text);
+            start = 0;
+            displayWords(&tree, text, &start, k);
         }
         else if (ch >= 32 && ch <= 126) {
 
             text.insert(text.end(), (char)ch);
             cursor++;
-            if (ch != ' ') {
-
-                displayWords(&tree, text);
+            if (ch == ' ') {
+                
+                clrtobot();
             }
             else {
-
-                clrtobot();
+                
+                start = 0;
+                displayWords(&tree, text, &start, k);
             }
         }
     }
@@ -76,7 +85,7 @@ void writeTextInTerminal(string file_name, string dic_name) {
     writeTextInFile(file_name, text);
 }
 
-void displayWords(Arbre * tree, vector<char> text) {
+void displayWords(Arbre * tree, vector<char> text, int * start, int k) {
 
     int x, y;
     getyx(stdscr, y, x);
@@ -91,18 +100,23 @@ void displayWords(Arbre * tree, vector<char> text) {
 
     string last_word(text.begin() + index + 1, text.end());
     vector<string> list_of_word;
-    tree->wordWithPrefix(&list_of_word, last_word);
+    tree->listWithPrefix(&list_of_word, last_word);
 
     if ((int)list_of_word.size() == 0) {
 
-        list_of_word.clear();
-
-        
+        // ajouter la liste des mots similaires
     }
 
-    for(int i = 0 ; i < (int)list_of_word.size() ; i++) {
+    index = 0;
+    for(int i = *start ; i < (int)list_of_word.size() && i < k+*start; i++) {
     
-            mvprintw(y+i+2, 0, "%s", list_of_word[i].c_str());
-        }
-        move(y,x);
+        mvprintw(y+index+2, 0, "%s", list_of_word[i].c_str());
+        index++;
+    }
+    move(y,x);
+
+    if (*start > (int)list_of_word.size()) {
+
+        *start = -k;
+    }
 }

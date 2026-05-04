@@ -32,7 +32,7 @@ class Noeud {
         int nbrOfWord();
         int maxLength();
         void writeIn(ofstream &flow, string word = "");
-        void wordWithPrefix(vector<string> * vect, string prefix);
+        void listWithPrefix(vector<string> * vect, string prefix);
         void insertFilsInVector(vector<string> * vect, string word);
 };
 
@@ -53,7 +53,7 @@ class Arbre {
         int nbrOfWord();
         int maxLength();
         void writeIn(string file_name);
-        void wordWithPrefix(vector<string> * vect, string prefix);
+        void listWithPrefix(vector<string> * vect, string prefix);
         void addWordWithText(vector<char> text);
 };
 

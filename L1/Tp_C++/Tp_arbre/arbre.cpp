@@ -307,7 +307,7 @@ void Noeud::writeIn(ofstream &flow, string word) {
     }
 }
 
-void Noeud::wordWithPrefix(vector<string> * vect, string prefix) {
+void Noeud::listWithPrefix(vector<string> * vect, string prefix) {
 
     Noeud * current = this;
     for (int i = 0 ; prefix[i] ; i++) {
@@ -456,11 +456,11 @@ void Arbre::writeIn(string file_name) {
     F.close();
 }
 
-void Arbre::wordWithPrefix(vector<string> * vect, string prefix) {
+void Arbre::listWithPrefix(vector<string> * vect, string prefix) {
 
     if (racine->fils != nullptr) {
 
-        racine->wordWithPrefix(vect, prefix);
+        racine->listWithPrefix(vect, prefix);
     }
 }
 
