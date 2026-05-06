@@ -104,5 +104,18 @@ Méthodes ajoutées :
 - fix de l'affichage de la liste des mots via préfix
 - reflexion sur l'exercice 14
 
+
 # Séance 6 (mardi 5 avril) :
--
+Méthodes commencées :
+- Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array);
+- Arbre::listSimilarWord(vector<string> * vect, string word, int max_dist);
+
+reflexion sur l'exercie 14
+
+
+# Entre les 2 séances :
+Méthodes ajoutées :
+- Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array);
+- Arbre::listSimilarWord(vector<string> * vect, string word, int max_dist);
+
+Fix de quelques autres anciens problèmes

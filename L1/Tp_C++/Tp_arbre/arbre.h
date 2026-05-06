@@ -33,8 +33,8 @@ class Noeud {
         int maxLength();
         void writeIn(ofstream &flow, string word = "");
         void listWithPrefix(vector<string> * vect, string prefix);
-        void insertFilsInVector(vector<string> * vect, string word);
-        void listSimilarWord(vector<string> * vect, string word);
+        void insertFilsInVector(vector<string> * vect, string word = "");
+        void listSimilarWord(vector<int> * vect, string word, vector<int> array);
 };
 
 class Arbre {
@@ -56,7 +56,7 @@ class Arbre {
         void writeIn(string file_name);
         void listWithPrefix(vector<string> * vect, string prefix);
         void addWordWithText(vector<char> text);
-        void listSimilarWord(vector<string> * vect, string word);
+        void listSimilarWord(vector<string> * vect, string word, int max_dist);
 };
 
 int levenshteinAlgorithm(string str1, string str2);

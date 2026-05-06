@@ -11,6 +11,9 @@ int main() {
 
     writeTextInTerminal(file_name, "dic-moyen.txt");
 
+    
+
+
 
 
     /* Tableau dynamique :

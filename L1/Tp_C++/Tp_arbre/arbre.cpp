@@ -347,9 +347,35 @@ void Noeud::insertFilsInVector(vector<string> * vect, string word) {
     }
 }
 
-void Noeud::listSimilarWord(vector<string> * vect, string word) {
+void Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array) {
 
+    if (*this == '\0') {
+        
+        vect->insert(vect->end(), array[array.size()-1]);
+    }
+    if (fils != nullptr) {
 
+        int delt;
+        vector<int> new_row = {array[0]+1};
+        for(int i = 1 ; i < (int)array.size() ; i++) {
+
+            if(word[i-1] == info) {
+
+                delt = 0;
+            }
+            else {
+
+                delt = 1;
+            }
+            new_row.insert(new_row.end(), min(min(new_row[i-1]+1, array[i]+1), array[i-1]+delt));
+        }
+
+        fils->listSimilarWord(vect, word, new_row);
+    }
+    if (frere != nullptr) {
+
+        frere->listSimilarWord(vect, word, array);
+    }
 }
 
 
@@ -485,11 +511,43 @@ void Arbre::addWordWithText(vector<char> text) {
     this->addWord(word);
 }
 
-void Arbre::listSimilarWord(vector<string> * vect, string word) {
+void Arbre::listSimilarWord(vector<string> * array_str, string word, int max_dist) {
 
-    if (racine != nullptr) {
+    if (racine == nullptr) {
 
-        racine->fils->listSimilarWord(vect, word);
+        return;
+    }
+
+    vector<int> first_row = {0};
+    for(int i = 0 ; word[i] ; i++) {
+        
+        first_row.insert(first_row.end(), i+1);
+    }
+    
+    vector<int> array_int;
+    racine->fils->listSimilarWord(&array_int, word, first_row);
+    racine->fils->insertFilsInVector(array_str);
+
+    for(int i = 0 ; i < (int)array_int.size() ; i++) {
+
+        if (array_int[i] > max_dist) {
+
+            array_int.erase(array_int.begin()+i);
+            array_str->erase(array_str->begin()+i);
+            i--;
+        }
+    }
+
+    for(int i = 0 ; i < (int)array_int.size()-1 ; i++) {
+
+        for(int j = 0 ; j < (int)array_int.size()-i-1 ; j++) {
+
+            if(array_int[j] > array_int[j+1]) {
+
+                swap(array_int[j], array_int[j+1]);
+                swap((*array_str)[j], (*array_str)[j+1]);
+            }
+        }
     }
 }
 
@@ -536,28 +594,7 @@ int levenshteinAlgorithm(string str1, string str2) {
             tab[i][j] = min(tab[i-1][j-1]+delt, min(tab[i-1][j]+1, tab[i][j-1]+1));
         }
     }
-    /*
-    // display tab
-    cout << "     ";
-    for(int i = 0 ; i < size_str2 ; i++) {
-
-        cout << "   " << str2[i];
-    }
-    cout << endl << "    ";
-    for(int i = 0 ; i <= size_str1 ; i++) {
-
-        if (i != 0) {
-
-            cout << str1[i-1] << "   ";
-        }
-
-        for(int j = 0 ; j <= size_str2 ; j++) {
-
-            cout << tab[i][j] << "   ";
-        }
-        cout << endl;
-    }
-    */
+    
     return tab[size_str1][size_str2];
 }
 

@@ -13,6 +13,7 @@ void writeTextInTerminal(string file_name, string dic_name) {
     int cursor = 0;
     int ch;
     int k = 10;
+    int max_dist = 3;
     int start = 0;
     mvprintw(0, 0, "Debut du texte :");
     while(true) {
@@ -49,7 +50,7 @@ void writeTextInTerminal(string file_name, string dic_name) {
         else if (ch == 9) {
 
             start = start + k;
-            displayWords(&tree, text, &start, k);
+            displayWords(&tree, text, &start, k, max_dist);
         }
         else if (ch == KEY_BACKSPACE || ch == 127  || ch == 8) {
 
@@ -59,7 +60,7 @@ void writeTextInTerminal(string file_name, string dic_name) {
                 cursor--;
             }
             start = 0;
-            displayWords(&tree, text, &start, k);
+            displayWords(&tree, text, &start, k, max_dist);
         }
         else if (ch >= 32 && ch <= 126) {
 
@@ -72,7 +73,7 @@ void writeTextInTerminal(string file_name, string dic_name) {
             else {
                 
                 start = 0;
-                displayWords(&tree, text, &start, k);
+                displayWords(&tree, text, &start, k, max_dist);
             }
         }
     }
@@ -85,7 +86,7 @@ void writeTextInTerminal(string file_name, string dic_name) {
     writeTextInFile(file_name, text);
 }
 
-void displayWords(Arbre * tree, vector<char> text, int * start, int k) {
+void displayWords(Arbre * tree, vector<char> text, int * start, int k, int max_dist) {
 
     int x, y;
     getyx(stdscr, y, x);
@@ -104,7 +105,7 @@ void displayWords(Arbre * tree, vector<char> text, int * start, int k) {
 
     if ((int)list_of_word.size() == 0) {
 
-        // ajouter la liste des mots similaires
+        tree->listSimilarWord(&list_of_word, last_word, max_dist);
     }
 
     index = 0;
