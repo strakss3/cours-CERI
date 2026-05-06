@@ -1,14 +1,17 @@
-#include "apc.h"
-#include "tab.h"
+#include "table.h"
+#include "interaction.h"
 
 int main() {
 
     /* Arbre Lexicographique : */
-    
-    //Arbre tree("dic-moyen.txt");
-    Arbre tree("test.txt");
-    tree.wordWithPrefix("j");
 
+    string file_name = "text.txt";
+    cout << "Entrez le nom du fichier : ";
+    // cin >> file_name;
+
+    writeTextInTerminal(file_name, "dic-moyen.txt");
+
+    
 
 
 

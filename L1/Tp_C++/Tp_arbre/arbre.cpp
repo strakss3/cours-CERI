@@ -1,4 +1,4 @@
-#include "apc.h"
+#include "arbre.h"
 
 Noeud::Noeud() {
 
@@ -307,23 +307,78 @@ void Noeud::writeIn(ofstream &flow, string word) {
     }
 }
 
-void Noeud::wordWithPrefix(string prefix) {
+void Noeud::listWithPrefix(vector<string> * vect, string prefix) {
 
     Noeud * current = this;
     for (int i = 0 ; prefix[i] ; i++) {
 
         current = current->fils;
-
+        
         while (*current != prefix[i]) {
-
+            
             current = current->frere;
+            if (current == nullptr) {
+
+                return;
+            }
         }
     }
     if (current != nullptr) {
         
-        current->fils->displayAll(prefix);
+        current->fils->insertFilsInVector(vect, prefix);
     }
 }
+
+void Noeud::insertFilsInVector(vector<string> * vect, string word) {
+
+    if (*this == '\0') {
+
+        vect->insert(vect->end(), word);
+    }
+
+    if (this->fils != nullptr) {
+
+        fils->insertFilsInVector(vect, word + this->info);
+    }
+    
+    if (this->frere != nullptr) {
+
+        frere->insertFilsInVector(vect, word);
+    }
+}
+
+void Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array) {
+
+    if (*this == '\0') {
+        
+        vect->insert(vect->end(), array[array.size()-1]);
+    }
+    if (fils != nullptr) {
+
+        int delt;
+        vector<int> new_row = {array[0]+1};
+        for(int i = 1 ; i < (int)array.size() ; i++) {
+
+            if(word[i-1] == info) {
+
+                delt = 0;
+            }
+            else {
+
+                delt = 1;
+            }
+            new_row.insert(new_row.end(), min(min(new_row[i-1]+1, array[i]+1), array[i-1]+delt));
+        }
+
+        fils->listSimilarWord(vect, word, new_row);
+    }
+    if (frere != nullptr) {
+
+        frere->listSimilarWord(vect, word, array);
+    }
+}
+
+
 
 
 Arbre::Arbre() {
@@ -432,7 +487,124 @@ void Arbre::writeIn(string file_name) {
     F.close();
 }
 
-void Arbre::wordWithPrefix(string prefix) {
+void Arbre::listWithPrefix(vector<string> * vect, string prefix) {
 
-    racine->wordWithPrefix(prefix);
+    if (racine->fils != nullptr) {
+
+        racine->listWithPrefix(vect, prefix);
+    }
 }
+
+void Arbre::addWordWithText(vector<char> text) {
+
+    int index1 = 0;
+    for(int index2 = 0 ; index2 < (int)text.size() ; index2++) {
+        
+        if (text[index2] == ' ' || index2 == (int)text.size()-1) {
+
+            string word(text.begin() + index1, text.begin() + index2+1);
+            this->addWord(word);
+            index1 = index2+1;
+        }
+    }
+    string word(text.begin() + index1, text.end());
+    this->addWord(word);
+}
+
+void Arbre::listSimilarWord(vector<string> * array_str, string word, int max_dist) {
+
+    if (racine == nullptr) {
+
+        return;
+    }
+
+    vector<int> first_row = {0};
+    for(int i = 0 ; word[i] ; i++) {
+        
+        first_row.insert(first_row.end(), i+1);
+    }
+    
+    vector<int> array_int;
+    racine->fils->listSimilarWord(&array_int, word, first_row);
+    racine->fils->insertFilsInVector(array_str);
+
+    for(int i = 0 ; i < (int)array_int.size() ; i++) {
+
+        if (array_int[i] > max_dist) {
+
+            array_int.erase(array_int.begin()+i);
+            array_str->erase(array_str->begin()+i);
+            i--;
+        }
+    }
+
+    for(int i = 0 ; i < (int)array_int.size()-1 ; i++) {
+
+        for(int j = 0 ; j < (int)array_int.size()-i-1 ; j++) {
+
+            if(array_int[j] > array_int[j+1]) {
+
+                swap(array_int[j], array_int[j+1]);
+                swap((*array_str)[j], (*array_str)[j+1]);
+            }
+        }
+    }
+}
+
+
+
+int levenshteinAlgorithm(string str1, string str2) {
+
+    int size_str1 = 0;
+    for(int i = 0 ; str1[i] ; i++) {
+
+        size_str1++;
+    }
+
+    int size_str2 = 0;
+    for(int j = 0 ; str2[j] ; j++) {
+
+        size_str2++;
+    }
+
+    int tab[size_str1+1][size_str2+1];
+    for(int i = 0 ; i <= size_str1 ; i++) {
+
+        tab[i][0] = i;
+    }
+
+    for(int j = 0 ; j <= size_str2 ; j++) {
+
+        tab[0][j] = j;
+    }
+
+    int delt;
+    for(int i = 1 ; i <= size_str1 ; i++) {
+
+        for(int j = 1 ; j <= size_str2 ; j++) {
+
+            if (str1[i-1] == str2[j-1]) {
+
+                delt = 0;
+            }
+            else {
+
+                delt = 1;
+            }
+            tab[i][j] = min(tab[i-1][j-1]+delt, min(tab[i-1][j]+1, tab[i][j-1]+1));
+        }
+    }
+    
+    return tab[size_str1][size_str2];
+}
+
+void writeTextInFile(string file_name, vector<char> text) {
+
+    ofstream F(file_name, ios::out);
+    for(char letter : text) {
+
+        F << letter;
+    }
+    F.close();
+}
+

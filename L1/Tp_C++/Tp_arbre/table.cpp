@@ -1,4 +1,4 @@
-#include "tab.h"
+#include "table.h"
 
 Tab::Tab(int nbr) {
 

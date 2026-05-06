@@ -1,6 +1,18 @@
 SRC =	*.cpp
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall \
+		-Wextra \
+		-Werror \
+
+FLAGS2 = -std=c++11 \
+	   -lncurses \
+	   -o \
 
 all :
-	g++ $(FLAGS) $(SRC) -o tp
+	g++ $(SRC) $(FLAGS2) tp && \
+	clear && \
+	./tp
+
+clean :
+	rm -f text.txt tp output.txt && \
+	clear
