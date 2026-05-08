@@ -1,3 +1,0 @@
-Use the command
-    $ gsh help
-to get the list of "gsh" commands.
