@@ -1,0 +1,23 @@
+usage:
+      $GSH_EXEC_FILE [OPTIONS] [INDEX_FILE1 INDEX_FILE2 ...]
+
+Possible values for INDEX_FILE<n> are: $GSH_INDEX_FILES.
+
+If no INDEX_FILE is given, defaults to default.idx.
+
+Index files are ignored when continuing from a save file.
+
+
+main options:
+  -h      this message
+  -H      show all available options
+  -V      display version
+  -I      show list of available index files
+
+  -R      reset game
+  -F      do not check for more recent savefiles, force using the given archive
+
+  -L ...  set LANGUAGE variable (ex: -L fr:it:en)
+          On non GNU systems, set the variable LC_MESSAGES to a valid locale.
+          This flag is ignored when continuing from a save file.
+

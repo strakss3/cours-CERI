@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Snake ASCII 5x5 Fullscreen</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Fira Code", "Cascadia Mono", "Consolas", "Courier New", monospace;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #0f0;
+      overflow: hidden;
+    }
+
+    #root {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      background: #000;
+    }
+
+    #container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 8px;
+      background: #000;
+      color: #0f0;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0 0 6px;
+      color: #0f0;
+      font-size: 20px;
+    }
+
+    .screen {
+      display: none;
+      flex: 1;
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+    }
+
+    /* Colonne gauche : menu / panneau */
+    #left-panel {
+      width: 260px;
+      max-width: 260px;
+      min-width: 220px;
+      padding: 8px;
+      border-right: 1px solid #033;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    #main-menu h2,
+    #skin-menu h2 {
+      margin: 4px 0;
+      font-size: 16px;
+      text-align: left;
+      color: #0ff;
+    }
+
+    #main-menu label {
+      display: block;
+      margin: 6px 0 2px;
+      font-size: 13px;
+    }
+
+    #main-menu select,
+    #main-menu button,
+    #skin-menu select {
+      width: 100%;
+      padding: 6px;
+      margin-bottom: 4px;
+      border-radius: 3px;
+      border: 1px solid #044;
+      background: #020;
+      color: #0f0;
+      font-size: 13px;
+    }
+
+    #btn-start {
+      background: #060;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #btn-start:hover {
+      background: #090;
+    }
+
+    #btn-fullscreen {
+      background: #440;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #btn-fullscreen:hover {
+      background: #660;
+    }
+
+    #menu-highscore {
+      font-size: 12px;
+      color: #8f8;
+      margin-top: 4px;
+    }
+
+    #menu-help {
+      font-size: 11px;
+      color: #9f9;
+    }
+
+    #skin-menu {
+      margin-top: 8px;
+      border-top: 1px solid #033;
+      padding-top: 6px;
+    }
+
+    #skin-menu label {
+      display: block;
+      margin: 4px 0 2px;
+      font-size: 12px;
+    }
+
+    .color-preview {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 2px;
+      border: 1px solid #333;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: #ccc;
+      margin-top: 4px;
+    }
+
+    /* Colonne droite : jeu */
+    #game-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 4px;
+    }
+
+    #hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    #scores {
+      display: flex;
+      gap: 12px;
+    }
+
+    #scores span {
+      font-weight: bold;
+      color: #0f0;
+    }
+
+    #game-buttons button {
+      padding: 4px 8px;
+      margin-left: 4px;
+      border-radius: 3px;
+      border: 1px solid #044;
+      background: #020;
+      color: #0f0;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    #btn-back { background: #333; }
+    #btn-restart { background: #024; }
+
+    #btn-back:hover { background: #555; }
+    #btn-restart:hover { background: #036; }
+
+    #board {
+      flex: 1;
+      font-size: 11px;
+      line-height: 1.0;
+      white-space: pre;
+      background: #000;
+      color: #0f0;
+      padding: 4px;
+      border-radius: 4px;
+      border: 1px solid #033;
+      overflow: hidden;
+    }
+
+    #event-message {
+      text-align: center;
+      font-size: 12px;
+      color: #ff0;
+      min-height: 1.2em;
+      margin-top: 2px;
+    }
+
+    #instructions {
+      margin-top: 4px;
+      font-size: 11px;
+      color: #9f9;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div id="root">
+  <div id="container">
+    <h1>SNAKE ASCII 5×5 FULLSCREEN</h1>
+
+    <!-- ÉCRAN PRINCIPAL (menu + jeu en live) -->
+    <div id="game-screen" class="screen active">
+      <!-- Panneau gauche : menu + skins -->
+      <div id="left-panel">
+        <div id="main-menu">
+          <h2>Paramètres</h2>
+          <label for="board-width">Largeur (cases)</label>
+          <select id="board-width">
+            <option value="30">30</option>
+            <option value="40" selected>40</option>
+            <option value="50">50</option>
+          </select>
+
+          <label for="board-height">Hauteur (cases)</label>
+          <select id="board-height">
+            <option value="15">15</option>
+            <option value="20" selected>20</option>
+            <option value="25">25</option>
+          </select>
+
+          <label for="speed">Vitesse de base</label>
+          <select id="speed">
+            <option value="180">Lent</option>
+            <option value="130" selected>Moyen</option>
+            <option value="90">Rapide</option>
+            <option value="60">Très rapide</option>
+          </select>
+
+          <button id="btn-start">Lancer / Recommencer</button>
+          <button id="btn-fullscreen">Plein écran</button>
+
+          <p id="menu-highscore"></p>
+          <p id="menu-help">
+            Flèches pour bouger. Les cases logiques sont des blocs 5×5 UTF‑8 (plein de détails).<br/>
+            Des événements aléatoires inversent les contrôles, modifient la vitesse ou ajoutent des murs.
+          </p>
+        </div>
+
+        <!-- SKIN MENU : seulement des couleurs -->
+        <div id="skin-menu">
+          <h2>Skins (couleurs)</h2>
+          <label for="color-bg">Fond</label>
+          <select id="color-bg">
+            <option value="#000000">Noir</option>
+            <option value="#050018">Bleu nuit</option>
+            <option value="#001111">Vert sombre</option>
+            <option value="#111111" selected>Gris très sombre</option>
+          </select>
+
+          <label for="color-snake-head">Tête du serpent</label>
+          <select id="color-snake-head">
+            <option value="#00ff00" selected>Vert vif</option>
+            <option value="#00ffff">Cyan</option>
+            <option value="#ffff00">Jaune</option>
+            <option value="#ff00ff">Magenta</option>
+          </select>
+
+          <label for="color-snake-body">Corps du serpent</label>
+          <select id="color-snake-body">
+            <option value="#009900" selected>Vert sombre</option>
+            <option value="#00aaaa">Cyan sombre</option>
+            <option value="#aaaa00">Jaune sombre</option>
+          </select>
+
+          <label for="color-food">Nourriture</label>
+          <select id="color-food">
+            <option value="#ff0000" selected>Rouge</option>
+            <option value="#ff8800">Orange</option>
+            <option value="#ff00ff">Magenta</option>
+          </select>
+
+          <label for="color-walls">Murs</label>
+          <select id="color-walls">
+            <option value="#666666" selected>Gris</option>
+            <option value="#888888">Gris clair</option>
+            <option value="#444444">Gris foncé</option>
+          </select>
+
+          <label for="color-border">Bordure</label>
+          <select id="color-border">
+            <option value="#00ff00" selected>Vert vif</option>
+            <option value="#ffffff">Blanc</option>
+            <option value="#aaaaaa">Gris clair</option>
+          </select>
+
+          <p class="hint">
+            Le style visuel (motifs 5×5) est fixe, seul le jeu de couleurs change ici.
+          </p>
+        </div>
+      </div>
+
+      <!-- Panneau droit : HUD + plateau -->
+      <div id="game-panel">
+        <div id="hud">
+          <div id="scores">
+            <div>Score : <span id="score">0</span></div>
+            <div>Meilleur : <span id="highscore">0</span></div>
+          </div>
+          <div id="game-buttons">
+            <button id="btn-back">Arrêter</button>
+          </div>
+        </div>
+
+        <pre id="board"></pre>
+        <div id="event-message"></div>
+        <div id="instructions">
+          Flèches : déplacer le serpent | Blocs 5×5 en caractères UTF‑8 (ex. ▓▒░) | Couleurs modifiables dans le menu de gauche.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // -------- SKINS COULEUR --------
+  const colorConfig = {
+    bg: "#111111",
+    snakeHead: "#00ff00",
+    snakeBody: "#009900",
+    food: "#ff0000",
+    walls: "#666666",
+    border: "#00ff00"
+  };
+
+  const colorSelects = {
+    bg: document.getElementById("color-bg"),
+    snakeHead: document.getElementById("color-snake-head"),
+    snakeBody: document.getElementById("color-snake-body"),
+    food: document.getElementById("color-food"),
+    walls: document.getElementById("color-walls"),
+    border: document.getElementById("color-border")
+  };
+
+  function applyColorsFromMenu() {
+    colorConfig.bg = colorSelects.bg.value;
+    colorConfig.snakeHead = colorSelects.snakeHead.value;
+    colorConfig.snakeBody = colorSelects.snakeBody.value;
+    colorConfig.food = colorSelects.food.value;
+    colorConfig.walls = colorSelects.walls.value;
+    colorConfig.border = colorSelects.border.value;
+
+    document.body.style.backgroundColor = colorConfig.bg;
+    document.getElementById("container").style.backgroundColor = colorConfig.bg;
+    document.getElementById("board").style.borderColor = colorConfig.border;
+  }
+
+  Object.values(colorSelects).forEach(sel => {
+    sel.addEventListener("change", () => {
+      applyColorsFromMenu();
+      draw();
+    });
+  });
+
+  applyColorsFromMenu();
+
+  // -------- CONSTANTES ASCII 5x5 --------
+  // On utilise des blocs UTF-8 (ex: ▓,▒,░,█,▄,▀,·)
+  const BLOCK_SIZE = 5; // 5×5 par case logique
+
+  const PATTERN_EMPTY = [
+    "     ",
+    "     ",
+    "     ",
+    "     ",
+    "     "
+  ];
+
+  const PATTERN_SNAKE_HEAD = [
+    " ▓▓ ",
+    "▓██▓",
+    "▓██▓",
+    "▓██▓",
+    " ▓▓ "
+  ];
+
+  const PATTERN_SNAKE_BODY = [
+    " ▒▒ ",
+    "▒██▒",
+    "▒██▒",
+    "▒██▒",
+    " ▒▒ "
+  ];
+
+  const PATTERN_FOOD = [
+    "  ●  ",
+    " ▓▓ ",
+    "▓██▓",
+    " ▓▓ ",
+    "  ●  "
+  ];
+
+  const PATTERN_WALL = [
+    "█████",
+    "▓▓▓▓▓",
+    "█████",
+    "▓▓▓▓▓",
+    "█████"
+  ];
+
+  // Bordure ASCII simple, on colorera par CSS
+  const BORDER_CHAR = "─";
+  const BORDER_LEFT = "│";
+  const BORDER_RIGHT = "│";
+  const BORDER_TOP_LEFT = "┌";
+  const BORDER_TOP_RIGHT = "┐";
+  const BORDER_BOTTOM_LEFT = "└";
+  const BORDER_BOTTOM_RIGHT = "┘";
+
+  // -------- VARIABLES JEU --------
+  const boardEl = document.getElementById("board");
+  const btnStart = document.getElementById("btn-start");
+  const btnBack = document.getElementById("btn-back");
+  const btnFullscreen = document.getElementById("btn-fullscreen");
+  const widthSelect = document.getElementById("board-width");
+  const heightSelect = document.getElementById("board-height");
+  const speedSelect = document.getElementById("speed");
+  const scoreSpan = document.getElementById("score");
+  const highSpan = document.getElementById("highscore");
+  const menuHigh = document.getElementById("menu-highscore");
+  const eventMsg = document.getElementById("event-message");
+
+  const HS_KEY = "snake_ascii_5x5_fullscreen_highscore";
+
+  let cols = 40;
+  let rows = 20;
+
+  let snake = [];
+  let direction = { x: 1, y: 0 };
+  let pendingDirection = { x: 1, y: 0 };
+  let food = { x: 5, y: 5 };
+  let walls = [];
+  let score = 0;
+  let highScore = 0;
+  let baseSpeed = 130;
+  let currentSpeed = 130;
+  let gameLoopId = null;
+
+  // Événements
+  let controlsInverted = false;
+  let speedModifier = 1;
+  let eventTimeoutId = null;
+  let nextEventTimeoutId = null;
+
+  // Highscore
+  const stored = localStorage.getItem(HS_KEY);
+  if (stored !== null) {
+    highScore = parseInt(stored, 10) || 0;
+  }
+  highSpan.textContent = highScore;
+  menuHigh.textContent = "Meilleur score enregistré : " + highScore;
+
+  // -------- PLEIN ÉCRAN --------
+  btnFullscreen.addEventListener("click", () => {
+    const root = document.documentElement;
+    if (!document.fullscreenElement) {
+      if (root.requestFullscreen) root.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) document.exitFullscreen();
+    }
+  });
+
+  // -------- DÉMARRAGE / ARRET --------
+  btnStart.addEventListener("click", () => {
+    cols = parseInt(widthSelect.value, 10);
+    rows = parseInt(heightSelect.value, 10);
+    baseSpeed = parseInt(speedSelect.value, 10);
+    startGame();
+  });
+
+  btnBack.addEventListener("click", () => {
+    stopGame();
+  });
+
+  function startGame() {
+    const startX = Math.floor(cols / 2);
+    const startY = Math.floor(rows / 2);
+
+    snake = [
+      { x: startX, y: startY },
+      { x: startX - 1, y: startY },
+      { x: startX - 2, y: startY }
+    ];
+    direction = { x: 1, y: 0 };
+    pendingDirection = { x: 1, y: 0 };
+    score = 0;
+    scoreSpan.textContent = score;
+    walls = [];
+    controlsInverted = false;
+    speedModifier = 1;
+    currentSpeed = baseSpeed;
+    eventMsg.textContent = "";
+
+    placeFood();
+    scheduleNextRandomEvent();
+
+    if (gameLoopId !== null) {
+      clearInterval(gameLoopId);
+    }
+    gameLoopId = setInterval(gameTick, currentSpeed);
+    draw();
+  }
+
+  function stopGame() {
+    if (gameLoopId !== null) {
+      clearInterval(gameLoopId);
+      gameLoopId = null;
+    }
+    if (eventTimeoutId !== null) {
+      clearTimeout(eventTimeoutId);
+      eventTimeoutId = null;
+    }
+    if (nextEventTimeoutId !== null) {
+      clearTimeout(nextEventTimeoutId);
+      nextEventTimeoutId = null;
+    }
+    eventMsg.textContent = "Jeu arrêté.";
+  }
+
+  // -------- LOGIQUE DE JEU --------
+  function gameTick() {
+    direction = pendingDirection;
+    const head = snake[0];
+    const newHead = { x: head.x + direction.x, y: head.y + direction.y };
+
+    if (newHead.x < 0 || newHead.x >= cols || newHead.y < 0 || newHead.y >= rows) {
+      endGame();
+      return;
+    }
+
+    if (snake.some(p => p.x === newHead.x && p.y === newHead.y)) {
+      endGame();
+      return;
+    }
+
+    if (walls.some(w => w.x === newHead.x && w.y === newHead.y)) {
+      endGame();
+      return;
+    }
+
+    snake.unshift(newHead);
+
+    if (newHead.x === food.x && newHead.y === food.y) {
+      score += 1;
+      if (score > highScore) {
+        highScore = score;
+        localStorage.setItem(HS_KEY, String(highScore));
+      }
+      scoreSpan.textContent = score;
+      highSpan.textContent = highScore;
+      menuHigh.textContent = "Meilleur score enregistré : " + highScore;
+      placeFood();
+    } else {
+      snake.pop();
+    }
+
+    draw();
+  }
+
+  function endGame() {
+    stopGame();
+    alert("Game Over ! Score : " + score);
+  }
+
+  function placeFood() {
+    let pos;
+    do {
+      pos = {
+        x: Math.floor(Math.random() * cols),
+        y: Math.floor(Math.random() * rows)
+      };
+    } while (
+      snake.some(s => s.x === pos.x && s.y === pos.y) ||
+      walls.some(w => w.x === pos.x && w.y === pos.y)
+    );
+    food = pos;
+  }
+
+  // -------- DESSIN ASCII 5×5 --------
+  function draw() {
+    applyColorsFromMenu(); // s'assurer que les couleurs sont appliquées
+
+    const pixelRows = rows * BLOCK_SIZE;
+    const pixelCols = cols * BLOCK_SIZE;
+
+    const grid = [];
+    for (let y = 0; y < pixelRows; y++) {
+      const row = new Array(pixelCols).fill(" ");
+      grid.push(row);
+    }
+
+    // Tout est d'abord vide
+    for (let gy = 0; gy < rows; gy++) {
+      for (let gx = 0; gx < cols; gx++) {
+        stampPattern(grid, gx, gy, PATTERN_EMPTY);
+      }
+    }
+
+    // Murs internes
+    for (const w of walls) {
+      stampPattern(grid, w.x, w.y, PATTERN_WALL);
+    }
+
+    // Nourriture
+    stampPattern(grid, food.x, food.y, PATTERN_FOOD);
+
+    // Serpent
+    snake.forEach((p, idx) => {
+      stampPattern(grid, p.x, p.y, idx === 0 ? PATTERN_SNAKE_HEAD : PATTERN_SNAKE_BODY);
+    });
+
+    // Conversion en lignes de texte avec bordure
+    const outLines = [];
+    const topBorder = BORDER_TOP_LEFT + BORDER_CHAR.repeat(pixelCols) + BORDER_TOP_RIGHT;
+    const bottomBorder = BORDER_BOTTOM_LEFT + BORDER_CHAR.repeat(pixelCols) + BORDER_BOTTOM_RIGHT;
+    outLines.push(topBorder);
+    for (let y = 0; y < pixelRows; y++) {
+      const line = grid[y].join("");
+      outLines.push(BORDER_LEFT + line + BORDER_RIGHT);
+    }
+    outLines.push(bottomBorder);
+
+    // On entoure par des spans colorés via CSS inline (style)
+    // Ici, on se contente de changer la couleur globale du texte du plateau
+    boardEl.style.color = colorConfig.snakeBody;
+    boardEl.textContent = outLines.join("\n");
+  }
+
+  function stampPattern(grid, cellX, cellY, pattern) {
+    const baseY = cellY * BLOCK_SIZE;
+    const baseX = cellX * BLOCK_SIZE;
+    for (let by = 0; by < BLOCK_SIZE; by++) {
+      for (let bx = 0; bx < BLOCK_SIZE; bx++) {
+        const ch = (pattern[by] && pattern[by][bx]) ? pattern[by][bx] : " ";
+        const y = baseY + by;
+        const x = baseX + bx;
+        if (y >= 0 && y < grid.length && x >= 0 && x < grid[0].length) {
+          grid[y][x] = ch;
+        }
+      }
+    }
+  }
+
+  // -------- CONTROLES CLAVIER --------
+  window.addEventListener("keydown", e => {
+    let key = e.key;
+    if (controlsInverted) {
+      if (key === "ArrowUp") key = "ArrowDown";
+      else if (key === "ArrowDown") key = "ArrowUp";
+      else if (key === "ArrowLeft") key = "ArrowRight";
+      else if (key === "ArrowRight") key = "ArrowLeft";
+    }
+
+    switch (key) {
+      case "ArrowUp":
+        if (direction.y === 1) break;
+        pendingDirection = { x: 0, y: -1 };
+        break;
+      case "ArrowDown":
+        if (direction.y === -1) break;
+        pendingDirection = { x: 0, y: 1 };
+        break;
+      case "ArrowLeft":
+        if (direction.x === 1) break;
+        pendingDirection = { x: -1, y: 0 };
+        break;
+      case "ArrowRight":
+        if (direction.x === -1) break;
+        pendingDirection = { x: 1, y: 0 };
+        break;
+    }
+  });
+
+  // -------- EVENEMENTS ALEATOIRES --------
+  function scheduleNextRandomEvent() {
+    const delay = 10000 + Math.random() * 10000; // 10–20s
+    nextEventTimeoutId = setTimeout(triggerRandomEvent, delay);
+  }
+
+  function triggerRandomEvent() {
+    const events = ["invert", "speedUp", "slowDown", "spawnWalls", "noEvent"];
+    const type = events[Math.floor(Math.random() * events.length)];
+
+    if (eventTimeoutId !== null) {
+      clearTimeout(eventTimeoutId);
+      eventTimeoutId = null;
+    }
+    eventMsg.textContent = "";
+
+    if (type === "invert") {
+      applyInvertControls();
+    } else if (type === "speedUp") {
+      applySpeedModifier(0.5, "Accélération !");
+    } else if (type === "slowDown") {
+      applySpeedModifier(1.8, "Ralentissement...");
+    } else if (type === "spawnWalls") {
+      spawnRandomWalls();
+    }
+
+    scheduleNextRandomEvent();
+  }
+
+  function applyInvertControls() {
+    controlsInverted = true;
+    eventMsg.textContent = "Contrôles inversés !";
+    eventTimeoutId = setTimeout(() => {
+      controlsInverted = false;
+      eventMsg.textContent = "";
+    }, 6000);
+  }
+
+  function applySpeedModifier(modifier, message) {
+    speedModifier = modifier;
+    currentSpeed = Math.max(30, baseSpeed * speedModifier);
+    eventMsg.textContent = message;
+    if (gameLoopId !== null) {
+      clearInterval(gameLoopId);
+    }
+    gameLoopId = setInterval(gameTick, currentSpeed);
+    eventTimeoutId = setTimeout(() => {
+      speedModifier = 1;
+      currentSpeed = baseSpeed;
+      eventMsg.textContent = "";
+      if (gameLoopId !== null) {
+        clearInterval(gameLoopId);
+      }
+      gameLoopId = setInterval(gameTick, currentSpeed);
+    }, 7000);
+  }
+
+  function spawnRandomWalls() {
+    const nbWalls = Math.floor((cols * rows) / 60);
+    for (let i = 0; i < nbWalls; i++) {
+      let pos;
+      let tries = 0;
+      do {
+        pos = {
+          x: Math.floor(Math.random() * cols),
+          y: Math.floor(Math.random() * rows)
+        };
+        tries++;
+        if (tries > 80) break;
+      } while (
+        snake.some(s => s.x === pos.x && s.y === pos.y) ||
+        walls.some(w => w.x === pos.x && w.y === pos.y) ||
+        (food.x === pos.x && food.y === pos.y)
+      );
+      walls.push(pos);
+    }
+    eventMsg.textContent = "Des murs ASCII sont apparus !";
+    draw();
+  }
+
+  // Dessin initial “vide”
+  draw();
+</script>
+</body>
+</html>
