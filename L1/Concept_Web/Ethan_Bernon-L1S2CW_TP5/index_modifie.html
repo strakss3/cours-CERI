@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+	<title>TP 5 Ethan Bernon</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+</HEAD>
+<BODY>
+	<header class="w3-header w3-theme w3-center w3-padding">
+		<h1>Bienvenue dans le site</h1>
+	</header>
+	<main class="w3-card w3-content w3-margin-top w3-margin-bottom">
+		<div class="w3-container w3-theme w3-margin-bottom">
+			<h2>Création de la critique :</h2>	
+		</div>
+		<form method="get" class="w3-container">
+			<label for="nom" class="w3-text-theme">Nom du restaurant :</label><br>
+			<input class="w3-input" type="text" name="nom" id="nom" required>
+			<br>
+			<label for="date" class="w3-text-theme">Année de visite :</label><br>
+			<input class="w3-input" type="number" name="date" id="date" min="1900" max="2026" required>
+			<br>
+			
+			<label class="w3-text-theme">Type de l'établissement :</label><br>
+			<select class="w3-select" multiple size="2">		
+				<option value="resto">Restaurant</option>
+				<option value="bar">Bar</option>
+			</select><br>
+
+			<label for="note" class="w3-text-theme">Note attribuée :</label><br>
+			<input class="w3" type="range" name="note" id="note" min="0" max="5" step="0.5" value="2.5">
+			<br><br>
+			
+			<label for="texte" class="w3-text-theme">Texte de la critique :<label><br>
+			<textarea class="w3-input" name="texte" id="texte" row="3"></textarea>
+			<br><br>
+			<input class="w3-button w3-theme w3-round w3-margin-bottom" type="submit">
+			<input class="w3-button w3-theme w3-round w3-margin-bottom" type="reset">
+		</form>
+	</main>
+</BODY>
+</HTML>

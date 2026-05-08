@@ -1,0 +1,54 @@
+body {
+    font-family: Arial,sans-serif;
+    font-size: 0.9em;
+}
+
+header, footer {
+    padding: 10px;
+    color: darkblue;
+    background-color: green;
+}
+
+
+section {
+    margin: 5px;
+    padding: 5px;
+    background-color: lightgreen;
+}
+
+article {
+    margin: 5px;
+    padding: 10px;
+    background-color: white;
+}
+
+main {
+    overflow: hidden;
+}
+
+nav {
+    float: left;
+    width: 22.5%;
+}
+
+nav ul {
+    padding: 0;
+}
+
+nav ul li {
+    display: block;
+    margin: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    text-align: center; 
+    display: inline-block;
+    background-color: lightblue;
+    color: blue;
+    padding: 10px 20px;
+}
+
+nav ul li a:hover, a:active {
+    background-color: #FF5533;
+}
