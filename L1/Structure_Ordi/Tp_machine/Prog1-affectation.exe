@@ -1,0 +1,42 @@
+v2.0 raw
+# Une variable à l'adresse 0100, le nom n'a pas d'importance
+# V : 01 00
+#
+# Une autre variable à l'adresse 1234
+# SOM : 12 34
+#
+# Encore une variable à l'adresse B4F7
+# NB : B4 F7
+#
+# Et une dernière variable à l'adresse FFFF
+# MOY : FF FF
+#
+#
+# Quelques instructions d'affectation
+#
+# Initialisation de I à la valeur 10 c'est à dire 0A en base 16
+# V := 0A
+#
+10 01 00 0A
+#
+# Initialisation de SOM avec la valeur de V
+# SOM := V
+#
+20 01 00 12 34
+# 
+# Ajout de 2 a NB
+# NB := NB + 2
+#
+32 B4 F7 02 B4 F7
+#
+# Calcul de SOM / NB et rangement dans MOY
+#
+45 12 34 B4 F7 FF FF
+#
+# A la fin le probleme tourne en boucle sur la derniere instruction du 
+# programme
+#
+#
+50 00 16
+
+

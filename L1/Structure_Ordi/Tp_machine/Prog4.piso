@@ -1,0 +1,23 @@
+#
+# Exemple de programme
+# Ce programme calcule la somme des N premiers nombres pairs
+#
+# Variables
+#
+.data
+# Nombre d'entiers pairs a additionner
+	N		0100	a
+# Valeur paire a accumuler la 1re est 2
+	VP		0101	2
+# Comme son nom l'indique ! Initialisée a 0
+	SOMME		0102	
+# 
+# Code
+#
+.text
+DEBUT:		Si N <= 0 Vers FIN:
+			SOMME := SOMME + VP
+			N := N - 1
+			VP := VP + 2
+			Vers DEBUT:
+FIN:		Vers FIN:

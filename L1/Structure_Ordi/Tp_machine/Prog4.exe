@@ -1,0 +1,78 @@
+v2.0 raw
+# - 
+# -  Fichier au format "image file" de Logisim
+# -  Voir http://www.cburch.com/logisim/
+# - 
+#
+# Exemple de programme
+# Ce programme calcule la somme des N premiers nombres pairs
+#
+# Variables
+#
+# - 
+# - Section .data
+# - 
+# Nombre d'entiers pairs a additionner
+# - N		100		a
+# Valeur paire a accumuler la 1re est 2
+# - VP		101		2
+# Comme son nom l'indique ! Initialisée a 0
+# - SOMME		102		0
+# 
+# Code
+#
+# - 
+# - Section .text
+# - 
+# <- 0000 DEBUT:		Si N <= 0 Vers FIN:
+# -> 0000 DEBUT:		6b Nh Nb 0 FIN:h FIN:b
+
+# <- 0006 			SOMME := SOMME + VP
+# -> 0006 			42 SOMMEh SOMMEb VPh VPb SOMMEh SOMMEb
+
+# <- 000d 			N := N - 1
+# -> 000d 			33 Nh Nb 1 Nh Nb
+
+# <- 0013 			VP := VP + 2
+# -> 0013 			32 VPh VPb 2 VPh VPb
+
+# <- 0019 			Vers DEBUT:
+# -> 0019 			50 DEBUT:h DEBUT:b
+
+# <- 001c FIN:		Vers FIN:
+# -> 001c FIN:		50 FIN:h FIN:b
+
+6b 01 00 00 00 1c 42 01 
+02 01 01 01 02 33 01 00 
+01 01 00 32 01 01 02 01 
+01 50 00 00 50 00 1c 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 
+0a 02 00 
+
