@@ -11,10 +11,10 @@ void writeTextInTerminal(string file_name, string dic_name) {
     Arbre tree(dic_name);
     vector<char> text;
     int cursor = 0;
-    int ch;
-    int k = 10;
-    int max_dist = 3;
-    int start = 0;
+    int ch;             //caractère écrit 
+    int k = 10;         //nombre de mots affichés
+    int max_dist = 3;   //dist max pour levenshtein
+    int start = 0;      //index actuel dans la liste affichée
     mvprintw(0, 0, "Debut du texte :");
     while(true) {
 
@@ -29,6 +29,7 @@ void writeTextInTerminal(string file_name, string dic_name) {
         refresh();
         ch = getch();
 
+        //press echap
         if (ch == 27) {
 
             break;
@@ -58,9 +59,22 @@ void writeTextInTerminal(string file_name, string dic_name) {
 
                 text.erase(text.end() - 1);
                 cursor--;
+
+                if (text.size() == 0) {
+
+                    clrtobot();
+                    continue;
+                }
+                if (text[text.size()-1] != ' ') {
+    
+                    start = 0;
+                    displayWords(&tree, text, &start, k, max_dist);
+                }
+                else {
+
+                    clrtobot();
+                }
             }
-            start = 0;
-            displayWords(&tree, text, &start, k, max_dist);
         }
         else if (ch >= 32 && ch <= 126) {
 
@@ -111,7 +125,8 @@ void displayWords(Arbre * tree, vector<char> text, int * start, int k, int max_d
     index = 0;
     for(int i = *start ; i < (int)list_of_word.size() && i < k+*start; i++) {
     
-        mvprintw(y+index+2, 0, "%s", list_of_word[i].c_str());
+        string str = to_string(i+1) + " - " + list_of_word[i];
+        mvprintw(y+index+2, 0, "%s", str.c_str());
         index++;
     }
     move(y,x);

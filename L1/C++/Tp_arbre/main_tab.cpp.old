@@ -1,0 +1,25 @@
+#include "table.h"
+
+int main() {
+
+    string buff;
+    string word;
+    int nbr_words = 0;
+    ifstream F("dic-moyen.txt", ios::in);
+    
+    while(getline(F,word)) {
+
+        buff += word + '\0';
+        nbr_words ++;
+    }
+
+    F.close();
+
+    Tab table(nbr_words);
+    table.addWordWithBuffer(&buff);
+    table.sort();
+    table.display();
+    
+    cout << endl << "------| Fin du main |------" << endl;
+    return 0;
+}

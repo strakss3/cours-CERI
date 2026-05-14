@@ -1,43 +1,23 @@
-#include "table.h"
 #include "interaction.h"
 
 int main() {
 
-    /* Arbre Lexicographique : */
+    // Arbre Lexicographique :
 
-    string file_name = "text.txt";
-    cout << "Entrez le nom du fichier : ";
+    // string file_name = "text.txt";
+    // cout << "Entrez le nom du fichier : ";
     // cin >> file_name;
+    // writeTextInTerminal(file_name, "dic-moyen.txt");
 
-    writeTextInTerminal(file_name, "dic-moyen.txt");
+    Arbre tree("dic-moyen.txt");
+    vector<string> vect;
+    tree.listSimilarWord(&vect, "caca", 2);
+    for(auto word : vect) {
 
-    
-
-
-
-
-    /* Tableau dynamique :
-
-    string buff;
-    string word;
-    int nbr_words = 0;
-    ifstream F("test.txt", ios::in);
-    
-    while(getline(F,word)) {
-
-        buff += word + '\0';
-        nbr_words ++;
+        cout << word << endl;
     }
 
-    F.close();
 
-    Tab table(nbr_words);
-    table.addWordWithBuffer(&buff);
-    table.sort();
-    table.display();
-
-    */
-    
     cout << endl << "------| Fin du main |------" << endl;
     return 0;
 }
