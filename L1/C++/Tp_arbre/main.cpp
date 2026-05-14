@@ -14,7 +14,7 @@ int main() {
     tree.listSimilarWord(&vect, "caca", 2);
     for(auto word : vect) {
 
-        cout << word << endl;
+        // cout << word << endl;
     }
 
 

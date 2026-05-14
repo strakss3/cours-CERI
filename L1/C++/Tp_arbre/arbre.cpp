@@ -528,16 +528,21 @@ void Arbre::listSimilarWord(vector<string> * array_str, string word, int max_dis
     racine->fils->listSimilarWord(&array_int, word, first_row);
     racine->fils->insertFilsInVector(array_str);
 
-    for(int i = 0 ; i < (int)array_int.size() ; i++) {
+    int i = 0;
+    while(i < (int)array_int.size()) {
 
         if (array_int[i] > max_dist) {
 
             array_int.erase(array_int.begin()+i);
-            array_str->erase(array_str->begin()+i);
-            i--;
+            // array_str->erase(array_str->begin()+i);
+        }
+        else {
+
+            i++;
         }
     }
 
+    /*
     for(int i = 0 ; i < (int)array_int.size()-1 ; i++) {
 
         for(int j = 0 ; j < (int)array_int.size()-i-1 ; j++) {
@@ -549,6 +554,7 @@ void Arbre::listSimilarWord(vector<string> * array_str, string word, int max_dis
             }
         }
     }
+    */
 }
 
 
