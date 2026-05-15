@@ -165,11 +165,29 @@ void correctText(string file_name, string dic_name) {
 
     int k = 10;
     int max_dist = 3;
+    int start = 0;
+    int cursor;
     
     while(true) {
 
+        move(0,0);
+        clrtoeol();
+        for(auto str : list_of_word) {
 
+            for(auto ch : str) {
+
+                addch(ch);
+            }
+            addch(' ');
+        }
+        move(1, cursor);
+        refresh();
+        ch = getch();
+
+        if(ch == 27) {
+
+            break;
+        }
     }
-
     endwin();
 }
