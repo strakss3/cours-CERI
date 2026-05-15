@@ -8,7 +8,7 @@ FLAGS2 = -std=c++11 \
 	   -lncurses \
 	   -o \
 
-all :
+compile :
 	g++ $(SRC) $(FLAGS2) tp && \
 	clear && \
 	./tp

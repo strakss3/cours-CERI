@@ -136,3 +136,40 @@ void displayWords(Arbre * tree, vector<char> text, int * start, int k, int max_d
         *start = -k;
     }
 }
+
+void correctText(string file_name, string dic_name) {
+
+    
+    Arbre tree(dic_name);
+    char ch;
+    vector<string> list_of_word = {""};
+    ifstream F(file_name, ios::in);
+    while(F.read(&ch, 1)) {
+
+        if (ch == ' ') {
+
+            list_of_word.push_back("");
+        }
+        else {
+            
+            list_of_word[list_of_word.size()-1] += ch;
+        }
+    }
+    F.close();
+
+    initscr();
+    raw();
+    keypad(stdscr, TRUE);
+    noecho();
+    curs_set(1);
+
+    int k = 10;
+    int max_dist = 3;
+    
+    while(true) {
+
+
+    }
+
+    endwin();
+}

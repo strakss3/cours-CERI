@@ -392,7 +392,7 @@ Arbre::Arbre(string file_name) {
     racine = new Noeud();
     ifstream F(file_name, ios::in);
 
-    while(getline(F,word)) {
+    while(getline(F, word)) {
 
         this->addWord(word);
     }
@@ -528,21 +528,20 @@ void Arbre::listSimilarWord(vector<string> * array_str, string word, int max_dis
     racine->fils->listSimilarWord(&array_int, word, first_row);
     racine->fils->insertFilsInVector(array_str);
 
-    int i = 0;
-    while(i < (int)array_int.size()) {
+    vector<int> filtered_int;
+    vector<string> filtered_str;
 
-        if (array_int[i] > max_dist) {
+    for(int i = 0 ; i < (int)array_int.size() ; i++) {
 
-            array_int.erase(array_int.begin()+i);
-            // array_str->erase(array_str->begin()+i);
-        }
-        else {
+        if (array_int[i] <= max_dist) {
 
-            i++;
+            filtered_int.push_back(array_int[i]);
+            filtered_str.push_back((*array_str)[i]);
         }
     }
+    array_int = move(filtered_int);
+    *array_str = move(filtered_str);
 
-    /*
     for(int i = 0 ; i < (int)array_int.size()-1 ; i++) {
 
         for(int j = 0 ; j < (int)array_int.size()-i-1 ; j++) {
@@ -554,7 +553,6 @@ void Arbre::listSimilarWord(vector<string> * array_str, string word, int max_dis
             }
         }
     }
-    */
 }
 
 
@@ -613,4 +611,3 @@ void writeTextInFile(string file_name, vector<char> text) {
     }
     F.close();
 }
-
