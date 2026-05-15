@@ -8,7 +8,7 @@ int main() {
     // cout << "Entrez le nom du fichier : ";
     // cin >> file_name;
     correctText(file_name, "dic-moyen.txt");
-
+    // writeTextInTerminal(file_name, "dic-moyen.txt");
 
 
     cout << endl << "------| Fin du main |------" << endl;

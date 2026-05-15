@@ -139,7 +139,6 @@ void displayWords(Arbre * tree, vector<char> text, int * start, int k, int max_d
 
 void correctText(string file_name, string dic_name) {
 
-    
     Arbre tree(dic_name);
     char ch;
     vector<string> list_of_word = {""};
@@ -163,10 +162,14 @@ void correctText(string file_name, string dic_name) {
     noecho();
     curs_set(1);
 
+    start_color();
+    use_default_colors();
+    init_pair(1, COLOR_RED, -1);
+
     int k = 10;
     int max_dist = 3;
     int start = 0;
-    int cursor;
+    int word_nbr = 0;
     
     while(true) {
 
@@ -174,13 +177,21 @@ void correctText(string file_name, string dic_name) {
         clrtoeol();
         for(auto str : list_of_word) {
 
-            for(auto ch : str) {
+            if (tree.searchWord(str)) {
 
+                attroff(COLOR_PAIR(1));
+            }
+            else {
+                
+                attron(COLOR_PAIR(1));
+            }
+            
+            for(auto ch : str) {
+                
                 addch(ch);
             }
             addch(' ');
         }
-        move(1, cursor);
         refresh();
         ch = getch();
 

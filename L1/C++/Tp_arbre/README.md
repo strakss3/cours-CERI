@@ -118,4 +118,8 @@ Méthodes ajoutées :
 - Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array);
 - Arbre::listSimilarWord(vector<string> * vect, string word, int max_dist);
 
+Methodes commencées :
+- correctText(string file_name, string dic_name)
+
 Fix de quelques autres anciens problèmes
+Optimisation de la méthode listSimilarWord
