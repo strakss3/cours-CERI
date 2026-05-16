@@ -51,7 +51,7 @@ void writeTextInTerminal(string file_name, string dic_name) {
         else if (ch == 9) {
 
             start = start + k;
-            displayWords(&tree, text, &start, k, max_dist);
+            displayWords(&tree, getLastWord(text), &start, k, max_dist);
         }
         else if (ch == KEY_BACKSPACE || ch == 127  || ch == 8) {
 
@@ -68,7 +68,7 @@ void writeTextInTerminal(string file_name, string dic_name) {
                 if (text[text.size()-1] != ' ') {
     
                     start = 0;
-                    displayWords(&tree, text, &start, k, max_dist);
+                    displayWords(&tree, getLastWord(text), &start, k, max_dist);
                 }
                 else {
 
@@ -87,7 +87,7 @@ void writeTextInTerminal(string file_name, string dic_name) {
             else {
                 
                 start = 0;
-                displayWords(&tree, text, &start, k, max_dist);
+                displayWords(&tree, getLastWord(text), &start, k, max_dist);
             }
         }
     }
@@ -100,20 +100,27 @@ void writeTextInTerminal(string file_name, string dic_name) {
     writeTextInFile(file_name, text);
 }
 
-void displayWords(Arbre * tree, vector<char> text, int * start, int k, int max_dist) {
+string getLastWord(vector<char> text) {
 
-    int x, y;
-    getyx(stdscr, y, x);
     int index = text.size()-1;
-    move(y+2, 0);
-    clrtobot();
 
     while(index >= 0 && text[index] != ' ') {
 
         index--;
     }
 
-    string last_word(text.begin() + index + 1, text.end());
+    string str(text.begin() + index + 1, text.end());
+    return str;
+}
+
+void displayWords(Arbre * tree, string last_word, int * start, int k, int max_dist) {
+
+    int x, y;
+    getyx(stdscr, y, x);
+    int index = 0;
+    move(y+2, 0);
+    clrtobot();
+
     vector<string> list_of_word;
     tree->listWithPrefix(&list_of_word, last_word);
 
@@ -122,7 +129,6 @@ void displayWords(Arbre * tree, vector<char> text, int * start, int k, int max_d
         tree->listSimilarWord(&list_of_word, last_word, max_dist);
     }
 
-    index = 0;
     for(int i = *start ; i < (int)list_of_word.size() && i < k+*start; i++) {
     
         string str = to_string(i+1) + " - " + list_of_word[i];
@@ -171,7 +177,7 @@ void correctText(string file_name, string dic_name) {
     int start = 0;
     int cursor = 0;
     int index_word = 0;
-    bool move_cursor = true;     
+    bool move_cursor = true;
     
     while(true) {
         
@@ -201,29 +207,49 @@ void correctText(string file_name, string dic_name) {
             for(auto ch : str) {
                 
                 if (move_cursor) {
-
+                    
                     cursor++;
                 }
                 addch(ch);
             }
             if (move_cursor) {
-
+                
                 cursor++;
             }
             addch(' ');
         }
+        if (move_cursor) {
+            
+            break;
+        }
+        attroff(COLOR_PAIR(1));
         move(0, cursor);
         refresh();
         ch = getch();
-
-        if(ch == 27) {
+        string current_word = list_of_word[index_word];
+        
+        if (ch == 27) {
 
             break;
         }
-        else if(ch == ' ') {
+        else if (ch == 9) {
 
-            mvprintw(1, 0, "%s", list_of_word[index_word].c_str());
+            start = start + k;
+            displayWords(&tree, current_word, &start, k, max_dist);
+        }
+        else if (ch == ' ') {
+
+            start = 0;
+            displayWords(&tree, current_word, &start, k, max_dist);
         }
     }
     endwin();
+    
+    cout << "Le texte a fini d'être corrigé :" << endl;
+    for(auto str : list_of_word) {
+
+        cout << str << " ";
+    }
+    cout << endl;
+    writeTextInFile(file_name+".cor", list_of_word);
 }

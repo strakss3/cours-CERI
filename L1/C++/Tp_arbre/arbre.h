@@ -61,3 +61,4 @@ class Arbre {
 
 int levenshteinAlgorithm(string str1, string str2);
 void writeTextInFile(string file_name, vector<char> text);
+void writeTextInFile(string file_name, vector<string> text);

@@ -9,7 +9,7 @@ FLAGS2 = -std=c++11 \
 	   -o \
 
 compile :
-	g++ $(SRC) $(FLAGS2) tp && \
+	g++ $(FLAGS) $(SRC) $(FLAGS2) tp && \
 	clear && \
 	./tp
 

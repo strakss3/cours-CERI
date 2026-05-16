@@ -117,6 +117,8 @@ reflexion sur l'exercie 14
 Méthodes ajoutées :
 - Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array);
 - Arbre::listSimilarWord(vector<string> * vect, string word, int max_dist);
+- void writeTextInFile(string file_name, vector<string> text);
+- getLastWord(vector<char> text);
 
 Methodes commencées :
 - correctText(string file_name, string dic_name)

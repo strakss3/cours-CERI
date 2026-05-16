@@ -605,9 +605,19 @@ int levenshteinAlgorithm(string str1, string str2) {
 void writeTextInFile(string file_name, vector<char> text) {
 
     ofstream F(file_name, ios::out);
-    for(char letter : text) {
+    for(auto letter : text) {
 
         F << letter;
+    }
+    F.close();
+}
+
+void writeTextInFile(string file_name, vector<string> text) {
+
+    ofstream F(file_name, ios::out);
+    for(auto letter : text) {
+
+        F << letter << " ";
     }
     F.close();
 }
