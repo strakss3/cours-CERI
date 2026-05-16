@@ -169,9 +169,15 @@ void correctText(string file_name, string dic_name) {
     int k = 10;
     int max_dist = 3;
     int start = 0;
-    int word_nbr = 0;
+    int cursor = 0;
+    int index_word = 0;
+    bool move_cursor = true;     
     
     while(true) {
+        
+        cursor = 0;
+        move_cursor = true;
+        index_word = 0;
 
         move(0,0);
         clrtoeol();
@@ -179,25 +185,44 @@ void correctText(string file_name, string dic_name) {
 
             if (tree.searchWord(str)) {
 
+                if (move_cursor) {
+
+                    index_word++;
+                }
+
                 attroff(COLOR_PAIR(1));
             }
             else {
                 
+                move_cursor = false;
                 attron(COLOR_PAIR(1));
             }
             
             for(auto ch : str) {
                 
+                if (move_cursor) {
+
+                    cursor++;
+                }
                 addch(ch);
+            }
+            if (move_cursor) {
+
+                cursor++;
             }
             addch(' ');
         }
+        move(0, cursor);
         refresh();
         ch = getch();
 
         if(ch == 27) {
 
             break;
+        }
+        else if(ch == ' ') {
+
+            mvprintw(1, 0, "%s", list_of_word[index_word].c_str());
         }
     }
     endwin();
