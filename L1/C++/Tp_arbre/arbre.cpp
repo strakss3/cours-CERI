@@ -1,110 +1,161 @@
 #include "arbre.h"
 
 Noeud::Noeud() {
+    /*
+    Default constructor of Noeud class
+    */
 
-    info = '\0';
-    fils = nullptr;
-    frere = nullptr;
+    this->info = '\0';      //default value : null byte
+    this->fils = nullptr;
+    this->frere = nullptr;
 }
 
 Noeud::Noeud(char letter) {
+    /*
+    Parameterized constructor of Noeud class
+    */
 
-    info = letter;
-    fils = nullptr;
-    frere = nullptr;
+    this->info = letter;        //represent the node's letter
+    this->fils = nullptr;
+    this->frere = nullptr;
 }
 
 Noeud::~Noeud() {
+    /*
+    Destructor of Noeud class
+    Recursively delete all frere and fils of a node
+    */
 
-    if (fils != nullptr) {
+    //check for fils
+    if (this->fils != nullptr) {
         
-        delete fils;
-        fils = nullptr;
+        delete this->fils;
+        this->fils = nullptr;
     }
-    if (frere != nullptr) {
+    //check for frere
+    if (this->frere != nullptr) {
 
-        delete frere;
-        frere = nullptr;
+        delete this->frere;
+        this->frere = nullptr;
     }
 }
 
 Noeud& Noeud::operator=(Noeud & node) {
-    
+    /*
+    overloading = operator of Noeud class
+    Noeud = Noeud
+    */
+
+    //check if both operands are equals
     if (this == &node) {
 
         return *this;
     }
 
-    info = node.info;
+    this->info = node.info;
 
+    //copy all frere
     if (node.frere != nullptr) {
+        
+        if (this->frere == nullptr) {
 
-        if (frere == nullptr) {
-
-            frere = new Noeud();
+            this->frere = new Noeud();
         }
-
-        *frere = *node.frere;
+        
+        //recursively allocate frere
+        *this->frere = *node.frere;
     }
     else {
 
-        delete frere;
-        frere = nullptr;
+        //recursively delete existing frere
+        delete this->frere;
+        this->frere = nullptr;
     }
-
+    
+    //copy all fils
     if (node.fils != nullptr) {
 
-        if(fils == nullptr) {
+        if(this->fils == nullptr) {
 
-            fils = new Noeud();
+            this->fils = new Noeud();
         }
 
-        *fils = *node.fils;
+        //recusively allocate all fils
+        *this->fils = *node.fils;
     }
     else {
 
-        delete fils;
-        fils = nullptr;
+        //recursively delete existing fils
+        delete this->fils;
+        this->fils = nullptr;
     }
 
     return *this;
 }
 
 bool Noeud::operator==(char letter) {
-
-    return (info == letter);
+    /*
+    overloading == operator of Noeud class
+    compare node's info with a given letter
+    Noeud == char
+    */
+    
+    return (this->info == letter);
 }
 
 bool Noeud::operator!=(char letter) {
+    /*
+    overloading != operator of Noeud class
+    compare node's info with a given letter
+    Noeud != char
+    */
 
-    return (info != letter);
+    return (this->info != letter);
 }
 
 bool Noeud::operator<(char letter) {
+    /*
+    overloading < operator of Noeud class
+    compare node's info with a given letter
+    Noeud < char
+    */
 
-    return (info < letter);
+    return (this->info < letter);
 }
 
 bool Noeud::operator>(char letter) {
+    /*
+    overloading < operator of Noeud class
+    compare node's info with a given letter
+    Noeud < char
+    */
 
-    return (info > letter);
+    return (this->info > letter);
 }
 
 void Noeud::display() {
+    /*
+    Only display node's info as a character
+    */
 
-    if (info == '\0') {
+    //edge case with null byte
+    if (this->info == '\0') {
 
-        cerr << "/";
+        cout << "/";
     }
     else {
 
-        cerr << info;
+        cout << this->info;
     }
 }
 
 void Noeud::displayDirectFils() {
+    /*
+    Only display direct node's fils in one line
+    */
 
-    Noeud * current = fils;
+    //create temporary pointer to run through all direct fils
+    Noeud * current = this->fils;
     while (current != nullptr) {
 
         current->display();
@@ -114,51 +165,66 @@ void Noeud::displayDirectFils() {
 }
 
 void Noeud::displayAll(string word) {
+    /*
+    Pre-order traversal of node
+    */
 
+    //display the current node
     if (*this == '\0') {
 
         cout << word << endl;
     }
 
-    if (fils != nullptr) {
-
-        fils->displayAll(word + info);
+    //recursively traverse node's fils
+    if (this->fils != nullptr) {
+        
+        this->fils->displayAll(word + this->info);
     }
     
-    if (frere != nullptr) {
+    //recursively traverse node's frere
+    if (this->frere != nullptr) {
 
-        frere->displayAll(word);
+        this->frere->displayAll(word);
     }
 }
 
 void Noeud::addInFils(char letter) {
-	
-	if (fils == nullptr) {
+    /*
+    add alphabetically a letter in linked list
+    */
+
+	//check if linked list is empty
+	if (this->fils == nullptr) {
 		
-		fils = new Noeud(letter);
+		this->fils = new Noeud(letter);
 		return;
 	}
-	if (*fils > letter) {
+    //check if letter is less than first element
+	if (*this->fils > letter) {
 		
 		Noeud * node = new Noeud(letter);
-		node->frere = fils;
-		fils = node;
+		node->frere = this->fils;
+		this->fils = node;
 		return;
 	}
 	
-	Noeud * current = fils;
+    //create temporary pointer to run through all elements
+	Noeud * current = this->fils;
 	
 	while (current != nullptr) {
 		
+        //check if letter already exist
 		if (*current == letter) {
 
 			return;
 		}
+        //check if letter need to be place at the end
 		if (current->frere == nullptr) {
 			
 			current->frere = new Noeud(letter);
 			return;
 		}
+        //check general case
 		if (*current->frere > letter) {
 			
 			Noeud * node = new Noeud(letter);
