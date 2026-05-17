@@ -1,6 +1,10 @@
+# ------| GUIDE |------
+
+
 # ------| README 1 |------
-# Séance 1 (vendredi 27 mars) :
-Méthodes ajoutées :
+## Séance 1 (vendredi 27 mars) :
+```c++
+Added method :
 - Noeud::Noeud()
 - Noeud::Noeud(char letter)
 - Noeud::~Noeud()
@@ -14,40 +18,43 @@ Méthodes ajoutées :
 - Arbre::~Arbre()
 - Arbre::addWord(string word)
 
-Méthodes commencées :
+Started method :
 - Noeud::displayAll()
 - Arbre::display()
+```
 
-
-# Entre les 2 séances :
-Méthodes ajoutées :
+## Entre les 2 séances :
+```c++
+Added method :
 - Noeud::displayAll()
 - Arbre::display()
 - Tab::Tab(int nbr)
 - Tab::~Tab()
 - Tab::display()
 
-Méthodes commencées :
+Started method :
 - Tab::addWordWithBuffer(string * buffer)
+```
 
-
-# Séance 2 (jeudi 2 avril) :
-Méthodes ajoutées :
+## Séance 2 (jeudi 2 avril) :
+```c++
+Added method :
 - Tab::addWordWithBuffer(string * buffer)
 - Tab::greaterThan(int index1, int index2)
 - Tab::sort()
 - Tab::search()
 - Arbre::Arbre(string file_name)
 
-Méthodes commencées :
+Started method :
 - Noeud::operator=(Noeud & node)
+```
 
-
-# Entre les 2 séances :
-Méthodes ajoutées :
+## Entre les 2 séances :
+```c++
+Added method :
 - Noeud::operator=(Noeud & node)
 - Noeud::displayDirectFils()
-- Noeud::nbrDirectFils();
+- Noeud::nbrDirectFils()
 - Noeud::nbrOfWord()
 - Noeud::maxLenght()
 - Noeud::writeIn(ofstream &flow, string word)
@@ -57,71 +64,93 @@ Méthodes ajoutées :
 - Arbre::maxLenght()
 - Arbre::writeIn(string file_name)
 
-Méthodes commencées :
-- Noeud::removecées :
+Started method :
+- Arbre::removeWord(string word)
 - Noeud::removeWord(string word)
+```
 
-
-# Séance 3 (vendredi 10 avril) :
-Méthode continuées :
+## Séance 3 (vendredi 10 avril) :
+```c++
+Continued method :
 - Arbre::removeWord(string word)
 - Arbre::removeWord(string word)
-
+```
 
 
 # ------| README 2 |------
-# Séance 4 (vendredi 17 avril) :
-Méthodes ajoutées :
+## Séance 4 (vendredi 17 avril) :
+```c++
+Added method :
 - Noeud::removeWord(string word)
 - Arbre::removeWord(string word)
 
-Méthodes commencées :
+Started method :
 - Noeud::wordWithPrefix(string prefix)
 - Arbre::wordWithPrefix(string prefix)
+```
 
-
-# Entre les 2 séances :
-Méthodes ajoutées :
+## Entre les 2 séances :
+```c++
+Added method :
 - Noeud::wordWithPrefix(string prefix)
 - Noeud::insertFilsInVector(vector<string> * vect, string word)
-- Arbre::wordWithPrefix(vector<string> * vect, string prefix);
+- Arbre::wordWithPrefix(vector<string> * vect, string prefix)
 - Arbre::addWordWithText(vector<char> text)
 - levenshteinAlgorithm(string str1, string str2)
 - writeTextInFile(string file_name, vector<char> text)
 - writeTextInTerminal(string file_name, string dic_name)
 - displayWords(Arbre * tree, vector<char> text)
+```
 
-
-# Séance 5 (jeudi 30 avril) :
-- makefile modifié
-- reflexion sur l'exercice 14
-
+## Séance 5 (jeudi 30 avril) :
+```c++
+- makefile modified
+- reflexion about exercice 14
+```
 
 
 # ------| README 3 |------
-# Entre les 2 séances :
-- makefile modifié
-- fix de l'affichage de la liste des mots via préfix
-- reflexion sur l'exercice 14
+## Entre les 2 séances :
+```c++
+- makefile modified
+- fix display issues
+- reflexion about exercice 14
+```
 
+## Séance 6 (mardi 5 avril) :
+```c++
+Started method :
+- Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array)
+- Arbre::listSimilarWord(vector<string> * vect, string word, int max_dist)
 
-# Séance 6 (mardi 5 avril) :
-Méthodes commencées :
-- Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array);
-- Arbre::listSimilarWord(vector<string> * vect, string word, int max_dist);
+reflexion about exercie 14
+```
 
-reflexion sur l'exercie 14
+## Entre les 2 séances :
+```c++
+Added method :
+- Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array)
+- Arbre::listSimilarWord(vector<string> * vect, string word, int max_dist)
+- void writeTextInFile(string file_name, vector<string> text)
+- getLastWord(vector<char> text)
 
-
-# Entre les 2 séances :
-Méthodes ajoutées :
-- Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array);
-- Arbre::listSimilarWord(vector<string> * vect, string word, int max_dist);
-- void writeTextInFile(string file_name, vector<string> text);
-- getLastWord(vector<char> text);
-
-Methodes commencées :
+Started method :
 - correctText(string file_name, string dic_name)
 
-Fix de quelques autres anciens problèmes
-Optimisation de la méthode listSimilarWord
+Fix of old issues
+listSimilarWord method optimised
+```
+
+
+# ------| README 4 |------
+## Entre les 2 séances :
+```c++
+Added method :
+- blabla
+
+Started method :
+- blabla
+
+Comments added in all the code
+README modified
+```

@@ -166,10 +166,10 @@ void Noeud::displayDirectFils() {
 
 void Noeud::displayAll(string word) {
     /*
-    Pre-order traversal of node
+    Pre-order traversal of node and display in terminal
     */
 
-    //display the current node
+    //display word made with current branch
     if (*this == '\0') {
 
         cout << word << endl;
@@ -238,9 +238,12 @@ void Noeud::addInFils(char letter) {
 }
 
 int Noeud::nbrDirectFils() {
+    /*
+    Return number of direct node's fils
+    */
 
     int i = 0;
-    Noeud * current = fils;
+    Noeud * current = this->fils;
     while(current != nullptr) {
 
         current = current->frere;
@@ -251,12 +254,19 @@ int Noeud::nbrDirectFils() {
 }
 
 bool Noeud::removeWord(string word) {
-   
-    Noeud * current = fils;
+    /*
+    Remove one branch from binary tree with a recursive method.
+    This method recursively traverse sub-tree and remove nodes during the recusive ascent
+    It return if we can freely remove any upper node 
+    */
+
+    Noeud * current = this->fils;
     Noeud * precedent = this;
 
+    //check if we are at the end of recursive call or not
     if (word[0]) {
 
+        //move to the pointer to first letter of "word"
         while (current != nullptr) {
             
             if (*current == word[0]) {
@@ -268,18 +278,21 @@ bool Noeud::removeWord(string word) {
             current = current->frere;
         }
 
+        //stop recursive call if first letter "word" isn't in direct fils so no node to remove
         if (current == nullptr) {
 
             return false;
         }
 
         word.erase(word.begin());
+        //recursive call and check to end method
         if (!current->removeWord(word)) {
 
             return false;
         }
     }
 
+    //if node has 1 direct fils, we can freely delete it without loosing information
     if (this->nbrDirectFils() == 1) {
 
         delete this->fils;
@@ -288,13 +301,16 @@ bool Noeud::removeWord(string word) {
     }
     else {
 
+        //if at the end of chained list
         if (current->frere == nullptr) {
 
             delete precedent->frere;
             precedent->frere = nullptr;
         }
+        //rejoining 2 parts of chained list
         else {
 
+            //create temporary pointer to reallocate memory 
             Noeud * temp = current->frere;
             current->info = temp->info;
             current->fils = temp->fils;
@@ -305,37 +321,49 @@ bool Noeud::removeWord(string word) {
             temp = nullptr;
         }
 
+        //can't continue recursive deleting of node because it will remove information
         return false;
     }
 }
 
 int Noeud::nbrOfWord() {
+    /*
+    recursive method to count how many leave are from this sub-tree
+    */
 
     int count = 0;
-
-    if (info == '\0') {
+    //check if at the end of a word
+    if (this->info == '\0') {
 
         count = 1;
     }
-    if (fils != nullptr) {
-
-        count += fils->nbrOfWord();
+    //recursively traverse node'fils
+    if (this->fils != nullptr) {
+        
+        count += this->fils->nbrOfWord();
     }
-    if (frere != nullptr) {
+    //recursively traverse node'frere
+    if (this->frere != nullptr) {
 
-        count += frere->nbrOfWord();
+        count += this->frere->nbrOfWord();
     }
 
     return count;
 }
 
 int Noeud::maxLength() {
+    /*
+    recursively compute lenght of the longest word
+    */
 
+    //check if at the end of a word
     if (*this == '\0') {
 
-        if (frere != nullptr) {
+        //check if at the end of sub-tree
+        if (this->frere != nullptr) {
 
-            return frere->maxLength();
+            //recursive call
+            return this->frere->maxLength();
         }
         else {
 
@@ -344,69 +372,88 @@ int Noeud::maxLength() {
     }
     else {
 
-        if (frere != nullptr) {
+        if (this->frere != nullptr) {
 
-            return max(1 + fils->maxLength(), frere->maxLength());
+            //return max lenght of the 2 branches
+            return max(1 + this->fils->maxLength(), this->frere->maxLength());
         }
         else {
 
-            return 1 + fils->maxLength();
+            //return lenght of the only branch + 1
+            return 1 + this->fils->maxLength();
         }
     }
 }
 
 void Noeud::writeIn(ofstream &flow, string word) {
+    /*
+    Pre-order traversal of node and write in flow given in argument
+    */
 
+    //write word made with current branch
     if (*this == '\0') {
 
         flow << word << endl;
     }
 
-    if (fils != nullptr) {
-
-        fils->writeIn(flow, word + this->info);
+    //recursively traverse node's fils
+    if (this->fils != nullptr) {
+        
+        this->fils->writeIn(flow, word + this->info);
     }
+    
+    //recursively traverse node's frere
+    if (this->frere != nullptr) {
 
-    if (frere != nullptr) {
-
-        frere->writeIn(flow, word);
+        this->frere->writeIn(flow, word);
     }
 }
 
 void Noeud::listWithPrefix(vector<string> * vect, string prefix) {
+    /*
+    Write all leaves from a branch into a flow 
+    */
 
     Noeud * current = this;
+    //run through sub-tree to prefix argument
     for (int i = 0 ; prefix[i] ; i++) {
 
         current = current->fils;
-        
         while (*current != prefix[i]) {
             
             current = current->frere;
             if (current == nullptr) {
 
+                //stop if word isn't in sub-tree
                 return;
             }
         }
     }
     if (current != nullptr) {
         
+        //write all sub tree starting with prefix argument
         current->fils->insertFilsInVector(vect, prefix);
     }
 }
 
 void Noeud::insertFilsInVector(vector<string> * vect, string word) {
-
+    /*
+    Pre-order traversal of node and insert in vector
+    */
+    
+    //insert word made with current branch
     if (*this == '\0') {
 
-        vect->insert(vect->end(), word);
+        vect->push_back(word);
     }
 
+    //recursively traverse node's fils
     if (this->fils != nullptr) {
 
         fils->insertFilsInVector(vect, word + this->info);
     }
-    
+
+    //recursively traverse node's frere
     if (this->frere != nullptr) {
 
         frere->insertFilsInVector(vect, word);
@@ -414,18 +461,24 @@ void Noeud::insertFilsInVector(vector<string> * vect, string word) {
 }
 
 void Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array) {
+    /*
+    Recursively compute levenshtein algorithm
+    vect store levenshtein distance
+    array store row of current levenshtein table
+    */
 
+    //
     if (*this == '\0') {
         
-        vect->insert(vect->end(), array[array.size()-1]);
+        vect->push_back(array[array.size()-1]);
     }
-    if (fils != nullptr) {
+    if (this->fils != nullptr) {
 
         int delt;
         vector<int> new_row = {array[0]+1};
         for(int i = 1 ; i < (int)array.size() ; i++) {
 
-            if(word[i-1] == info) {
+            if(word[i-1] == this->info) {
 
                 delt = 0;
             }
@@ -587,7 +640,7 @@ void Arbre::listSimilarWord(vector<string> * array_str, string word, int max_dis
     vector<int> first_row = {0};
     for(int i = 0 ; word[i] ; i++) {
         
-        first_row.insert(first_row.end(), i+1);
+        first_row.push_back(i+1);
     }
     
     vector<int> array_int;
