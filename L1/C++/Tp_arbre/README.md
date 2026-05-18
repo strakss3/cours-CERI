@@ -1,8 +1,66 @@
 # ------| GUIDE |------
+## Graphic representation of a lexical tree :
+```mermaid
+block-beta
+    columns 8
+    Root  space space space space space space space 
+    space space space space space space space space 
+    C     space space F     space I     space space 
+    space space space space space space space space 
+    CA    space space FA    space I\0   space IN 
+    space space space space space space space space 
+    CAT   space CAM   FAT   space space space IN\0 
+    space space space space space space space space 
+    CAT\0 space CAM\0 FAT\0 space space space space 
+
+    Root["\0"] --> C["C"]
+    C --> CA["A"]
+    CA --> CAT["T"]
+    CAT --> CAT\0["\0"]
+
+    CAT --> CAM["M"]
+    CAM --> CAM\0["\0"]
+
+    C --> F["F"]
+    F --> FA["A"]
+    FA --> FAT["T"]
+    FAT --> FAT\0["\0"]
+
+    F --> I["I"]
+    I --> I\0["\0"]
+
+    I\0 --> IN["N"]
+
+    IN --> IN\0["\0"]
+```
+Current tree store :
+- cat
+- cam
+- fat
+- i
+- in
+
+
+## Text editor / corrector :
+**While in text editor :**
+Writes words and program will suggests k words similar to written word from a given dictionary.
+`→` : move cursor to right
+`←` : move cursor to left
+`Tab` : loop through suggested words
+`Esc` : leave editor and create file
+
+**While in text corrector :**
+Searches for words in a text that do not exist in the given dictionary. Return the corrected text in a .cor file.
+`→` : skip current word and add it to dictionary
+`↑` : move suggested words cursor up
+`↓` : move suggested words cursor down
+`Tab` : loop through suggested words
+`Esc` : leave editor and create file
+
 
 
 # ------| README 1 |------
-## Séance 1 (vendredi 27 mars) :
+## Course 1 (27-03) :
 ```c++
 Added method :
 - Noeud::Noeud()
@@ -23,7 +81,7 @@ Started method :
 - Arbre::display()
 ```
 
-## Entre les 2 séances :
+## Between the two courses :
 ```c++
 Added method :
 - Noeud::displayAll()
@@ -36,7 +94,7 @@ Started method :
 - Tab::addWordWithBuffer(string * buffer)
 ```
 
-## Séance 2 (jeudi 2 avril) :
+## Course 2 (02-04) :
 ```c++
 Added method :
 - Tab::addWordWithBuffer(string * buffer)
@@ -49,7 +107,7 @@ Started method :
 - Noeud::operator=(Noeud & node)
 ```
 
-## Entre les 2 séances :
+## Between the two courses :
 ```c++
 Added method :
 - Noeud::operator=(Noeud & node)
@@ -69,7 +127,7 @@ Started method :
 - Noeud::removeWord(string word)
 ```
 
-## Séance 3 (vendredi 10 avril) :
+## Course 3 (10-04) :
 ```c++
 Continued method :
 - Arbre::removeWord(string word)
@@ -78,7 +136,7 @@ Continued method :
 
 
 # ------| README 2 |------
-## Séance 4 (vendredi 17 avril) :
+## Course 4 (17-04) :
 ```c++
 Added method :
 - Noeud::removeWord(string word)
@@ -89,7 +147,7 @@ Started method :
 - Arbre::wordWithPrefix(string prefix)
 ```
 
-## Entre les 2 séances :
+## Between the two courses :
 ```c++
 Added method :
 - Noeud::wordWithPrefix(string prefix)
@@ -102,7 +160,7 @@ Added method :
 - displayWords(Arbre * tree, vector<char> text)
 ```
 
-## Séance 5 (jeudi 30 avril) :
+## Course 5 (30-04) :
 ```c++
 - makefile modified
 - reflexion about exercice 14
@@ -110,14 +168,14 @@ Added method :
 
 
 # ------| README 3 |------
-## Entre les 2 séances :
+## Between the two courses :
 ```c++
 - makefile modified
 - fix display issues
 - reflexion about exercice 14
 ```
 
-## Séance 6 (mardi 5 avril) :
+## Course 6 (05-04) :
 ```c++
 Started method :
 - Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array)
@@ -126,7 +184,7 @@ Started method :
 reflexion about exercie 14
 ```
 
-## Entre les 2 séances :
+## Between the two courses :
 ```c++
 Added method :
 - Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array)
@@ -143,7 +201,7 @@ listSimilarWord method optimised
 
 
 # ------| README 4 |------
-## Entre les 2 séances :
+## Between the two courses :
 ```c++
 Added method :
 - blabla

@@ -467,13 +467,16 @@ void Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array) 
     array store row of current levenshtein table
     */
 
-    //
+    //stop recursive call
     if (*this == '\0') {
         
+        //store result of levenshtein algorithm into vect
         vect->push_back(array[array.size()-1]);
     }
+    //recursively traverse node's fils
     if (this->fils != nullptr) {
 
+        //compute levenshtein algorithm
         int delt;
         vector<int> new_row = {array[0]+1};
         for(int i = 1 ; i < (int)array.size() ; i++) {
@@ -489,8 +492,10 @@ void Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array) 
             new_row.insert(new_row.end(), min(min(new_row[i-1]+1, array[i]+1), array[i-1]+delt));
         }
 
+        //recursive call through fils
         fils->listSimilarWord(vect, word, new_row);
     }
+    //recursively traverse node's frere
     if (frere != nullptr) {
 
         frere->listSimilarWord(vect, word, array);
@@ -501,14 +506,22 @@ void Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array) 
 
 
 Arbre::Arbre() {
+    /*
+    Default constructor of Arbre class
+    */
 
-    racine = new Noeud();
+    //initialise root with null byte
+    this->racine = new Noeud();
 }
 
 Arbre::Arbre(string file_name) {
+    /*
+    Parameterized constructor of Arbre class with a file name
+    */
 
     string word;
-    racine = new Noeud();
+    this->racine = new Noeud();
+    //open a flow in order to read word from a dictionary
     ifstream F(file_name, ios::in);
 
     while(getline(F, word)) {
@@ -520,49 +533,74 @@ Arbre::Arbre(string file_name) {
 }
 
 Arbre::Arbre(Arbre &tree) {
+    /*
+    Copy constructor of Arbre class
+    */
 
-    racine = new Noeud();
-    *racine = *tree.racine;
+    this->racine = new Noeud();
+    //use = operator from Noeud class on the root
+    *this->racine = *tree.racine;
 }
 
 Arbre::~Arbre() {
+    /*
+    Destructor of Arbre class
+    */
 
-    delete racine;
-    racine = nullptr;
+    //Recursively delete tree by deleting root
+    delete this->racine;
+    this->racine = nullptr;
 }
 
 void Arbre::addWord(string word) {
-    
-    Noeud * current = racine;
+    /*
+    Iteratively add a word in a tree letter by letter
+    */
+    Noeud * current = this->racine;
     
     for (int i = 0 ; word[i] ; i++) {
 
+        //add letter
         current->addInFils(word[i]);
+        //move down
         current = current->fils;
 
+        //move to correct letter
         while (*current != word[i]) {
 
             current = current->frere;
         }
     }
+    //add final null byte
     current->addInFils('\0');
 }
 
 void Arbre::display() {
-	
-    racine->fils->displayAll();
+	/*
+    Display all tree's words as a list    
+    */
+
+    this->racine->fils->displayAll();
 }
 
 void Arbre::displayFirstFils() {
+    /*
+    Only display first fils of a tree
+    Debug function
+    */
 
-    racine->displayDirectFils();
+    this->racine->displayDirectFils();
 }
 
 bool Arbre::searchWord(string word) {
+    /*
+    Iteratively search for a given word on a tree
+    */
 
-    Noeud * current = racine->fils;
+    Noeud * current = this->racine->fils;
     int i = 0;
 
+    //move to given word
     while (current != nullptr) {
         
         if (*current == word[i]) {
@@ -573,49 +611,73 @@ bool Arbre::searchWord(string word) {
         }
         current = current->frere;
     }
+    //check if word as been found
     if ((i > 0) && (word[i-1] == '\0')) {
 
         return true;
     }
-    
-    return false;
+    else {
+
+        return false;
+    }
 }
 
 void Arbre::removeWord(string word) {
+    /*
+    Remove a word from a tree
+    */
 
+    //check if a word is in a tree before delete it
     if(this->searchWord(word)) {
 
-        racine->removeWord(word);
+        this->racine->removeWord(word);
     }
 }
 
 int Arbre::nbrOfWord() {
+    /*
+    return the number of word of a dictionary
+    */
 
-    return racine->fils->nbrOfWord();
+    return this->racine->fils->nbrOfWord();
 }
 
 int Arbre::maxLength() {
+    /*
+    return lenght of the longest word of the dictionary
+    */
 
-    return racine->fils->maxLength();
+    return this->racine->fils->maxLength();
 }
 
 void Arbre::writeIn(string file_name) {
+    /*
+    create a file with all word writen 
+    */
 
+    //create a flow
     ofstream F(file_name, ios::out);
-    racine->fils->writeIn(F);
+    this->racine->fils->writeIn(F);
     F.close();
 }
 
 void Arbre::listWithPrefix(vector<string> * vect, string prefix) {
+    /*
+    Insert word strating with given prefix into a vector  
+    */
 
-    if (racine->fils != nullptr) {
+    if (this->racine->fils != nullptr) {
 
-        racine->listWithPrefix(vect, prefix);
+        this->racine->listWithPrefix(vect, prefix);
     }
 }
 
 void Arbre::addWordWithText(vector<char> text) {
+    /*
+    Run through text and add word into tree
+    */
 
+    //separate char vector with space between space 
     int index1 = 0;
     for(int index2 = 0 ; index2 < (int)text.size() ; index2++) {
         
@@ -626,30 +688,39 @@ void Arbre::addWordWithText(vector<char> text) {
             index1 = index2+1;
         }
     }
+    //add last word
     string word(text.begin() + index1, text.end());
     this->addWord(word);
 }
 
 void Arbre::listSimilarWord(vector<string> * array_str, string word, int max_dist) {
+    /*
+    Insert similar word into vector sorted by levenshtein distance and alphabetical order 
+    */
 
-    if (racine == nullptr) {
+    //check if dictionary is empty
+    if (this->racine == nullptr) {
 
         return;
     }
 
+    //create an array which will be used for the levenshtein algorithm
     vector<int> first_row = {0};
     for(int i = 0 ; word[i] ; i++) {
         
         first_row.push_back(i+1);
     }
     
+    //create an array which will be used to store levenshtein distances
     vector<int> array_int;
     racine->fils->listSimilarWord(&array_int, word, first_row);
     racine->fils->insertFilsInVector(array_str);
 
+    //create new array
     vector<int> filtered_int;
     vector<string> filtered_str;
 
+    //keep only words with levenshtein < max_dist
     for(int i = 0 ; i < (int)array_int.size() ; i++) {
 
         if (array_int[i] <= max_dist) {
@@ -661,6 +732,7 @@ void Arbre::listSimilarWord(vector<string> * array_str, string word, int max_dis
     array_int = move(filtered_int);
     *array_str = move(filtered_str);
 
+    //bubble sort by levenshtein distances
     for(int i = 0 ; i < (int)array_int.size()-1 ; i++) {
 
         for(int j = 0 ; j < (int)array_int.size()-i-1 ; j++) {
@@ -677,6 +749,9 @@ void Arbre::listSimilarWord(vector<string> * array_str, string word, int max_dis
 
 
 int levenshteinAlgorithm(string str1, string str2) {
+    /*
+    Compute levenshtein distance between 2 words
+    */
 
     int size_str1 = 0;
     for(int i = 0 ; str1[i] ; i++) {
@@ -713,7 +788,7 @@ int levenshteinAlgorithm(string str1, string str2) {
             else {
 
                 delt = 1;
-            }
+            }             //substitution        deletion           insertion
             tab[i][j] = min(tab[i-1][j-1]+delt, min(tab[i-1][j]+1, tab[i][j-1]+1));
         }
     }
@@ -722,17 +797,25 @@ int levenshteinAlgorithm(string str1, string str2) {
 }
 
 void writeTextInFile(string file_name, vector<char> text) {
-
+    /*
+    Insert list of char as text into file 
+    */
+    
+    //open flow to write into file
     ofstream F(file_name, ios::out);
     for(auto letter : text) {
-
+        
         F << letter;
     }
     F.close();
 }
 
 void writeTextInFile(string file_name, vector<string> text) {
-
+    /*
+    Insert list of char as text into file 
+    */
+    
+    //open flow to write into file
     ofstream F(file_name, ios::out);
     for(auto letter : text) {
 
