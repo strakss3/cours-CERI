@@ -75,8 +75,3 @@ void Tab::sort() {
         }
     }
 }
-
-bool Tab::search() {
-
-    return false;
-}

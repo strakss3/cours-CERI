@@ -42,20 +42,23 @@ Current tree store :
 
 
 ## Text editor / corrector :
+> [!TIP]
+> You need to change manually into the code the value for k and max_dist
+
 **While in text editor :**
 Writes words and program will suggests k words similar to written word from a given dictionary.
-`→` : move cursor to right
-`←` : move cursor to left
-`Tab` : loop through suggested words
-`Esc` : leave editor and create file
+- `→` : move cursor to right
+- `←` : move cursor to left
+- `Tab` : loop through suggested words
+- `Esc` : leave editor and create file
 
 **While in text corrector :**
 Searches for words in a text that do not exist in the given dictionary. Return the corrected text in a .cor file.
-`→` : skip current word and add it to dictionary
-`↑` : move suggested words cursor up
-`↓` : move suggested words cursor down
-`Tab` : loop through suggested words
-`Esc` : leave editor and create file
+- `→` : skip current word and add it to dictionary
+- `↑` : move suggested words cursor up
+- `↓` : move suggested words cursor down
+- `Tab` : loop through suggested words
+- `Esc` : leave editor and create file
 
 
 

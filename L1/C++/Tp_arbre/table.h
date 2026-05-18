@@ -14,6 +14,5 @@ class Tab {
         void addWordWithBuffer(string * buffer);
         void display();
         void sort();
-        bool search();
         bool greaterThan(int index1, int index2);
 };

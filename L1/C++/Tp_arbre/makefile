@@ -14,5 +14,5 @@ compile :
 	./tp
 
 clean :
-	rm -f text.txt tp output.txt && \
+	rm -f text.txt tp output.txt *.cor && \
 	clear
