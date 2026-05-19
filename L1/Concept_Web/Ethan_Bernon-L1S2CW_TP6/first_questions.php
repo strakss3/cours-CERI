@@ -94,19 +94,53 @@
 		$tab_sname[] = "7";
 		$tab_sname[] = "4";
 		print_r($tab_sname);
-		echo "<br><br>\n";
+		echo "<br>\n";
+		echo "En plus beau, ça donne : <br>\n";
+		echo "<p>";
+		foreach ($tab_fname as $fname) {
+			
+			echo "$fname-";
+		}
+		echo "_";
+		foreach ($tab_lname as $lname) {
+			
+			echo "$lname-";
+		}
+		echo "_";
+		foreach ($tab_sname as $sname) {
+			
+			echo "$sname-";
+		}
+		echo "</p>";
 	?>
+
+
 	
 	<?php
 		$url = array(
 			"video" => "https://www.youtube.com/",
 			"graphic calculator" => "https://www.desmos.com/calculator?lang=fr",
 			"DVD logo" => "https://bouncingdvdlogo.com/",
-			"" => "",
-			"" => "",
-			"" => ""
+			"music" => "https://spotify.com",
+			"github" => "https://github.com/strakss3/cours-CERI"
 		);
-		print_r($url)
+		print_r($url);
+		echo "<br>\n<br>\n";
+
+		echo "<h3>Liens vers les sites :</h3>";
+		foreach($url as $name => $link) {
+
+			echo "<a href=$link'>$name</a>";
+			echo "<br>\n";
+		}
+
+		while(list($name, $link) = each($url)) {
+
+			echo "<a href=$link'>$name</a>";
+			echo "<br>\n";
+		}
 	?>
+
+
 </BODY>
 </HTML>

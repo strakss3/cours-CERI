@@ -16,7 +16,7 @@
 		<div class="w3-container w3-theme w3-margin-bottom">
 			<h2>Formulaire d'inscription</h2>	
 		</div>
-		<form method="get" class="w3-container">
+		<form method="post" class="w3-container">
 			<label for="prenom" class="w3-text-theme">Prenom<span class="w3-text-grey">*</span> :</label><br>
 			<input class="w3-input" type="text" name="prenom" id="prenom" required>
 			<br>
@@ -30,13 +30,13 @@
 			<details>
 				<summary class="w3-text-theme">Genre :</summary>
 				
-				<input type="radio" name="genre" id="homme">
+				<input type="radio" name="genre" value="homme" id="homme">
 				<label for="homme" >Homme</label>
 				<br>
-				<input type="radio" name="genre" id="femme">
+				<input type="radio" name="genre" value="femme" id="femme">
 				<label for="femme">Femme</label>
 				<br>
-				<input type="radio" name="genre" id="autre">
+				<input type="radio" name="genre" value="autre" id="autre">
 				<label for="autre">Autre</label>
 			</details><br>
 			
@@ -44,56 +44,56 @@
 				<summary class="w3-text-theme">Pratiques sportives :</summary>
 				
 				<div class="w3-half">
-					<input type="checkbox" name="sport1" id="sport1">
+					<input type="checkbox" name="sports[]" id="sport1" value="Bossaball">
 					<label for="sport1">Bossaball</label>
 					<br>
-					<input type="checkbox" name="sport2" id="sport2">
+					<input type="checkbox" name="sports[]" id="sport2" value="Chessboxing">
 					<label for="sport2">Chessboxing</label>
 					<br>
-					<input type="checkbox" name="sport3" id="sport3">
+					<input type="checkbox" name="sports[]" id="sport3" value="Kabaddi">
 					<label for="sport3">Kabaddi</label>
 				</div>
 				<div>
-					<input type="checkbox" name="sport4" id="sport4">
+					<input type="checkbox" name="sports[]" id="sport4" value="Quidditch Moldu">
 					<label for="sport4">Quidditch Moldu</label>
 					<br>
-					<input type="checkbox" name="sport5" id="sport5">
+					<input type="checkbox" name="sports[]" id="sport5" value="Bubble Football">
 					<label for="sport5">Bubble Football</label>
 					<br>
-					<input type="checkbox" name="sport6" id="sport6">
+					<input type="checkbox" name="sports[]" id="sport6" value="Hurling">
 					<label for="sport6">Hurling</label>
 					<br>
-					<input type="checkbox" name="sport7" id="sport7" disabled>
+					<input type="checkbox" name="sports[]" id="sport7"  value="Autre" disabled>
 					<label for="sport7">Autre</label>
 				</div>
 			</details>
 			
 			<label class="w3-text-theme">Activité principale :</label><br>
-			<select class="w3-select">
-				<option value="activite1">Etudiant</option>
-				<option value="activite2" selected>Travailleur</option>
-				<option value="activite3">Retraité</option>
-				<option value="activite4">Sans Emploi</option>
+			<select class="w3-select" name="activite">
+				<option value="Etudiant">Etudiant</option>
+				<option value="Travailleur" selected>Travailleur</option>
+				<option value="Retraite">Retraité</option>
+				<option value="Sans Emploi">Sans Emploi</option>
 			</select><br><br>
 			
 			<label class="w3-text-theme">Moyens de transports :</label><br>
-			<select class="w3-select" multiple size="6">		
-				<option value="transport1">Concorde</option>
-				<option value="transport2" selected>Brouette</option>
-				<option value="transport3">DeLorean</option>
-				<option value="transport4">Cloche pied</option>
-				<option value="transport5">TARDIS</option>
-				<option value="transport6">Nimbus 2000</option>
+			<select class="w3-select" name="transport" multiple size="6">		
+				<option value="Concorde">Concorde</option>
+				<option value="Brouette" selected>Brouette</option>
+				<option value="DeLorean">DeLorean</option>
+				<option value="Cloche pied">Cloche pied</option>
+				<option value="TARDIS">TARDIS</option>
+				<option value="Nimbus 2000">Nimbus 2000</option>
 			</select><br><br><br>
 			
 			<label for="email" class="w3-text-theme">Email :</label><br>
 			<input class="w3-input" type="email" name="email" placeholder="prenom.nom@univ-avignon.fr" id="email">
 			<br>
 			<label for="mdp1" class="w3-text-theme">Mot de passe :</label><br>
-			<input class="w3-input" type="password" name="mpd1" id="mdp1">
+			<input class="w3-input" type="password" name="mdp1" id="mdp1">
 			<br>
 			<label for="mdp2" class="w3-text-theme">Confirmation du mot de passe :</label><br>
-			<input class="w3-input" type="password" name="mpd2" id="mdp2">
+			<input class="w3-input" type="password" name="mdp2" id="mdp2">
 			<br><br>
 			
 			<label for="info" class="w3-text-theme">Autres informations :</label><br>
