@@ -1,0 +1,5 @@
+Inception|Cristopher Nolan|Science-fiction, Action|2010-07-16|148
+Le Parrain|Francis Ford Coppola|Drame, Crime|1972-03-24|175
+Parasite|Bong Joon-ho|Thriller, Comédie noire|2019-05-30|132
+Interstellar|Cristopher Nolan|Science-fiction, Aventure|2014-11-05|169
+Retour vers le futur|Robert Zemeckis|Science-fiction, Comédie|1985-07-03|116
