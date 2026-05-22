@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+	<meta name="viewport" content="width=device-width, initial-scale = 1">
+	<title>Tp Java Script</title>
+</HEAD>
+<BODY>
+	<p>
+		Ce texte n'est là que pour apprendre comment marche le Java Script.
+		<span onClick="this.style.color='grey'">Ici le texte devrai être en gris si on lui click dessus.</span>
+		<span onMouseover="this.style.color='brown'" onMouseout="this.style.color='black'">Celui là devrait être marron en passant la souris dessus.</span>
+		<span ondblClick="this.style.color='blue'">Et lui, bleu si on double click.</span>
+		<span onClick="this.style.color='grey'" onMouseover="this.style.color='brown'" onMouseout="this.style.color='black'" ondblClick="this.style.color='blue'">Finalement, tous les changements sont présents dans cette phrase.</span>
+	</p>
+	
+	<p style="width:500px"
+	ondblclick="this.style.width='1px' ; this.style.paddingLeft='50%'"
+	onMouseover="this.style.width='500px' ; this.style.paddingLeft='0%'">
+	Masayoshi Takanaka (高中 正義, Takanaka Masayoshi) est un guitariste,
+	compositeur et producteur musical japonais né le 27 mars 1953 à
+	Tokyo au Japon. Sa musique a été très influente dans les années
+	1970 et 1980, notamment dans les milieux liés à la city pop. 
+	</p>
+	
+	<p 	ondblClick="this.style.textDecoration='underline';
+					this.style.fontFamily='Tahoma';
+					this.style.lineHeight='200%';
+					this.style.fontSize='250%';
+					this.style.textTransform='capitalize'">
+		Nous allons complètement modifier ce paragraphe.
+	</p>
+	
+	<img src="img1.jpg"
+		 onMouseover="this.src='img2.png'" 
+		 onMouseout="this.src='img1.jpg'">
+
+	<p onMouseover="this.outerHTML='<h3>Sincèrement, ce TP est lun des pire que jai fais jusque là.</h3>'">
+		Sincèrement, ce TP est le meilleur que j'ai fais jusque là.
+	</p>
+</BODY>
+</HTML>
