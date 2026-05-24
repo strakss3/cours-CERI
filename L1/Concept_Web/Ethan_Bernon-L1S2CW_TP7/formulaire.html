@@ -3,15 +3,58 @@
 <HEAD>
 	<title>TP 5 Ethan Bernon</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-	
-	<script>
-		
-	</script>
 </HEAD>
+
+<script>
+	function ajouterActivite() {
+		let input = document.getElementById("suplice");
+		let valeur = input.value;
+		
+		if (valeur === "") {
+			
+			return;
+		}
+
+		let select = document.getElementById("activite");
+		let new_option = document.createElement("option");
+		new_option.value = valeur;
+		new_option.text = valeur;
+
+		select.appendChild(new_option);
+		select.value = valeur;
+		input.value = "";
+	}
+
+	function verifAge() {
+
+		let age = document.getElementById("age").value;
+		if (age < 0 || age > 120 || age == "") {
+
+			alert("L'age n'est pas entre 0 et 120 ans.");
+			return false;
+		}
+
+		alert("L'age est correct");
+		return true;
+	}
+
+	function verifMail() {
+
+		let regex = /^[a-zA-Z]+\.[a-zA-Z]+@alumni\.univ-avignon\.fr$/;
+		let email = document.getElementById("email").value;
+		if (!regex.test(email)) {
+
+			alert("L'email doit être sous la forme x.x@alumni.univ-avignon.fr");
+			return false;
+		}
+		alert("L'email est correct");
+		return true;
+	}
+</script>
+
 <BODY>
 	<header class="w3-header w3-theme w3-center w3-padding">
 		<h1>Bienvenue dans le site</h1>
@@ -27,8 +70,9 @@
 			<label for="nom" class="w3-text-theme">Nom<span class="w3-text-grey">*</span> :</label><br>
 			<input class="w3-input" type="text" name="nom" placeholder="votre nom" onFocus="this.placeholder=''" onClick="this.value=''" id="nom" required>
 			<br>
-			<label for="age" class="w3-text-theme">Age :</label><br>
-			<input class="w3-input" type="number" name="age" id="age" min="1" max="100">
+			<label for="age" class="w3-text-theme">Age :</label>
+			<button type="button" onClick="verifAge()">verif</button><br>
+			<input class="w3-input" type="number" name="age" id="age" min="1" max="120">
 			<br><br>
 			
 			<details>
@@ -73,24 +117,14 @@
 			</details>
 			
 			<label class="w3-text-theme">Activité principale :</label><br>
-			<select class="w3-select" name="activite">
+			<select class="w3-select" name="activite" id="activite">
 				<option value="Etudiant">Etudiant</option>
 				<option value="Travailleur" selected>Travailleur</option>
 				<option value="Retraite">Retraité</option>
 				<option value="Sans Emploi">Sans Emploi</option>
 			</select><br><br>
 			
-			<button class="w3-theme" type="button" 
-			onClick="document.createElement('option'); 
-					text = getElementById('suplice').value;
-					getElementById('suplice').innerHTML = 'text';
-					console.log(getElementById('suplice'));
-					
-					
-					
-					"
-										
-			>Nouvelle activité</button>
+			<button class="w3-theme" type="button" onClick="ajouterActivite()">Nouvelle activité</button>
 			<input type="text" id="suplice">
 			<br><br>
 			
@@ -104,7 +138,8 @@
 				<option value="Nimbus 2000">Nimbus 2000</option>
 			</select><br><br><br>
 			
-			<label for="email" class="w3-text-theme">Email :</label><br>
+			<label for="email" class="w3-text-theme">Email :</label>
+			<button type="button" onClick="verifMail()">verif</button><br>
 			<input class="w3-input" type="email" name="email" placeholder="prenom.nom@univ-avignon.fr" id="email">
 			<br>
 			<label for="mdp1" class="w3-text-theme">Mot de passe :</label><br>
