@@ -37,7 +37,6 @@
 			return false;
 		}
 
-		alert("L'age est correct");
 		return true;
 	}
 
@@ -50,8 +49,29 @@
 			alert("L'email doit être sous la forme x.x@alumni.univ-avignon.fr");
 			return false;
 		}
-		alert("L'email est correct");
 		return true;
+	}
+
+	function verifFrom() {
+
+		if (!verifAge() || !verifMail()) {
+
+			return false;
+		}
+		return true;
+	}
+
+	document.onkeypress = function(event) {
+
+		let key = event.code;
+		if (key == "Enter") {
+
+			if (verifFrom()) {
+
+				document.getElementById("form").submit();
+			}
+		}
+	
 	}
 </script>
 
@@ -63,15 +83,14 @@
 		<div class="w3-container w3-theme w3-margin-bottom">
 			<h2>Formulaire d'inscription</h2>	
 		</div>
-		<form method="post" class="w3-container">
-			<label for="prenom" class="w3-text-theme">Prenom<span class="w3-text-grey">*</span> :</label><br>
+		<form method="get" id="form" class="w3-container" onsubmit='return verifFrom()'>
+			<label for="prenom" class="w3-text-theme">Prenom :</label><br>
 			<input class="w3-input" type="text" name="prenom" placeholder="votre prenom" onFocus="this.placeholder=''" id="prenom" required>
 			<br>
-			<label for="nom" class="w3-text-theme">Nom<span class="w3-text-grey">*</span> :</label><br>
+			<label for="nom" class="w3-text-theme">Nom :</label><br>
 			<input class="w3-input" type="text" name="nom" placeholder="votre nom" onFocus="this.placeholder=''" onClick="this.value=''" id="nom" required>
 			<br>
 			<label for="age" class="w3-text-theme">Age :</label>
-			<button type="button" onClick="verifAge()">verif</button><br>
 			<input class="w3-input" type="number" name="age" id="age" min="1" max="120">
 			<br><br>
 			
@@ -139,8 +158,7 @@
 			</select><br><br><br>
 			
 			<label for="email" class="w3-text-theme">Email :</label>
-			<button type="button" onClick="verifMail()">verif</button><br>
-			<input class="w3-input" type="email" name="email" placeholder="prenom.nom@univ-avignon.fr" id="email">
+			<input class="w3-input" type="email" name="email" placeholder="prenom.nom@alumni.univ-avignon.fr" id="email">
 			<br>
 			<label for="mdp1" class="w3-text-theme">Mot de passe :</label><br>
 			<input class="w3-input" type="password" name="mdp1" id="mdp1">
