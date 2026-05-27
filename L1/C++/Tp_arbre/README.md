@@ -1,5 +1,30 @@
 # ------| GUIDE |------
-## Graphic representation of a lexical tree :
+## Files :
+I added the files from the first subject related to dynamic tables to the `Table` folder. The methods related to lexical trees are in `arbre.cpp` and `arbre.h`. The methods related to the terminal are in `interaction.cpp` and `interaction.h`. A 19k ish word dictionary is provided in `dic-moyen.txt`. Type `make` to compile and run code and `make clean` to clean workspace.
+```
+Projet/
+├── Table/
+│   ├── main.cpp
+│   ├── table.cpp
+│   └── table.h
+│
+├── arbre.cpp
+├── arbre.h
+│
+├── dic-moyen.txt
+│
+├── interaction.cpp
+├── interaction.h
+│
+├── main.cpp
+│
+├── makefile
+└── README.md
+```
+
+
+
+## Graphical representation of a lexical tree :
 ```mermaid
 block-beta
     columns 8
@@ -33,7 +58,7 @@ block-beta
 
     IN --> IN\0["\0"]
 ```
-Current tree store :
+Words that this tree store :
 - cat
 - cam
 - fat
@@ -46,26 +71,25 @@ Current tree store :
 > You need to change manually into the code the value for k and max_dist
 
 **While in text editor :**
-Writes words and program will suggests k words similar to written word from a given dictionary.
+The program will suggest k words similar to written word from a given dictionary.
 - `→` : move cursor to right
 - `←` : move cursor to left
-- `Tab` : loop through suggested words
+- `Tab` : cycle through suggested words
 - `Esc` : leave editor and create file
 
 **While in text corrector :**
-Searches for words in a text that do not exist in the given dictionary. Return the corrected text in a .cor file.
-- `→` : skip current word and add it to dictionary
-- `↑` : move suggested words cursor up
-- `↓` : move suggested words cursor down
-- `Tab` : loop through suggested words
-- `Esc` : leave editor and create file
+Searches for words in a text that do not exist in the given dictionary. Returns the corrected text in a .cor file.
+- `→` : jump to the next incorrect word and leave the corrector upon reaching the end
+- `←` : move cursor to left
+- `Tab` : cycle through suggested words
+- `Esc` : leave the editor and create a file
 
 
 
 # ------| README 1 |------
 ## Course 1 (27-03) :
 ```c++
-Added method :
+//Added methods :
 - Noeud::Noeud()
 - Noeud::Noeud(char letter)
 - Noeud::~Noeud()
@@ -79,60 +103,60 @@ Added method :
 - Arbre::~Arbre()
 - Arbre::addWord(string word)
 
-Started method :
+//Started methods :
 - Noeud::displayAll()
 - Arbre::display()
 ```
 
-## Between the two courses :
+## Between course 1 and 2 :
 ```c++
-Added method :
+//Added methods :
 - Noeud::displayAll()
 - Arbre::display()
 - Tab::Tab(int nbr)
 - Tab::~Tab()
 - Tab::display()
 
-Started method :
+//Started methods :
 - Tab::addWordWithBuffer(string * buffer)
 ```
 
 ## Course 2 (02-04) :
 ```c++
-Added method :
+//Added methods :
 - Tab::addWordWithBuffer(string * buffer)
 - Tab::greaterThan(int index1, int index2)
 - Tab::sort()
 - Tab::search()
 - Arbre::Arbre(string file_name)
 
-Started method :
+//Started methods :
 - Noeud::operator=(Noeud & node)
 ```
 
-## Between the two courses :
+## Between course 2 and 3 :
 ```c++
-Added method :
+//Added methods :
 - Noeud::operator=(Noeud & node)
 - Noeud::displayDirectFils()
 - Noeud::nbrDirectFils()
 - Noeud::nbrOfWord()
-- Noeud::maxLenght()
+- Noeud::maxLength()
 - Noeud::writeIn(ofstream &flow, string word)
 - Arbre::Arbre(Arbre &tree)
 - Arbre::searchWord(string word)
 - Arbre::nbrOfWord()
-- Arbre::maxLenght()
+- Arbre::maxLength()
 - Arbre::writeIn(string file_name)
 
-Started method :
+//Started methods :
 - Arbre::removeWord(string word)
 - Noeud::removeWord(string word)
 ```
 
 ## Course 3 (10-04) :
 ```c++
-Continued method :
+//Continued methods :
 - Arbre::removeWord(string word)
 - Arbre::removeWord(string word)
 ```
@@ -141,18 +165,18 @@ Continued method :
 # ------| README 2 |------
 ## Course 4 (17-04) :
 ```c++
-Added method :
+//Added methods :
 - Noeud::removeWord(string word)
 - Arbre::removeWord(string word)
 
-Started method :
+//Started methods :
 - Noeud::wordWithPrefix(string prefix)
 - Arbre::wordWithPrefix(string prefix)
 ```
 
-## Between the two courses :
+## Between course 4 and 5 :
 ```c++
-Added method :
+//Added methods :
 - Noeud::wordWithPrefix(string prefix)
 - Noeud::insertFilsInVector(vector<string> * vect, string word)
 - Arbre::wordWithPrefix(vector<string> * vect, string prefix)
@@ -165,53 +189,51 @@ Added method :
 
 ## Course 5 (30-04) :
 ```c++
-- makefile modified
-- reflexion about exercice 14
+//makefile modified
+//reflexion about exercise 14
 ```
 
 
 # ------| README 3 |------
-## Between the two courses :
+## Between course 5 and 6 :
 ```c++
-- makefile modified
-- fix display issues
-- reflexion about exercice 14
+//makefile modified
+//fix display issues
+//reflexion about exercise 14
 ```
 
 ## Course 6 (05-04) :
 ```c++
-Started method :
+//Started methods :
 - Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array)
 - Arbre::listSimilarWord(vector<string> * vect, string word, int max_dist)
 
-reflexion about exercie 14
+//reflexion about exercie 14
 ```
 
-## Between the two courses :
+## Before the end :
 ```c++
-Added method :
+//Added methods :
 - Noeud::listSimilarWord(vector<int> * vect, string word, vector<int> array)
 - Arbre::listSimilarWord(vector<string> * vect, string word, int max_dist)
 - void writeTextInFile(string file_name, vector<string> text)
+- editText(string file_name, string dic_name)
 - getLastWord(vector<char> text)
 
-Started method :
+//Started methods :
 - correctText(string file_name, string dic_name)
 
-Fix of old issues
-listSimilarWord method optimised
+//Fix of old issues
+//listSimilarWord methods optimised
 ```
 
 
 # ------| README 4 |------
-## Between the two courses :
+## Before the end :
 ```c++
-Added method :
-- blabla
+//Added methods :
+- "to do"
 
-Started method :
-- blabla
-
-Comments added in all the code
-README modified
+//comments added in all the code
+//README improved
 ```
