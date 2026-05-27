@@ -19,7 +19,7 @@ int main() {
     
     if (answer == 'w') {
         
-        writeTextInTerminal(file_name, "dic-moyen.txt");
+        editText(file_name, "dic-moyen.txt");
     }
     else if (answer == 'c') {
 

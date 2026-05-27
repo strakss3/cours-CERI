@@ -1,6 +1,6 @@
 #include "interaction.h"
 
-void writeTextInTerminal(string file_name, string dic_name) {
+void editText(string file_name, string dic_name) {
 
     initscr();
     raw();
@@ -146,18 +146,19 @@ void displayWords(Arbre * tree, string last_word, int * start, int k, int max_di
 void correctText(string file_name, string dic_name) {
 
     Arbre tree(dic_name);
-    char ch;
+    char ch_char;
+    int ch_int;
     vector<string> list_of_word = {""};
     ifstream F(file_name, ios::in);
-    while(F.read(&ch, 1)) {
+    while(F.read(&ch_char, 1)) {
 
-        if (ch == ' ') {
+        if (ch_char == ' ') {
 
             list_of_word.push_back("");
         }
         else {
             
-            list_of_word[list_of_word.size()-1] += ch;
+            list_of_word[list_of_word.size()-1] += ch_char;
         }
     }
     F.close();
@@ -172,16 +173,19 @@ void correctText(string file_name, string dic_name) {
     use_default_colors();
     init_pair(1, COLOR_RED, -1);
 
-    int k = 10;
+    int k = 9;
     int max_dist = 3;
     int start = 0;
     int cursor = 0;
     int index_word = 0;
+    int index_wrong_cursor = 0;
+    int count_wrong_words = 0;
     bool move_cursor = true;
     
     while(true) {
         
         cursor = 0;
+        count_wrong_words = 0;
         move_cursor = true;
         index_word = 0;
 
@@ -200,17 +204,26 @@ void correctText(string file_name, string dic_name) {
             }
             else {
                 
-                move_cursor = false;
                 attron(COLOR_PAIR(1));
+                if (index_wrong_cursor != count_wrong_words) {
+
+                    index_word++;
+                    count_wrong_words++;
+                    
+                }
+                else {
+
+                    move_cursor = false;
+                }
             }
             
-            for(auto ch : str) {
+            for(auto c : str) {
                 
+                addch(c);
                 if (move_cursor) {
                     
                     cursor++;
                 }
-                addch(ch);
             }
             if (move_cursor) {
                 
@@ -218,26 +231,38 @@ void correctText(string file_name, string dic_name) {
             }
             addch(' ');
         }
-        if (move_cursor) {
-            
-            break;
-        }
-        attroff(COLOR_PAIR(1));
-        move(0, cursor);
-        refresh();
-        ch = getch();
-        string current_word = list_of_word[index_word];
-        
-        if (ch == 27) {
+        if(move_cursor) {
 
             break;
         }
-        else if (ch == 9) {
+
+        attroff(COLOR_PAIR(1));
+        move(0, cursor);
+        refresh();
+        ch_int = getch();
+        string current_word = list_of_word[index_word];
+        
+        if (ch_int == 27) {
+
+            break;
+        }
+        else if (ch_int == KEY_LEFT) {
+
+            if (index_wrong_cursor > 0) {
+
+                index_wrong_cursor--;
+            }
+        }
+        else if (ch_int == KEY_RIGHT) {
+
+            index_wrong_cursor++;
+        }
+        else if (ch_int == 9) {
 
             start = start + k;
             displayWords(&tree, current_word, &start, k, max_dist);
         }
-        else if (ch == ' ') {
+        else if (ch_int == ' ') {
 
             start = 0;
             displayWords(&tree, current_word, &start, k, max_dist);
@@ -249,7 +274,9 @@ void correctText(string file_name, string dic_name) {
     for(auto str : list_of_word) {
 
         cout << str << " ";
+        tree.addWord(str);
     }
     cout << endl;
     writeTextInFile(file_name+".cor", list_of_word);
+    tree.writeIn("output.txt");
 }
