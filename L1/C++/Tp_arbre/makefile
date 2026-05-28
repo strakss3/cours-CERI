@@ -1,6 +1,6 @@
 SRC =	*.cpp
 
-FLAGS = -Wall \
+FLAGS1 = -Wall \
 		-Wextra \
 		-Werror \
 
@@ -9,10 +9,11 @@ FLAGS2 = -std=c++11 \
 	   -o \
 
 compile :
-	g++ $(FLAGS) $(SRC) $(FLAGS2) tp && \
+	g++ $(FLAGS1) $(SRC) $(FLAGS2) program && \
 	clear && \
-	./tp
+	./program
 
 clean :
-	rm -f text.txt tp output.txt *.cor && \
+	find . -name "*.txt" ! -name "dic-moyen.txt" -delete && \
+	rm -f *.cor program && \
 	clear

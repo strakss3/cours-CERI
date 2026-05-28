@@ -111,7 +111,7 @@ void editText(string file_name, string dic_name) {
     }
     endwin();       //close ncurses
 
-    tree.addWordWithText(text);                     //add non existing words into tree
+    //tree.addWordWithText(text);                   //add non existing words into tree
     string final_text(text.begin(), text.end());    //get all text
     cout << final_text << endl;
     tree.writeIn(dic_name);                         //update tree
@@ -310,7 +310,7 @@ void correctText(string file_name, string dic_name) {
             int n = ch_int - 48;        //convert ascii to real number
 
             //prevent table overflow
-            if (n > k || array_suggestion.size() == 0) {
+            if (n > k || array_suggestion.size() == 0 || n > (int)array_suggestion.size()) {
                 
                 continue;
             }
@@ -336,7 +336,7 @@ void correctText(string file_name, string dic_name) {
     for(auto str : list_of_word) {
 
         cout << str << " ";
-        tree.addWord(str);
+        tree.addWord(str);                  //add non existing words into tree
     }
     cout << endl;
     file_name.pop_back();                               //remove txt extension
