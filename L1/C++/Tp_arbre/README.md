@@ -1,4 +1,4 @@
-# ------| GUIDE |------
+# ----------| GUIDE |----------
 ## Files :
 I added the files from the first subject related to dynamic tables to the `Table` folder. The methods related to lexical trees are in `arbre.cpp` and `arbre.h`. The methods related to the terminal are in `interaction.cpp` and `interaction.h`. A 19k ish word dictionary is provided in `dic-moyen.txt`. Type `make` to compile and run code and `make clean` to clean workspace.
 ```
@@ -71,22 +71,25 @@ Words that this tree store :
 > You need to change manually into the code the value for k and max_dist
 
 **While in text editor :**
+You can write text into a ncurses terminal and save it into a file.
 The program will suggest k words similar to written word from a given dictionary.
 - `→` : move cursor to right
 - `←` : move cursor to left
 - `Tab` : cycle through suggested words
-- `Esc` : leave editor and create file
+- `Esc` : leave editor and save file
 
 **While in text corrector :**
-Searches for words in a text that do not exist in the given dictionary. Returns the corrected text in a .cor file.
+Searches for words in a text that do not exist in the given dictionary. Save the corrected text in a .cor file.
 - `→` : jump to the next incorrect word and leave the corrector upon reaching the end
-- `←` : move cursor to left
+- `←` : jump to the previous incorrect word
+- `Space` : show suggested words 
 - `Tab` : cycle through suggested words
-- `Esc` : leave the editor and create a file
+- `1-9` : choose among suggested words
+- `Esc` : leave the editor and create the .cor file
 
 
 
-# ------| README 1 |------
+# ---------| README 1 |---------
 ## Course 1 (27-03) :
 ```c++
 //Added methods :
@@ -162,7 +165,7 @@ Searches for words in a text that do not exist in the given dictionary. Returns 
 ```
 
 
-# ------| README 2 |------
+# ---------| README 2 |---------
 ## Course 4 (17-04) :
 ```c++
 //Added methods :
@@ -194,7 +197,7 @@ Searches for words in a text that do not exist in the given dictionary. Returns 
 ```
 
 
-# ------| README 3 |------
+# ---------| README 3 |---------
 ## Between course 5 and 6 :
 ```c++
 //makefile modified
@@ -219,6 +222,7 @@ Searches for words in a text that do not exist in the given dictionary. Returns 
 - void writeTextInFile(string file_name, vector<string> text)
 - editText(string file_name, string dic_name)
 - getLastWord(vector<char> text)
+- displayWords(Arbre * tree, string last_word, int * start, int k, int max_dist)
 
 //Started methods :
 - correctText(string file_name, string dic_name)
@@ -228,12 +232,13 @@ Searches for words in a text that do not exist in the given dictionary. Returns 
 ```
 
 
-# ------| README 4 |------
+# ---------| README 4 |---------
 ## Before the end :
 ```c++
 //Added methods :
-- "to do"
+- correctText(string file_name, string dic_name)
 
 //comments added in all the code
+//all exercises done
 //README improved
 ```
