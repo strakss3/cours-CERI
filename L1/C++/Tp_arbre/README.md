@@ -2,7 +2,7 @@
 ## Files :
 I added the files from the first subject related to dynamic tables to the `Table` folder. The methods related to lexical trees are in `arbre.cpp` and `arbre.h`. The methods related to the terminal are in `interaction.cpp` and `interaction.h`. A 19k ish word dictionary is provided in `dic-moyen.txt`. Type `make` to compile and run code and `make clean` to clean workspace.
 ```
-Projet/
+Bernon-Ethan/
 ├── Table/
 │   ├── main.cpp
 │   ├── table.cpp
