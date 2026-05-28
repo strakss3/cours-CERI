@@ -15,17 +15,16 @@ void editText(string file_name, string dic_name) {
     int k = 10;         //nombre de mots affichés
     int max_dist = 3;   //dist max pour levenshtein
     int start = 0;      //index actuel dans la liste affichée
-    mvprintw(0, 0, "Debut du texte :");
     while(true) {
 
-        move(1, 0);
+        move(0, 0);
         clrtoeol();
         for(char c : text) {
 
             addch(c);
         }
 
-        move(1, cursor);
+        move(0, cursor);
         refresh();
         ch = getch();
 
@@ -257,6 +256,10 @@ void correctText(string file_name, string dic_name) {
 
             index_wrong_cursor++;
         }
+        else if (ch_int == KEY_DOWN) {
+
+            
+        }
         else if (ch_int == 9) {
 
             start = start + k;
@@ -277,6 +280,9 @@ void correctText(string file_name, string dic_name) {
         tree.addWord(str);
     }
     cout << endl;
-    writeTextInFile(file_name+".cor", list_of_word);
+    file_name.pop_back();
+    file_name.pop_back();
+    file_name.pop_back();
+    writeTextInFile(file_name+"cor", list_of_word);
     tree.writeIn("output.txt");
 }
