@@ -13,17 +13,18 @@ int main() {
         cin >> answer;
     }
 
-    string file_name = "text.txt";
-    cout << "Entrez le nom du fichier : ";
+    string file_name;
+    string dic_name = "dic-moyen.txt";
+    cout << "What is the name of the file : ";
     cin >> file_name;
     
     if (answer == 'w') {
         
-        editText(file_name, "dic-moyen.txt");
+        editText(file_name, dic_name);
     }
     else if (answer == 'c') {
 
-        correctText(file_name, "dic-moyen.txt");
+        correctText(file_name, dic_name);
     }
     
     cout << endl << "------| Fin du main |------" << endl;
