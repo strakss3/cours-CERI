@@ -14,8 +14,8 @@ int main() {
     }
 
     string file_name = "text.txt";
-    // cout << "Entrez le nom du fichier : ";
-    // cin >> file_name;
+    cout << "Entrez le nom du fichier : ";
+    cin >> file_name;
     
     if (answer == 'w') {
         

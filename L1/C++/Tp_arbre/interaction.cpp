@@ -112,7 +112,7 @@ string getLastWord(vector<char> text) {
     return str;
 }
 
-void displayWords(Arbre * tree, string last_word, int * start, int k, int max_dist) {
+vector<string> displayWords(Arbre * tree, string last_word, int * start, int k, int max_dist) {
 
     int x, y;
     getyx(stdscr, y, x);
@@ -120,6 +120,7 @@ void displayWords(Arbre * tree, string last_word, int * start, int k, int max_di
     move(y+2, 0);
     clrtobot();
 
+    vector<string> array_suggestion;
     vector<string> list_of_word;
     tree->listWithPrefix(&list_of_word, last_word);
 
@@ -130,7 +131,8 @@ void displayWords(Arbre * tree, string last_word, int * start, int k, int max_di
 
     for(int i = *start ; i < (int)list_of_word.size() && i < k+*start; i++) {
     
-        string str = to_string(i+1) + " - " + list_of_word[i];
+        array_suggestion.push_back(list_of_word[i]);
+        string str = to_string(i-*start+1) + " - " + list_of_word[i];
         mvprintw(y+index+2, 0, "%s", str.c_str());
         index++;
     }
@@ -140,6 +142,8 @@ void displayWords(Arbre * tree, string last_word, int * start, int k, int max_di
 
         *start = -k;
     }
+
+    return array_suggestion;
 }
 
 void correctText(string file_name, string dic_name) {
@@ -172,7 +176,7 @@ void correctText(string file_name, string dic_name) {
     use_default_colors();
     init_pair(1, COLOR_RED, -1);
 
-    int k = 9;
+    int k = 9;                  //k must be : 0 < k < 10
     int max_dist = 3;
     int start = 0;
     int cursor = 0;
@@ -180,6 +184,7 @@ void correctText(string file_name, string dic_name) {
     int index_wrong_cursor = 0;
     int count_wrong_words = 0;
     bool move_cursor = true;
+    vector<string> array_suggestion;
     
     while(true) {
         
@@ -208,7 +213,6 @@ void correctText(string file_name, string dic_name) {
 
                     index_word++;
                     count_wrong_words++;
-                    
                 }
                 else {
 
@@ -256,19 +260,25 @@ void correctText(string file_name, string dic_name) {
 
             index_wrong_cursor++;
         }
-        else if (ch_int == KEY_DOWN) {
+        else if (ch_int >= 49 && ch_int <= 57) {
 
-            
+            int n = ch_int - 48;
+            if (n > k || array_suggestion.size() == 0) {
+                
+                continue;
+            }
+            list_of_word[index_word] = array_suggestion[n-1];
+
         }
         else if (ch_int == 9) {
 
             start = start + k;
-            displayWords(&tree, current_word, &start, k, max_dist);
+            array_suggestion = displayWords(&tree, current_word, &start, k, max_dist);
         }
         else if (ch_int == ' ') {
 
             start = 0;
-            displayWords(&tree, current_word, &start, k, max_dist);
+            array_suggestion = displayWords(&tree, current_word, &start, k, max_dist);
         }
     }
     endwin();
