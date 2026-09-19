@@ -1,0 +1,38 @@
+Exo 1.	
+	SELECT * 
+	FROM TechStor_Produits 
+	WHERE stock=0;
+
+	SELECT * 
+	FROM TechStor_Clients 
+	WHERE date_inscription>'2025-12-31' 
+	ORDER BY date_inscription;
+	
+	SELECT * 
+	FROM TechStor_Commandes 
+	WHERE montant_total > 500 AND date_commande >= '2026-04-01' AND date_commande <= '2026-06-30';
+
+Exo 2.
+	SELECT nom, prenom, ville, date_commande, montant_total
+	FROM TechStor_Clients 
+	JOIN TechStor_Commandes ON TechStor_Clients.id_client=TechStor_Commandes.id_client;
+
+	SELECT nom 
+	FROM TechStor_Commandes 
+	JOIN TechStor_LignesCommande USING(id_commande) 
+	JOIN TechStor_Produits USING(id_produit) 
+	WHERE id_client = 501;
+
+	SELECT DISTINCT ville 
+	FROM TechStor_Clients 
+	JOIN TechStor_Commandes USING(id_client) 
+	WHERE montant_total>300;
+ 
+	
+Exo 3.
+	SELECT nom, prenom, COUNT(id_commande) 
+	FROM TechStor_Clients 
+	JOIN TechStor_Commandes USING(id_client) 
+	GROUP BY id_client;
+
+	
