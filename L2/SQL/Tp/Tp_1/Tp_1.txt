@@ -35,4 +35,20 @@ Exo 3.
 	JOIN TechStor_Commandes USING(id_client) 
 	GROUP BY id_client;
 
-	
+	SELECT categorie, SUM(quantite * prix_unitaire)
+	FROM techstor_lignescommande
+	NATURAL JOIN techstor_produits
+	GROUP BY categorie;
+
+	SELECT ville, AVG(montant_total)
+	FROM techstor_commandes
+	NATURAL JOIN techstor_clients
+	GROUP BY ville;
+
+Bonus.
+	SELECT techstor_produits.nom
+	FROM techstor_produits
+	NATURAL JOIN techstor_lignescommande
+	NATURAL JOIN techstor_commandes
+	NATURAL JOIN techstor_clients
+	WHERE ville='Lyon' AND date_commande >= '2026-05-01' AND date_commande < '2026-06-01';
