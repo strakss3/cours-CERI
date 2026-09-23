@@ -277,10 +277,10 @@ Noeud* ABR::predecesseur(Noeud* node) {
 	}
 	else {
 		
-		Noeud* currentNode = node->fg;
-		while(currentNode != nullptr && currentNode->fd != nullptr) {
+		Noeud* currentNode = node->pere;
+		while(currentNode != nullptr && currentNode->cle > node->cle) {
 
-			currentNode = currentNode->fd;
+			currentNode = currentNode->pere;
 		}
 		return currentNode;
 	}
@@ -295,5 +295,17 @@ Noeud* ABR::successeur(Noeud* node) {
 	 * predecesseur de node dans l'arbre de racine r
 	 * (l'attribut "r" de l'objet appelant).
 	 */
-	return nullptr;
+	if (node->fd != nullptr) {
+		
+		return node->fd->minimum(node);
+	}
+	else {
+		
+		Noeud* currentNode = node->pere;
+		while(currentNode != nullptr && currentNode->cle < node->cle) {
+
+			currentNode = currentNode->pere;
+		}
+		return currentNode;
+	}
 }
