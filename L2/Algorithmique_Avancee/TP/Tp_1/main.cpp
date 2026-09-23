@@ -1,15 +1,17 @@
-/************************************************************************/
-/* Auteur : S. Gueye							*/
-/* TP : Arbres Binaires	de Recherche					*/
-/* Date dernière maj : 05/11/2019					*/
-/************************************************************************/
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include "ABR.h"
 
 using namespace std;
 
-#include "ABR.h"
+/* 
+ * Format de fichier d'insertion de clé dans l'ABR :
+ * 
+ * 5			<- nombre d'éléments à insérer
+ * 3 2 5 8 1	<- liste des éléments
+ * 5			<- élément à rechercher 
+*/
 
 int main(int argc, char** argv) {
 	
@@ -20,16 +22,26 @@ int main(int argc, char** argv) {
 	else {
 		
 		ABR abr(argv[1]);
-		int e = abr.gete();
+		int e = abr.getE();
 		Noeud* y = abr.recherche(e);
 		Noeud* z;
 		
-		if (y) {
+		if (y != nullptr) {
 			
-			cout << "Recherche  : " << e  << " a été trouvé" << endl;
+			cout << "Recherche  : " << e  << " a ete trouve" << endl;
 
+			z = abr.predecesseur(y);
+			
+			if(z != nullptr) {
+				
+				cout << "Le predecesseur de " << e  << " est " << z->cle << endl;
+			}
+			else {
+				
+				cout << e  << " n'a pas de predecesseur" << endl;
+			}
 			z = abr.successeur(y);
-			if (z) {
+			if (z != nullptr) {
 				
 				cout << "Le successeur de " << e  << " est " << z->cle << endl;
 			}
@@ -37,22 +49,14 @@ int main(int argc, char** argv) {
 				
 				cout << e  << " n'a pas de successeur" << endl;
 			}
-			z = abr.predecesseur(y);
-
-			if(z) {
-
-				cout << "Le predecesseur de " << e  << " est " << z->cle << endl;
-			}
-			else {
-				
-				cout << e  << " n'a pas de predecesseur" << endl;
-			}
 		}
 		else {
 		
-			cout << "Recherche  : " << e  << " n'a pas été trouvé" << endl;
+			cout << "Recherche  : " << e  << " n'a pas ete trouve" << endl;
 		}
 	}
 
 	return 1;
 }
+
+
