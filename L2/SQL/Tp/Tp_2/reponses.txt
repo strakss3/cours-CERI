@@ -1,0 +1,102 @@
+Exo 1.1 :
+SELECT id_produit, nom, COUNT(sav.id_produit)
+FROM techstor_produits prod
+NATURAL LEFT JOIN techstor_sav sav
+GROUP BY id_produit
+ORDER BY id_produit;
+
+	Les retours concernent majoritairement 3/4 articles particulièrement.
+
+
+Exo 1.2 :
+SELECT id_produit, nom, nom_fournisseur, pays
+FROM techstor_produits prod
+NATURAL JOIN techstor_fournisseurs four
+ORDER BY id_produit;
+
+	TechImport Asia semble être le fournisseur avec des articles défectueux.
+
+
+Exo 1.3 :
+SELECT id_client, nom, prenom, ville
+FROM techstor_clients cli
+NATURAL LEFT JOIN techstor_commandes comm
+WHERE id_commande IS NULL
+GROUP BY id_client;
+
+	3 clients n'ont pas de commande enregistrée
+
+
+Exo 2.1 :
+SELECT nom, categorie, prix_achat
+FROM techstor_produits prod
+WHERE prix_achat > (
+	SELECT AVG(prix_achat) 
+	FROM techstor_produits
+	WHERE categorie = prod.categorie
+)
+ORDER BY categorie;
+
+	Bonne question ??
+
+
+Exo 2.2 :
+SELECT cli.nom, cli.prenom, cli.ville
+FROM techstor_clients cli
+JOIN techstor_commandes comm 		USING(id_client)
+JOIN techstor_lignescommande lign 	USING(id_commande)
+JOIN techstor_produits prod 		USING(id_produit)
+JOIN techstor_fournisseurs four 	USING(id_fournisseur)
+WHERE nom_fournisseur='TechImport Asia'
+GROUP BY id_client;
+
+	7 clients sont concernés.
+	
+
+Exo 2.3 :
+SELECT lign.id_ligne, comm.id_commande, cli.nom, cli.statut_fidelite, prod.nom, lign.remise_pct, gril.remise_max_pct
+FROM techstor_clients 		cli
+JOIN techstor_commandes 	comm USING(id_client)
+JOIN techstor_lignescommande 	lign USING(id_commande)
+JOIN techstor_produits 		prod USING(id_produit)
+JOIN techstor_grillefidelite 	gril USING(categorie)
+WHERE cli.statut_fidelite = gril.statut_fidelite
+AND lign.remise_pct > gril.remise_max_pct
+ORDER BY lign.id_ligne; 
+
+	9 lignes ne respectent pas la grille de remise.
+
+Exo 3.1 :
+SELECT DISTINCT prod.categorie, SUM(lign.quantite*((prod.prix_unitaire*(1-lign.remise_pct/100))-prod.prix_achat))
+FROM techstor_produits prod
+NATURAL JOIN techstor_lignescommande lign
+GROUP BY prod.categorie
+HAVING SUM(lign.quantite*((prod.prix_unitaire*(1-lign.remise_pct/100))-prod.prix_achat)) > 1000;
+
+	Il n'y a que la categorie Moniteur qui dépasse.
+
+
+Exo 3.2 :
+SELECT four.nom_fournisseur, COUNT(DISTINCT sav.id_produit)
+FROM techstor_fournisseurs four
+NATURAL JOIN techstor_produits prod
+NATURAL JOIN techstor_sav sav
+GROUP BY four.id_fournisseur, four.nom_fournisseur
+HAVING COUNT(DISTINCT sav.id_produit)>=2;
+
+	
+	TechImport Asia et EuroComp
+
+Exo 3.3 :
+SELECT prod.categorie, COUNT(sav.id_retour)
+FROM techstor_produits 		prod
+NATURAL JOIN techstor_sav 	sav
+GROUP BY prod.categorie
+HAVING COUNT(sav.id_retour) >= ALL(
+	SELECT COUNT(id_retour)
+	FROM techstor_produits
+	NATURAL JOIN techstor_sav
+	GROUP BY categorie
+);
+
+	La categorie avec le plus de retour est Moniteur avec 6 retours
