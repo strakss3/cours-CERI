@@ -110,33 +110,14 @@ La méthode retourne l'adresse de "cle" s'il existe
 ou NULL sinon.
 /****************************************/
 noeud* ABR::recherche(int cle) {
-
-    if (this->r != nullptr) {
-		
-		return this->r->recherche(cle);
+	noeud* courant = r;
+	while(courant != NULL && courant->cle != cle){
+		if(cle < courant->cle)
+			courant = courant->fg;
+		else
+			courant = courant->fd;
 	}
-	return nullptr;
-}
-
-noeud * noeud::recherche(int cle) {
-
-	if (cle < this->cle) {
-		
-		if (this->fg != nullptr) {
-			
-			return this->fg->recherche(cle);
-		}
-		return nullptr;
-	}
-	else if (cle > this->cle) {
-		
-		if (this->fd != nullptr) {
-			
-			return this->fd->recherche(cle);
-		}
-		return nullptr;
-	}
-	return this;
+	return courant;
 }
 
 /****************************************/
@@ -148,47 +129,30 @@ La méthode doit renvoyer "vrai" si l'insertion a pu être faite
 et "faux" sinon.
 /****************************************/
 bool ABR::insertion(int cle) {
-
-	if (this->r != nullptr) {
-		
-		return this->r->insertion(cle);
+	if(r == NULL){
+		r = new noeud(cle);
+		return true;
 	}
-	noeud* root = new noeud(cle);
-	this->r = root;
+
+	noeud* courant = r;
+	noeud* parent = NULL;
+	while(courant != NULL){
+		parent = courant;
+		if(cle == courant->cle)
+			return false;
+		if(cle < courant->cle)
+			courant = courant->fg;
+		else
+			courant = courant->fd;
+	}
+
+	noeud* nouveau = new noeud(cle);
+	nouveau->pere = parent;
+	if(cle < parent->cle)
+		parent->fg = nouveau;
+	else
+		parent->fd = nouveau;
 	return true;
-}
-
-bool noeud::insertion(int cle) {
-
-	if (cle < this->cle) {
-		
-		if (this->fg != nullptr) {
-			
-			return this->fg->insertion(cle);
-		}
-		else {
-			
-			noeud * newNode = new noeud(cle);
-			newNode->pere = this;
-			this->fg = newNode;
-			return true;
-		}
-	}
-	else if (cle > this->cle) {
-		
-		if (this->fd != nullptr) {
-			
-			return this->fd->insertion(cle);
-		}
-		else {
-			
-			noeud * newNode = new noeud(cle);
-			newNode->pere = this;
-			this->fd = newNode;
-			return true;
-		}
-	}
-    return false;
 }
 
 
@@ -196,44 +160,26 @@ bool noeud::insertion(int cle) {
 /* Objectif : Recherche de l'adresse du noeud 
 de plus petite cle dans l'arbre de racine x
 /****************************************/
-noeud* ABR::minimum(noeud* root) {
+noeud* ABR::minimum(noeud* x) {
+	if(!x)
+		return nullptr;
 
-	if (this->r != nullptr) {
-		
-		this->r->minimum(root);
-	}
-	return nullptr;
-}
-
-noeud* noeud::minimum(noeud* root) {
-
-	if (this->fg != nullptr) {
-		
-		return this->fg->minimum(root);
-	}
-	return this;
+	while(x->fg)
+		x = x->fg;
+	return x;
 }
 
 /****************************************/
 /* Objectif : Recherche de l'adresse du noeud 
 de plus grande cle dans l'arbre de racine x
 /****************************************/
-noeud* ABR::maximum(noeud* root) {
+noeud* ABR::maximum(noeud* x) {
+	if(!x)
+		return nullptr;
 
-    if (this->r != nullptr) {
-		
-		this->r->maximum(root);
-	}
-	return nullptr;
-}
-
-noeud* noeud::maximum(noeud* root) {
-
-	if (this->fd != nullptr) {
-		
-		return this->fd->maximum(root);
-	}
-	return this;
+	while(x->fd)
+		x = x->fd;
+	return x;
 }
 
 
@@ -246,7 +192,7 @@ noeud* ABR::predecesseur(noeud* node) {
 
     if (node->fg != nullptr) {
 		
-		return node->fg->maximum(node);
+		return maximum(node->fg);
 	}
 	else {
 		
@@ -268,7 +214,7 @@ noeud* ABR::successeur(noeud* node) {
 
 	if (node->fd != nullptr) {
 		
-		return node->fd->minimum(node);
+		return minimum(node->fd);
 	}
 	else {
 		

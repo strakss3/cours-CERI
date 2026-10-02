@@ -1,7 +1,8 @@
 /************************************************************************/
 /* Auteur : S. Gueye							*/
-/* TP : Arbres Binaires	de Recherche					*/
-/* Date dernière maj : 05/11/2019					*/
+/* TP : Transformation d'un arbre binaire quelconque en arbre binaire	*/
+/* de recherche								*/
+/* Date dernière maj : 20/12/2019					*/
 /************************************************************************/
 
 /****************************************/
@@ -15,6 +16,7 @@ class noeud{
 	noeud* fd;
 	noeud* pere;
 	noeud(int x);
+	noeud(int x, noeud* fg, noeud* fd);
 	~noeud();
 	void Affiche(noeud* x);
 };
@@ -22,21 +24,22 @@ class noeud{
 /****************************************/
 /* Arbre binaire d'entiers		*/
 /****************************************/
-class ABR{
-	friend class evaluate;
+class AB{
 	noeud* r;
-	int e; // Element à chercher
+	int T[50];	// Tableau destiné à contenir les noeuds en ordre croissant.
+	int n; 	// Nombre de noeuds de l'arbre.
+
 	public :
-	ABR();
-	ABR(char* filename);
-	~ABR();
+	AB(noeud* x);
+	~AB();
 	noeud* root();
-	int gete();
-	void infixe(noeud* x);
-	noeud* recherche(int cle);
-	bool insertion(int cle);
-	noeud* maximum(noeud* x);
-	noeud* minimum(noeud* x);
-	noeud* successeur(noeud* x);
-	noeud* predecesseur(noeud* x);
+	void AfficheT();
+	void Prefixe(noeud* x);
+	void Infixe(noeud* x);
+	void Postfixe(noeud* x);
+	int Hauteur(noeud* x);
+	int N(noeud* x);
+	void Tri();
+	void ABtoABR(noeud* x);
 };
+
