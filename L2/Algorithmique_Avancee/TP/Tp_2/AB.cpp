@@ -175,7 +175,7 @@ void AB::Tri()
 {
 	int currentSize = 0;
 	infixInArray(T, &currentSize, r);
-	N(r);
+	n = currentSize;
 	for(int i = 0 ; i < n-1 ; i++) {
 		for(int j = 0 ; j < n-i-1 ; j++) {
 			if(T[j] > T[j+1]) {
