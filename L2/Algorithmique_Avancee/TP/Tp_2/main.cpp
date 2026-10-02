@@ -16,13 +16,6 @@ int main(int argc, char** argv)
 				new noeud(T[4])));
 
 	
-	ab.Infixe(ab.root());
-	cout << endl;
-	ab.ABtoABR(ab.root());
-	ab.Infixe(ab.root());
-	cout << endl;
-
-/*
 	cout << endl << "--------------------------------------------" << endl;
 	cout << "Affichage infixe AB :\t";
 	ab.Infixe(ab.root());	
@@ -53,6 +46,6 @@ int main(int argc, char** argv)
 	cout << endl << "--------------------------------------------" << endl;
 	cout << "Hauteur ABR = \t" << ab.Hauteur(ab.root());
 	cout << endl << "--------------------------------------------" << endl;
-*/
+
 	return 0;
 }

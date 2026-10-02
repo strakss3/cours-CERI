@@ -192,25 +192,19 @@ void AB::Tri()
 /* en un arbre binaire de recherche contenant les mêmes 
 /* valeurs et ayant la même structure
 /****************************************/
-void swap(noeud* node1, noeud* node2) {
-	int temp = node1->cle;
-	node1->cle = node2->cle;
-	node2->cle = temp;
-}
-
 void AB::ABtoABR(noeud* x)
 {
-	if(x->fg) {
-		if(x->cle < x->fg->cle) {
-			swap(x, x->fg);
-		}
-		ABtoABR(x->fg);
-	}
-	
-	if(x->fd) {
-		if(x->cle > x->fd->cle) {
-			swap(x, x->fd);
-		}
-		ABtoABR(x->fd);
+	Tri();
+	int currentIndex = 0;
+	transformToABR(r, &currentIndex);
+}
+
+void AB::transformToABR(noeud* x, int* currentIndex) {
+
+	if(x) {
+		transformToABR(x->fg, currentIndex);
+		x->cle = T[*currentIndex];
+		(*currentIndex)++;
+		transformToABR(x->fd, currentIndex);
 	}
 }

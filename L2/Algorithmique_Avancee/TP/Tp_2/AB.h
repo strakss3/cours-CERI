@@ -41,5 +41,6 @@ class AB{
 	int N(noeud* x);
 	void Tri();
 	void ABtoABR(noeud* x);
+	void transformToABR(noeud* x, int* currentIndex);
 };
 
