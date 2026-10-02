@@ -1,120 +1,116 @@
+/************************************************************************/
+/* Auteur : S. Gueye							*/
+/* TP : Arbres Binaires	de Recherche					*/
+/* Date dernière maj : 05/11/2019					*/
+/************************************************************************/
+
 #include <iostream>
 #include <fstream>
 #include "ABR.h"
 
 using namespace std;
 
-
-Noeud::Noeud(int x) {
-	/*
-	 * Constructeur d'un Noeud dont les fils sont nullptr
-	 */
-	this->cle 	= x;
-	this->fg 	= nullptr;
-	this->fd 	= nullptr;
-	this->pere 	= nullptr;
+/****************************************/
+/* Objectif : Constructeur d'un noeud dont les fils sont NULL
+/* Entrées : entier x
+/* Complexité : 0(1)
+/****************************************/
+noeud::noeud(int x)
+{
+	cle = x;
+	fg = fd = pere =  NULL;
 }
 
-Noeud::~Noeud() {
-	/*
-	 * Destructeur d'un Noeud
-	 */	
-	if(this->fg != nullptr) {
-		
-		delete(this->fg);
-	}
-	if(this->fd != nullptr) {
-		
-		delete(this->fd);
-	}
+
+/****************************************/
+/* Objectif : Destructeur d'un noeud
+/****************************************/
+noeud::~noeud()
+{
+	if(fg)
+		delete(fg);
+	if(fd)
+		delete(fd);
 }
 
-ABR::ABR() {
-	/*
-	 * Constructeur d'un ABR vide
-	 */
-	this->r = nullptr;
+/****************************************/
+/* Objectif : Constructeur d'un ABR
+/****************************************/
+ABR::ABR()
+{
+	r = NULL;
 }
 
-ABR::ABR(char* filename) {
-	/*
-	 * Constructeur d'un ABR via une liste de noeuds
-	 */
-    this->r = nullptr;
+
+/****************************************/
+/* Objectif : Constructeur d'un ABR
+/****************************************/
+ABR::ABR(char* filename)
+{
+    r = NULL;   
 	ifstream file(filename);
-	int n 	= 0;
-	int tmp = 0;
-	int cpt = 0;
+	int n,tmp,cpt = 0;
 
-	file >> n;
-	for(int i = 0 ; i < n ; i++) {
-		
-		file >> tmp;
-		if(this->insertion(tmp)) {
-			
+	file >> n; 
+	for(int i = 0; i < n ; i++){
+		file >> tmp;	
+		if(insertion(tmp))
 			cpt++;
-		}
 	}
 
-	cout << "Nombre d'elements inseres = " << cpt << endl;	
-	file >> this->e;
-	cout << "Recherche infixe :";
-	this->infixe(this->r);
+	cout << "Nombre d'éléments insérés = " << cpt << endl;	
+	file >> e;
+	infixe(r);
 	cout << endl;
 	file.close();
 }
 
-ABR::~ABR() {
-	/*
-	 * Destructeur d'un ABR
-	 */
-	if(this->r != nullptr) {
-		
-		delete(this->r);
+
+
+/****************************************/
+/* Objectif : Destructeur d'un ABR
+/****************************************/
+ABR::~ABR()
+{
+	if(r)
+		delete(r);
+}
+
+/****************************************/
+/* Objectif : Accesseur à la racine r
+/****************************************/
+noeud* ABR::root()
+{
+	return(r);
+}
+
+/****************************************/
+/* Objectif : Accès à e (un élément qui sera recherché)
+/****************************************/
+int ABR::gete()
+{
+	return(e);
+}
+
+/****************************************/
+/* Objectif : Parcours infixe
+/****************************************/
+void ABR::infixe(noeud* x)
+{
+	if(x){
+		infixe(x->fg);
+		cout << " " << x->cle;
+		infixe(x->fd);
 	}
 }
 
-Noeud* ABR::root() {
-	/*
-	 * Accesseur à la racine r
-	 */
-	return this->r;
-}
+/****************************************/
+/* Objectif : Recherche de la valeur cle.
+La méthode retourne l'adresse de "cle" s'il existe
+ou NULL sinon.
+/****************************************/
+noeud* ABR::recherche(int cle) {
 
-int ABR::getE() {
-	/*
-	 * Accès à e (un élément qui sera recherché)
-	 */
-	return this->e;
-}
-
-void ABR::infixe(Noeud* node) {
-	/*
-	 * Parcours infixe
-	 */
-	if (node != nullptr) {
-		this->infixe(node->fg);
-		node->affiche();
-		this->infixe(node->fd);
-	}
-}
-
-void Noeud::affiche() {
-	/*
-	 * Affiche la cle du noeud 
-	 */
-	cout << " " << this->cle;
-}
-
-
-
-//recherche
-Noeud* ABR::recherche(int cle) {
-    /*
-     * Recherche de la valeur cle depuis la racine r.
-     * La méthode retourne l'adresse de "cle" s'il existe
-     * ou nullptr sinon.
-	 */
     if (this->r != nullptr) {
 		
 		return this->r->recherche(cle);
@@ -122,12 +118,8 @@ Noeud* ABR::recherche(int cle) {
 	return nullptr;
 }
 
-Noeud * Noeud::recherche(int cle) {
-	/*
-     * Recherche de la valeur cle.
-     * La méthode retourne l'adresse de "cle" s'il existe
-     * ou nullptr sinon.
-	 */
+noeud * noeud::recherche(int cle) {
+
 	if (cle < this->cle) {
 		
 		if (this->fg != nullptr) {
@@ -147,36 +139,27 @@ Noeud * Noeud::recherche(int cle) {
 	return this;
 }
 
+/****************************************/
+/* Objectif : Insertion de "cle" dans l'arbre
+/* "cle" étant un identifiant unique, il faudra vérifier qu'il 
+n'existe pas déjà dans l'arbre, auquel cas il ne faudra pas l'insérer.
 
-
-//insertion
+La méthode doit renvoyer "vrai" si l'insertion a pu être faite
+et "faux" sinon.
+/****************************************/
 bool ABR::insertion(int cle) {
-    /*
-     * Insertion de "cle" dans l'arbre depuis la racine r
-     * "cle" étant un identifiant unique, il faudra vérifier qu'il 
-     * n'existe pas déjà dans l'arbre, auquel cas il ne faudra pas l'insérer.
-     * 
-     * La méthode doit renvoyer "vrai" si l'insertion a pu être faite
-     * et "faux" sinon.
-     */ 
+
 	if (this->r != nullptr) {
 		
 		return this->r->insertion(cle);
 	}
-	Noeud* root = new Noeud(cle);
+	noeud* root = new noeud(cle);
 	this->r = root;
 	return true;
 }
 
-bool Noeud::insertion(int cle) {
-	/*
-     * Insertion de "cle" dans l'arbre
-     * "cle" étant un identifiant unique, il faudra vérifier qu'il 
-     * n'existe pas déjà dans l'arbre, auquel cas il ne faudra pas l'insérer.
-     * 
-     * La méthode doit renvoyer "vrai" si l'insertion a pu être faite
-     * et "faux" sinon.
-     */
+bool noeud::insertion(int cle) {
+
 	if (cle < this->cle) {
 		
 		if (this->fg != nullptr) {
@@ -185,7 +168,7 @@ bool Noeud::insertion(int cle) {
 		}
 		else {
 			
-			Noeud * newNode = new Noeud(cle);
+			noeud * newNode = new noeud(cle);
 			newNode->pere = this;
 			this->fg = newNode;
 			return true;
@@ -199,7 +182,7 @@ bool Noeud::insertion(int cle) {
 		}
 		else {
 			
-			Noeud * newNode = new Noeud(cle);
+			noeud * newNode = new noeud(cle);
 			newNode->pere = this;
 			this->fd = newNode;
 			return true;
@@ -209,13 +192,12 @@ bool Noeud::insertion(int cle) {
 }
 
 
+/****************************************/
+/* Objectif : Recherche de l'adresse du noeud 
+de plus petite cle dans l'arbre de racine x
+/****************************************/
+noeud* ABR::minimum(noeud* root) {
 
-//minimum
-Noeud* ABR::minimum(Noeud* root) {
-	/* 
-	 * Recherche de l'adresse du Noeud
-	 * de plus petite cle dans l'arbre de racine root 
-	 */
 	if (this->r != nullptr) {
 		
 		this->r->minimum(root);
@@ -223,11 +205,8 @@ Noeud* ABR::minimum(Noeud* root) {
 	return nullptr;
 }
 
-Noeud* Noeud::minimum(Noeud* root) {
-	/* 
-	 * Recherche de l'adresse du Noeud
-	 * de plus petite cle dans l'arbre de racine root 
-	 */
+noeud* noeud::minimum(noeud* root) {
+
 	if (this->fg != nullptr) {
 		
 		return this->fg->minimum(root);
@@ -235,14 +214,12 @@ Noeud* Noeud::minimum(Noeud* root) {
 	return this;
 }
 
+/****************************************/
+/* Objectif : Recherche de l'adresse du noeud 
+de plus grande cle dans l'arbre de racine x
+/****************************************/
+noeud* ABR::maximum(noeud* root) {
 
-
-//Maximum
-Noeud* ABR::maximum(Noeud* root) {
-	/*
-	 * Recherche de l'adresse du Noeud 
-	 * de plus grande cle dans l'arbre de racine root
-	 */
     if (this->r != nullptr) {
 		
 		this->r->maximum(root);
@@ -250,11 +227,8 @@ Noeud* ABR::maximum(Noeud* root) {
 	return nullptr;
 }
 
-Noeud* Noeud::maximum(Noeud* root) {
-	/*
-	 * Recherche de l'adresse du Noeud 
-	 * de plus grande cle dans l'arbre de racine root
-	 */
+noeud* noeud::maximum(noeud* root) {
+
 	if (this->fd != nullptr) {
 		
 		return this->fd->maximum(root);
@@ -263,21 +237,20 @@ Noeud* Noeud::maximum(Noeud* root) {
 }
 
 
+/****************************************/
+/* Objectif : Recherche de l'adresse du noeud 
+predecesseur de x dans l'arbre de racine r
+(l'attribut "r" de l'objet appelant).
+/****************************************/
+noeud* ABR::predecesseur(noeud* node) {
 
-//Predecesseur
-Noeud* ABR::predecesseur(Noeud* node) {
-	/*
-	 * Recherche de l'adresse du Noeud
-	 * predecesseur de node dans l'arbre de racine r
-	 * (l'attribut "r" de l'objet appelant).
-	 */
     if (node->fg != nullptr) {
 		
 		return node->fg->maximum(node);
 	}
 	else {
 		
-		Noeud* currentNode = node->pere;
+		noeud* currentNode = node->pere;
 		while(currentNode != nullptr && currentNode->cle > node->cle) {
 
 			currentNode = currentNode->pere;
@@ -286,22 +259,20 @@ Noeud* ABR::predecesseur(Noeud* node) {
 	}
 }
 
+/****************************************/
+/* Objectif : Recherche de l'adresse du noeud 
+predecesseur de x dans l'arbre de racine r
+(l'attribut "r" de l'objet appelant).
+/****************************************/
+noeud* ABR::successeur(noeud* node) {
 
-
-//Successeur
-Noeud* ABR::successeur(Noeud* node) {
-	/*
-	 * Recherche de l'adresse du Noeud
-	 * predecesseur de node dans l'arbre de racine r
-	 * (l'attribut "r" de l'objet appelant).
-	 */
 	if (node->fd != nullptr) {
 		
 		return node->fd->minimum(node);
 	}
 	else {
 		
-		Noeud* currentNode = node->pere;
+		noeud* currentNode = node->pere;
 		while(currentNode != nullptr && currentNode->cle < node->cle) {
 
 			currentNode = currentNode->pere;

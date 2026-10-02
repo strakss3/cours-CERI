@@ -1,45 +1,46 @@
-class Noeud {
-	/*
-	 * Noeud contenant un entier un fils
-	 * gauche et un fils droit
-	 */
+/************************************************************************/
+/* Auteur : S. Gueye							*/
+/* TP : Arbres Binaires	de Recherche					*/
+/* Date dernière maj : 05/11/2019					*/
+/************************************************************************/
+
+/****************************************/
+/* noeud contenant un entier un fils    */
+/* gauche et un fils droit		*/
+/****************************************/
+class noeud{
 	public:
-		int cle;
-		Noeud* fg;
-		Noeud* fd;
-		Noeud* pere;
-		
-		Noeud(int x);
-		~Noeud();
-		void affiche();
-		Noeud* recherche(int cle);
-		bool insertion(int cle);
-		Noeud* minimum(Noeud* root);
-		Noeud* maximum(Noeud* root);
+	int cle;
+	noeud* fg;
+	noeud* fd;
+	noeud* pere;
+	noeud(int x);
+	~noeud();
+	void Affiche(noeud* x);
+	noeud* recherche(int cle);
+	bool insertion(int cle);
+	noeud* minimum(noeud* root);
+	noeud* maximum(noeud* root);
 };
 
-
+/****************************************/
+/* Arbre binaire d'entiers		*/
+/****************************************/
 class ABR{
-	/*
-	 * Arbre binaire d'entiers
-	 */
 	friend class evaluate;
-	
-	private :
-		Noeud* r;
-		int e; // Element à chercher
-	
+	noeud* r;
+	int e; // Element à chercher
 	public :
-		ABR();
-		ABR(char* filename);
-		~ABR();
-		Noeud* root();
-		int getE();
-		void infixe(Noeud* node);
-		Noeud* recherche(int cle);
-		bool insertion(int cle);
-		Noeud* maximum(Noeud* root);
-		Noeud* minimum(Noeud* root);
-		Noeud* successeur(Noeud* node);
-		Noeud* predecesseur(Noeud* node);
+	ABR();
+	ABR(char* filename);
+	~ABR();
+	noeud* root();
+	int gete();
+	void infixe(noeud* x);
+	noeud* recherche(int cle);
+	bool insertion(int cle);
+	noeud* maximum(noeud* x);
+	noeud* minimum(noeud* x);
+	noeud* successeur(noeud* x);
+	noeud* predecesseur(noeud* x);
 };
