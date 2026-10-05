@@ -1,0 +1,82 @@
+Exo 1 :
+    Une chaise          class
+    
+    Les enfants         class
+    Moi                 objet
+    
+    Le tableau          class
+    Ces tables          objet
+    
+    Une voiture         class
+    La voiture blanche  objet
+    
+    Un professeur       class
+    M. Jabaian          objet
+
+
+Exo 2 :
+
+    vehicule
+        terrestre
+            moto            La moto de Pierre
+            voiture         Une 205 rouge
+            bus             Le premier bus vers Aix
+            train           Le train pour Marseille
+                TGV         Le TGV Paris-Lyon
+                ferry       Le Ferry Bastia Marseille de 17h15
+        maritime
+            voilier         Le voilier de Marc Pajot
+        aérien
+            avion           Un airbus A320 particulier
+            delta plane     Le delta plane de Paco
+
+
+Exo 3 :
+    class Window {
+        int yCornerCoordonate1;
+        int xCornerCoordonate1;
+        int yCornerCoordonate2;
+        int xCornerCoordonate2;
+        String backgroundColor;
+        int windowWidth;
+        int windowHeight;
+
+        int* getCornerCoordonate();
+        int  getWindowWidth();
+        int  getWindowHeight();
+        void getBackgoundColor(String);
+        void setBackgoundColor(String);
+        void moveWindowTo(int x, int y);
+    }
+
+    class Pile {
+        int totalCapacity;
+        int currentSize;
+        
+        bool empty();
+        Node* peak();
+        Node* pop();
+        void push(int);
+        bool search(int);
+    }
+
+    class Node {
+        int value;
+        Node* nextNode;
+    }
+
+    class Television {
+        int volume;
+        int contrast;
+
+        int  getVolume();
+        void setVolume(int);
+        int getContrast();
+        void setContrast(int);
+        void turnOn();
+        void delay(int);
+    }
+
+
+Exo 4 :
+
