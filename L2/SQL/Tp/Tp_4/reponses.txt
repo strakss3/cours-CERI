@@ -93,10 +93,39 @@ Exo 3.3.B :
 
 
 Exo 3.4 :
-
+    SELECT DISTINCT nomedi
+    FROM editeur editeur
+    LEFT JOIN ouvrage ouvr USING(numedi)
+    LEFT JOIN info_statue info USING(numouv)
+    WHERE info.numsta IS NULL;
 
 
 Exo 4.1 :
+    SELECT nomaut, COUNT(numouv)
+    FROM auteur
+    JOIN co_auteur co USING(aut)
+    GROUP BY co.aut, nomaut
+    HAVING COUNT(numouv) >= ALL (
+        SELECT COUNT(numouv)
+        FROM co_auteur co
+        GROUP BY aut
+    );
+
+
 Exo 4.2 :
+    SELECT titouv COUNT(numsta)
+    FROM info_statue info
+    JOIN ouvrage USING(numouv)
+    GROUP BY numouv, titouv
+    HAVING COUNT(DISTINCT numsta) >= ALL(
+        SELECT COUNT(DISTINCT numsta)
+        FROM info_statue
+        GROUP BY numouv
+    );
+
+
 Exo 4.3.A :
+
+
+
 Exo 4.3.B :
