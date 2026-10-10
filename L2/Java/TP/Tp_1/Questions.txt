@@ -15,7 +15,6 @@ Exo 1 :
 
 
 Exo 2 :
-
     vehicule
         terrestre
             moto            La moto de Pierre
@@ -79,4 +78,4 @@ Exo 3 :
 
 
 Exo 4 :
-
+    ???
