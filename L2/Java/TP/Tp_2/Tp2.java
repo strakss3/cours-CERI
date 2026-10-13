@@ -3,9 +3,21 @@ public class Tp2{
 	
 		Vector vect1 = new Vector(3,4,1);
 		Vector vect2 = new Vector(4,2,0);
+
+		System.out.println("multiply by 3 :");
+		vect1.display();
+		vect1.multiply(3);
+		vect1.display();
 		
+		System.out.println("sum of vect 1 and vect2 :");
+		System.out.println(Vector.sum(vect1, vect2).toString());
+
+		System.out.println("dot product of vect 1 and vect2 :");
+		System.out.println(Vector.dotProduct(vect1, vect2));
+
 		PairVect pair = new PairVect(vect1, vect2);
 		pair.getFirstVector().display();
+		pair.getSecondVector().display();
 		
 	}
 }

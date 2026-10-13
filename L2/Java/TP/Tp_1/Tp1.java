@@ -98,9 +98,9 @@
 
 public class Tp1 {
     public static void main(String[] args) {
-        //Exo1.main(args);
-        //Exo2.main(args);
-        Exo3.main(args);
+        // Exo1.main(args);
+        // Exo2.main(args);
+        // Exo3.main(args);
     }
 }
 
@@ -260,9 +260,9 @@ class InvalidDateException extends Exception {
 
 class Exo3 {
     
-    static int day;
-    static int month;
-    static int year;
+    static int DAY;
+    static int MONTH;
+    static int YEAR;
     
     public static void testNumberOfArguments(String[] args) throws NumberOfArgumentsException{
         if (args.length > 3) {
@@ -275,9 +275,9 @@ class Exo3 {
 
     public static void testArgumentsType(String[] args) throws ArgumentsTypeException {
         try {
-            day   = Integer.valueOf(args[0]);
-            month = Integer.valueOf(args[1]);
-            year  = Integer.valueOf(args[2]);
+            DAY   = Integer.valueOf(args[0]);
+            MONTH = Integer.valueOf(args[1]);
+            YEAR  = Integer.valueOf(args[2]);
         }
         catch (NumberFormatException e) {
             throw new ArgumentsTypeException("ArgumentsTypeException : arguments must be integers");
@@ -285,25 +285,25 @@ class Exo3 {
     }   
     
     public static void testYear() throws InvalidDateException {
-        if (year < 1) {
+        if (YEAR < 1) {
             throw new InvalidDateException("InvalidDateException : year must be at least 1");
         }
     }
 
     public static void testMonth() throws InvalidDateException {
-        if (month < 1 || month > 12) {
+        if (MONTH < 1 || MONTH > 12) {
             throw new InvalidDateException("InvalidDateException : month must be between 1 and 12");
         }
     }
 
     public static void testDay() throws InvalidDateException {
-        if (day < 1 || day > maxDaysInMonth()) {
-            throw new InvalidDateException("InvalidDateException : day " + day + " does not exist in this month");
+        if (DAY < 1 || DAY > maxDaysInMonth()) {
+            throw new InvalidDateException("InvalidDateException : day " + DAY + " does not exist in this month");
         }
     }
 
     public static int maxDaysInMonth() {
-        if (month == 2) {
+        if (MONTH == 2) {
             if (isLeapYear()) {
                 return 29;
             }
@@ -311,7 +311,7 @@ class Exo3 {
                 return 28;
             }
         }
-        else if (month == 4 || month == 6 || month == 9 || month == 11) {
+        else if (MONTH == 4 || MONTH == 6 || MONTH == 9 || MONTH == 11) {
             return 30;
         }
         else {
@@ -320,14 +320,14 @@ class Exo3 {
     }
 
     public static boolean isLeapYear() {
-        return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
+        return (YEAR % 4 == 0) && (YEAR % 100 != 0 || YEAR % 400 == 0);
     }
 
     public static int[] computeNextDate() {
-        int[] nextDate = {day, month, year};
-        if(day+1 > maxDaysInMonth()) {
+        int[] nextDate = {DAY, MONTH, YEAR};
+        if(DAY+1 > maxDaysInMonth()) {
             nextDate[0] = 1;
-            if(month+1 > 12) {
+            if(MONTH+1 > 12) {
                 nextDate[1] = 1;
                 nextDate[2] += 1;
             }
@@ -351,7 +351,7 @@ class Exo3 {
 
             int[] nextDate = computeNextDate();
             System.out.println("Date format: DD/MM/YYYY");
-            System.out.println("The day after "+Integer.toString(day)+"/"+Integer.toString(month)+"/"+Integer.toString(year)+" is:");
+            System.out.println("The day after "+Integer.toString(DAY)+"/"+Integer.toString(MONTH)+"/"+Integer.toString(YEAR)+" is:");
             System.out.println(nextDate[0]+"/"+nextDate[1]+"/"+nextDate[2]);
         }
         catch (NumberOfArgumentsException e) {

@@ -3,7 +3,7 @@ all:
 	clear
 
 run: all
-	java Tp2
+	java Tp3
 
 clean:
 	rm *.class
