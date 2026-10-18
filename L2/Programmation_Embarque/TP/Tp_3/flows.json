@@ -1,0 +1,1118 @@
+[
+    {
+        "id": "68b264ecf29c858c",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": true,
+        "locked": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "18cec1704e7444e5",
+        "type": "tab",
+        "label": "Flux 2",
+        "disabled": true,
+        "locked": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a58a1837207edb42",
+        "type": "tab",
+        "label": "Flux 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5192a519be350cc3",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "0da020d70dde2662",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#fcfcfd",
+            "primary": "#0d74ce",
+            "bgPage": "#f9f9fb",
+            "groupBg": "#ffffff",
+            "groupOutline": "#d9d9e0"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "43700f0b45613996",
+        "type": "ui-page",
+        "name": "John",
+        "ui": "5192a519be350cc3",
+        "path": "/john",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "0da020d70dde2662",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "tabs": [],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "dfcad58d8b415513",
+        "type": "ui-group",
+        "name": "Beatles",
+        "page": "43700f0b45613996",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default",
+        "tab": ""
+    },
+    {
+        "id": "c0936b1372480135",
+        "type": "serial-port",
+        "name": "Arduino",
+        "serialport": "COM4",
+        "serialbaud": "9600",
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "\\n",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "fb6d3ee2c011cd3d",
+        "type": "ui-page",
+        "name": "LED",
+        "ui": "5192a519be350cc3",
+        "path": "/page2",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "0da020d70dde2662",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "tabs": [],
+        "order": -1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "8caddb4874465714",
+        "type": "ui-group",
+        "name": "groupe led",
+        "page": "fb6d3ee2c011cd3d",
+        "width": 6,
+        "height": 1,
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default",
+        "tab": ""
+    },
+    {
+        "id": "2adbe92f2764f257",
+        "type": "ui-page",
+        "name": "Exo 3",
+        "ui": "5192a519be350cc3",
+        "path": "/page3",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "0da020d70dde2662",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "tabs": [],
+        "order": -1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "38cbe4845e676a61",
+        "type": "ui-group",
+        "name": "Groupe",
+        "page": "2adbe92f2764f257",
+        "width": 6,
+        "height": 1,
+        "order": -1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default",
+        "tab": ""
+    },
+    {
+        "id": "23c8da33d0ce1545",
+        "type": "ui-gauge",
+        "z": "68b264ecf29c858c",
+        "name": "Jauge",
+        "group": "dfcad58d8b415513",
+        "order": 3,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Volume",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": 10,
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 370,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "270b0141edfd55ae",
+        "type": "ui-slider",
+        "z": "68b264ecf29c858c",
+        "group": "dfcad58d8b415513",
+        "name": "Slider",
+        "label": "Potentiomètre",
+        "tooltip": "",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "23c8da33d0ce1545",
+                "2d66eadb9d532d1c",
+                "342b525206ed8bc7"
+            ]
+        ]
+    },
+    {
+        "id": "2d66eadb9d532d1c",
+        "type": "ui-chart",
+        "z": "68b264ecf29c858c",
+        "group": "dfcad58d8b415513",
+        "name": "Chart",
+        "label": "Partition",
+        "order": 4,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 370,
+        "y": 240,
+        "wires": [
+            [
+                "2748878906234cb5"
+            ]
+        ]
+    },
+    {
+        "id": "342b525206ed8bc7",
+        "type": "ui-number-input",
+        "z": "68b264ecf29c858c",
+        "group": "dfcad58d8b415513",
+        "name": "Number",
+        "label": "Note",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "spinner": "default",
+        "x": 100,
+        "y": 260,
+        "wires": [
+            [
+                "2d66eadb9d532d1c",
+                "270b0141edfd55ae",
+                "23c8da33d0ce1545"
+            ]
+        ]
+    },
+    {
+        "id": "23fcbcf42eab6881",
+        "type": "ui-text",
+        "z": "68b264ecf29c858c",
+        "group": "dfcad58d8b415513",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "Text",
+        "label": "Maintenant",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 270,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "2748878906234cb5",
+        "type": "function",
+        "z": "68b264ecf29c858c",
+        "name": "function 1",
+        "func": "var now = new Date();\nvar year = now.getFullYear();\nvar month = now.getMonth() + 1;\nvar day = now.getDate();\nvar hour = now.getHours();\nvar minute = now.getMinutes();\nvar second = now.getSeconds();\nmsg.payload = day + \"/\" + month + \"/\" + year + \" à \" +\nhour + \":\" + second + \" => \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "23fcbcf42eab6881",
+                "a639b1c47b345f2b"
+            ]
+        ]
+    },
+    {
+        "id": "a639b1c47b345f2b",
+        "type": "debug",
+        "z": "68b264ecf29c858c",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "e0df84459fe8ef0f",
+        "type": "serial in",
+        "z": "18cec1704e7444e5",
+        "name": "",
+        "serial": "c0936b1372480135",
+        "x": 90,
+        "y": 280,
+        "wires": [
+            [
+                "6a3311723503223a",
+                "eb622fbce9e1ed47"
+            ]
+        ]
+    },
+    {
+        "id": "3199a69887dd2533",
+        "type": "serial out",
+        "z": "18cec1704e7444e5",
+        "name": "",
+        "serial": "c0936b1372480135",
+        "x": 240,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "bc7cd076bcf72521",
+        "type": "ui-switch",
+        "z": "18cec1704e7444e5",
+        "name": "",
+        "label": "switch",
+        "group": "8caddb4874465714",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": false,
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "className": "",
+        "layout": "row-spread",
+        "clickableArea": "switch",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 90,
+        "y": 200,
+        "wires": [
+            [
+                "3199a69887dd2533",
+                "eb622fbce9e1ed47"
+            ]
+        ]
+    },
+    {
+        "id": "6a3311723503223a",
+        "type": "function",
+        "z": "18cec1704e7444e5",
+        "name": "function 2",
+        "func": "msg.payload = msg.payload.toString().trim();\nif (msg.payload === \"true\") {\nmsg.payload = true;\n} else if (msg.payload === \"false\") {\nmsg.payload = false;\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 280,
+        "wires": [
+            [
+                "eb622fbce9e1ed47",
+                "6d1634287998df30"
+            ]
+        ]
+    },
+    {
+        "id": "6d1634287998df30",
+        "type": "ui-led",
+        "z": "18cec1704e7444e5",
+        "name": "",
+        "group": "8caddb4874465714",
+        "order": -1,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "states": [
+            {
+                "value": "false",
+                "valueType": "bool",
+                "color": "#ff0000"
+            },
+            {
+                "value": "true",
+                "valueType": "bool",
+                "color": "#00ff00"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showBorder": true,
+        "showGlow": true,
+        "x": 410,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "eb622fbce9e1ed47",
+        "type": "debug",
+        "z": "18cec1704e7444e5",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "7ccb02a54d649cd8",
+        "type": "debug",
+        "z": "a58a1837207edb42",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "4cf6e84d8508933b",
+        "type": "debug",
+        "z": "a58a1837207edb42",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "3f897061729047f9",
+        "type": "ui-switch",
+        "z": "a58a1837207edb42",
+        "name": "led7",
+        "label": "switch",
+        "group": "38cbe4845e676a61",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": false,
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "className": "",
+        "layout": "row-spread",
+        "clickableArea": "switch",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 70,
+        "y": 360,
+        "wires": [
+            [
+                "3a381036d94d5058",
+                "7a497605b51be18f"
+            ]
+        ]
+    },
+    {
+        "id": "19a6edd6e5f39779",
+        "type": "ui-slider",
+        "z": "a58a1837207edb42",
+        "group": "38cbe4845e676a61",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "all",
+        "topic": "topic.led7",
+        "topicType": "msg",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": 0,
+        "max": "255",
+        "step": "20",
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 70,
+        "y": 420,
+        "wires": [
+            [
+                "1ac724bd9b9f599f"
+            ]
+        ]
+    },
+    {
+        "id": "1ac724bd9b9f599f",
+        "type": "ui-gauge",
+        "z": "a58a1837207edb42",
+        "name": "",
+        "group": "38cbe4845e676a61",
+        "order": 0,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "85",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "170",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "255",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 210,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "70dd1a868a1bbffb",
+        "type": "ui-text",
+        "z": "a58a1837207edb42",
+        "group": "38cbe4845e676a61",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 230,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "3a381036d94d5058",
+        "type": "function",
+        "z": "a58a1837207edb42",
+        "name": "function 3",
+        "func": "let trame = flow.get('trame') || {};\ntrame[msg.topic] = msg.payload;\nflow.set('trame', trame);\n\nmsg.payload = JSON.stringify(trame);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 360,
+        "wires": [
+            [
+                "a919650f6c4253cd",
+                "7ccb02a54d649cd8"
+            ]
+        ]
+    },
+    {
+        "id": "7c79e24ced6fa14c",
+        "type": "serial in",
+        "z": "a58a1837207edb42",
+        "name": "",
+        "serial": "c0936b1372480135",
+        "x": 70,
+        "y": 500,
+        "wires": [
+            [
+                "0d5c93d4c926ce81",
+                "70dd1a868a1bbffb"
+            ]
+        ]
+    },
+    {
+        "id": "a919650f6c4253cd",
+        "type": "serial out",
+        "z": "a58a1837207edb42",
+        "name": "",
+        "serial": "c0936b1372480135",
+        "x": 400,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "0d5c93d4c926ce81",
+        "type": "json",
+        "z": "a58a1837207edb42",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 250,
+        "y": 500,
+        "wires": [
+            [
+                "dcff19908a010bac",
+                "e54ec2811c8486eb",
+                "c9f463f23276c0d4",
+                "88d971349e2016d4"
+            ]
+        ]
+    },
+    {
+        "id": "e54ec2811c8486eb",
+        "type": "ui-gauge",
+        "z": "a58a1837207edb42",
+        "name": "Humi",
+        "group": "38cbe4845e676a61",
+        "order": 0,
+        "value": "payload['humidite']",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Humidité",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "70",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 410,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c9f463f23276c0d4",
+        "type": "ui-gauge",
+        "z": "a58a1837207edb42",
+        "name": "",
+        "group": "38cbe4845e676a61",
+        "order": 0,
+        "value": "payload['potentiometre']",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Potentiometre",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "400",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "700",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "1024",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 440,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dcff19908a010bac",
+        "type": "ui-gauge",
+        "z": "a58a1837207edb42",
+        "name": "Temperature",
+        "group": "38cbe4845e676a61",
+        "order": 0,
+        "value": "payload['temperature']",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Temperature",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#00ff80",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "16",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "32",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "0",
+        "max": "50",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 430,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3ca023e0a6111fed",
+        "type": "ui-led",
+        "z": "a58a1837207edb42",
+        "name": "",
+        "group": "38cbe4845e676a61",
+        "order": -1,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "states": [
+            {
+                "value": "false",
+                "valueType": "bool",
+                "color": "#ff0000"
+            },
+            {
+                "value": "true",
+                "valueType": "bool",
+                "color": "#00ff00"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showBorder": true,
+        "showGlow": true,
+        "x": 650,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "88d971349e2016d4",
+        "type": "change",
+        "z": "a58a1837207edb42",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload['bouton']",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 600,
+        "wires": [
+            [
+                "3ca023e0a6111fed"
+            ]
+        ]
+    },
+    {
+        "id": "7a497605b51be18f",
+        "type": "debug",
+        "z": "a58a1837207edb42",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 260,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "38bd1a5c9f07e508",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.33.0",
+            "node-red-node-serialport": "2.0.3",
+            "@flowfuse/node-red-dashboard-2-ui-led": "1.1.1"
+        }
+    }
+]
