@@ -29,7 +29,7 @@ public class Tp3 {
 		// DoubleArray.main(args);
 		
 		// Exercice 5 :
-		Index.main(args);
+		// Index.main(args);
 	}
 }
 
@@ -116,15 +116,15 @@ class Index {
 	Subscriber[] arraySubscribers;
 	public static void main(String[] args) {
 		Index index = new Index(3);
-		Subscriber subA = new Subscriber("AAA", 123);
 		Subscriber subB = new Subscriber("BBB", 456);
 		Subscriber subC = new Subscriber("CCC", 789);
+		Subscriber subA = new Subscriber("AAA", 123);
 		Subscriber subD = new Subscriber("DDD", 1011);
 
 		System.out.println("Ajout sub :");
+		System.out.println(index.addSubscriber(subC));
 		System.out.println(index.addSubscriber(subA));
 		System.out.println(index.addSubscriber(subB));
-		System.out.println(index.addSubscriber(subC));
 		System.out.println(index.addSubscriber(subD));
 		System.out.println();
 		
@@ -138,10 +138,14 @@ class Index {
 		System.out.println();
 		
 		System.out.println("getNbSubs :");
-		System.out.println(index.getNumber("AAA"));
-		System.out.println(index.getNumber("ABA"));
+		System.out.println(index.getNbSubscibers());
 		System.out.println();
 		
+		System.out.println("Array Sorted :");
+		Subscriber[] arrayTest = index.getSortedSubscriber();
+		for(Subscriber sub : arrayTest) {
+			sub.display();
+		}
 	}
 
 	Index(int max) {
@@ -177,7 +181,24 @@ class Index {
 		return arraySubscribers[i];
 	}
 
-	// Subscriber getSortedSubscriber() {}		----! To Do !----
+	Subscriber[] getSortedSubscriber() {
+		Subscriber[] sortedSubscribers = new Subscriber[nbSubscibers];
+		for (int i = 0 ; i < nbSubscibers ; i++) {
+			sortedSubscribers[i] = arraySubscribers[i];
+		}
+
+		for (int i = 0 ; i < sortedSubscribers.length - 1 ; i++) {
+			for (int j = 0 ; j < sortedSubscribers.length - i - 1 ; j++) {
+				if (sortedSubscribers[j].name.compareTo(sortedSubscribers[j + 1].name) > 0) {
+					Subscriber subscriber = sortedSubscribers[j];
+					sortedSubscribers[j] = sortedSubscribers[j + 1];
+					sortedSubscribers[j + 1] = subscriber;
+				}
+			}
+		}
+
+		return sortedSubscribers;
+	}
 }
 
 class Subscriber {
