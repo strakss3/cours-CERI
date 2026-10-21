@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Circle"},{"p":"<Unnamed>","l":"GeomFig"},{"p":"<Unnamed>","l":"Polygon"},{"p":"<Unnamed>","l":"Quadri"},{"p":"<Unnamed>","l":"Rectangle"},{"p":"<Unnamed>","l":"Square"},{"p":"<Unnamed>","l":"Tp4"},{"p":"<Unnamed>","l":"Triangle"}];updateSearchResults();
