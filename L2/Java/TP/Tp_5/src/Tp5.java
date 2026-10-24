@@ -7,7 +7,7 @@ public class Tp5 {
 }
 /*	Exercice 1:
  * 
- * 	interface Pay
+ * 	interface Pay			paiment()
  * 		Employé				nom tauxHoraire nbrHeure prime
  * 			Directeur		salaireFixe
  * 			Commercial		salaireFixe ownCA
