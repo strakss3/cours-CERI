@@ -1,0 +1,18 @@
+client |
+formules |
+cours collectifs |
+cours particuliers |
+coach |
+salle |
+historique |
+achat |
+pret |
+
+cours collectifs | coach |
+                 | salle |
+
+cours particuliers | coach  |
+                   | salle  |
+                   | client | formule |
+
+pret |
