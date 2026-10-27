@@ -1,18 +1,36 @@
-client |
-formules |
-cours collectifs |
-cours particuliers |
-coach |
-salle |
-historique |
-achat |
-pret |
+Entitées:
+    Achat
+    Article
+    Client
+    Coach
+    Cours_collectifs
+    Cours_particuliers
+    Formule
+    Historique
+    Pret
+    Salle
 
-cours collectifs | coach |
-                 | salle |
+Squelette:
 
-cours particuliers | coach  |
-                   | salle  |
-                   | client | formule |
+    Cours_collectif | Coach |
+                    | Salle |
 
-pret |
+    Cours_particulier | Coach  |
+                      | Salle  |
+                      | Client | Formule |
+
+    Historique |
+
+    Achat |
+
+    Pret |
+
+    Article |
+
+Dépendances Fonctionnelles:
+    
+    df1: ...
+
+Dépendances Multivaluées:
+    
+    dm1: ...
