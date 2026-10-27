@@ -1,9 +1,17 @@
 
 public class Director extends Employee {
 
-	public Director(String name, double hourlyRate, double standardNumberHour) {
+	public double fixSalary;
+
+	public Director(String name, double hourlyRate, double standardNumberHour, double fixSalary) {
 		super(name, hourlyRate, standardNumberHour);
-		// TODO Auto-generated constructor stub
+		this.fixSalary = fixSalary;
 	}
 
+	@Override
+	public double payment() {
+		return this.fixSalary + 0.004*1;
+	}
+	
+	
 }

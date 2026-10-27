@@ -2,13 +2,20 @@
 public class Tp5 {
 
 	public static void main(String[] args) {
+//		List<String> l = new List<String>();
+//		l.add("ooih");
+//		l.display();
+//		l.add("9844");
+//		l.display();
+		System.out.println("inef");
 	}
 
 }
-/*	Exercice 1:
+
+/*	Exercise 1:
  * 
- * 	interface Pay			paiment()
- * 		Employé				nom tauxHoraire nbrHeure prime
- * 			Directeur		salaireFixe
- * 			Commercial		salaireFixe ownCA
+ * 	interface Pay			payment()
+ * 		Employee			name hourlyRate numberHour standardNumberHour bonus
+ * 			Commercial		fixSalary ownCA
+ * 			Director		fixSalary
  */
