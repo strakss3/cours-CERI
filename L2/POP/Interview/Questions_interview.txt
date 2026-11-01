@@ -1,0 +1,21 @@
+Questions :
+    1.  Pouvez-vous vous présenter et me parler de votre parcours (scolaire puis professionnel).
+    2.  Quelles études avez-vous faites pour exercer votre métier actuel ?
+
+    3.  Quelles sont vos missions dans votre entreprise en tant qu'ingénieur en intelligence artificielle ?
+    4.  Quelles sont les connaissances et compétences requises pour bien réussir dans ce métier ?
+    5.  Quels outils / logiciels utilisez-vous pour exercer votre métier ?
+    6.  Qu'aimez-vous dans votre métier ?
+    7.  Avec qui êtes-vous susceptible de travailler (collègues / autres entreprises / clients) ?
+    8.  Quels sont vos horaires de travail et avez-vous la possibilité de travailler à distance ?
+    9.  Imaginez que vous voudriez prendre un alternant pour votre entreprise, quel devrait être son profil ?
+    10.  Quel est votre salaire actuel et y a-t-il eu une évolution selon l'expérience accumulée au fil du temps ?
+
+    11. Que pensez-vous du marché de l'emploi dans ce domaine ?
+    12. Quels conseils pourriez-vous donnez à un étudiant en informatique s'il veut se lancer dans ce domaine ?
+
+
+Infos à prendre :
+    modalités, date, lieu du rdv
+    nom, prénom, coordonnées (tel + LinkedIn), entreprise (+adresse) du professionnel
+

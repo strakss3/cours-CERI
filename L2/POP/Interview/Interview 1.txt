@@ -1,0 +1,199 @@
+1.  Pouvez-vous vous présenter et me parler de votre parcours (scolaire puis professionnel).
+   Moi je m'appelle Nathan Cluzeau, j'ai 23 ans.
+   Je suis actuellement entre deux emplois.
+   Mon parcours scolaire, c'est que j'ai fait un bac avec une spécialité maths et physique-chimie.
+   Je suis ensuite parti faire un BTS aéronautique à Vitrolles, à côté de Marseille.
+   J'ai fait en parallèle un peu d'armée en réserve à la BA115 à Orange.
+   J'ai eu des stages à l'étranger, notamment à Saint-Pierre-et-Miquelon, une île française au large du Canada, où je travaillais pour Pratt & Whitney et la compagnie aérienne, notamment Air Saint-Pierre, sur place.
+   Après ces deux ans de BTS, je suis parti faire une école d'ingénieur généraliste axée industrie à Albi, à côté de Toulouse.
+   Où j'étais en alternance pendant trois ans dans le groupe Valeo, groupe qui est français et international.
+   C'est disponible, présent plutôt dans la quasi-totalité des pays développés, avec 260 000 employés dans le monde, je crois.
+   On parle d'une multinationale qui produit des équipements de voitures, donc des équipements automobiles et pas que.
+   Ils essayent aussi de développer des solutions de mobilité verte.
+   C'est une entreprise qui dépose le plus de brevets en France en termes d'innovation sur la mobilité.
+   J'ai fait trois ans en alternance là-bas en tant que VPS engineer.
+   VPS, c'est pour Valeo Production System, donc système de production Valeo.
+   Et le rôle du VPS engineer, c'est de faire de l'amélioration continue, continuous improvement, notamment du lean.
+   Le lean, c'est l'amélioration.
+   Le lean, ça veut dire maigre en anglais.
+   C'est amincir notre production en la rendant plus efficiente.
+   Et en permettant de réduire ce qu'on appelle les mudas, c'est un mot japonais pour les gaspillages.
+   Donc le lean ça existe depuis des années avec Toyota qui en fait essaye, par un système de standard et d'outils, de gagner de l'argent, donc de faire du gain de coût en fait.
+   Donc il y a plein d'outils, il y a le Hoshin, le SMED, le 5S et j'en passe quoi.
+   Ça, tu peux faire tes recherches là-dessus.
+   Et ce qui est assez intéressant, c'est du coup le croisement avec l'IA.
+   Parce qu'en fait, l'IA est assez puissante pour repérer les goulots d'étranglement. D'accord ?
+   Il y a une société très controversée qui s'occupe de ça depuis quelques années qui s'appelle Palantir Technologies.
+   Une société américaine de surveillance de masse aujourd'hui, mais qui aussi sert par exemple à l'écurie Ferrari en Formule 1 pour analyser leur goulot d'étranglement sur les pit stops pour les changements des pneus.
+   Et le lien du coup aujourd'hui entre le travail que je faisais en alternance chez Valeo pendant trois ans et mon futur travail, qui sera donc d'être responsable de développement IA pour Valeo Hora qui est au Japon dans la préfecture du Gunma, c'est que l'IA est très applicable au métier de l'amélioration continue.
+
+2.  Quelles études avez-vous fait pour exercer votre métier actuel ?
+   Alors, du coup, mes études, comme je l'ai dit, c'est un baccalauréat, donc maths, physique.
+   En fait, mes études n'ont pas réellement de lien logique avec ce que je vais faire demain dans mon prochain job.
+   Cependant, il y a toujours quand même un aspect logique, un aspect scientifique et logique dans mes études, parce que je passe de maths, physique, très général en baccalauréat, à de l'aéronautique appliquée en BTS, où on est quand même sur des normes, sur des mathématiques, de la physique, etc.
+   Et de la logique pure et simple.
+   Et de là, je suis parti sur mes études d'ingé, qui sont notamment axées sur tout ce qui est gestion de production, gestion de projets industriels complexes et internationaux.
+
+3.  Quelles sont vos missions dans votre entreprise en tant qu'ingénieur en intelligence artificielle ?
+   Donc les missions dans mon métier, elles sont nombreuses.
+   La première et par définition, c'est de faire des savings, c'est-à-dire de mener des actions, donc de dresser des plans d'action, analyser des situations, dresser des plans d'action et mettre les actions en place afin d'économiser des coûts, notamment de production ou des coûts de projet.
+   Par exemple, on sait qu'un changement de série sur une machine, ça coûte tant d'argent parce que pendant x temps, un opérateur de production ne peut pas produire pendant le changement de série.
+   Donc, tu as une ligne de production qui peut faire un objet A et un objet B, cette même ligne.
+   Tu as besoin de 1000 objets A, mais après, tu dois changer de série pour passer en objet B.
+   Ce changement de série va durer une heure.
+   Et sur cette heure-là, c'est une heure où ton opérateur ne travaille pas.
+   Et c'est une heure où tu ne produis pas de pièces.
+   Donc, c'est une heure où tu perds de l'argent.
+   Et ce qui va être intéressant avec le SMED, notamment, qui s'appelle le Single Minute Exchange of Die, ça va te permettre de réduire ce temps de changement de série afin de limiter les pertes financières qu'il implique.
+   Donc, mon métier premier, c'est justement de récupérer de l'argent.
+   Et ça, ça se fait de plein de manières.
+   Et je m'occupe aussi de la transition digitale.
+   Je m'occupais de la transition digitale chez Valeo mazamé en alternance, c'est-à-dire qu'en trois ans, on est passé de tout papier à zéro papier.
+   Donc enlever tout ce qui est papier.
+   Et c'est au-delà de l'aspect écologique et économique d'un ram de papier qui n'est pas dingue, c'est surtout d'avoir beaucoup de traçabilité sur ce qui se passe, qui est tout géré dans des clouds, et l'interconnectivité entre les équipements, etc., qui est bien meilleure.
+   Et aujourd'hui, nos opérateurs, avant, ils passaient 30% de leur temps à remplir des fiches papier.
+   Aujourd'hui, c'est 10% de leur temps à remplir un formulaire informatique, voire avec de l'automatisation, avec des scans de code QR, de code-barres, l'automatisation via SAP.
+   C'est très connu, ce système de gestion, en fait, SAP.
+   Donc, en fait, il y a l'interconnectivité entre les systèmes de notre entreprise qui permet de gagner du temps et de l'argent.
+   Donc, il y a la première, les savings : récupérer des gains de productivité, si tu veux.
+   La deuxième, ça va être l'industrialisation, la digitalisation.
+   Et en troisième, on a aussi beaucoup d'accompagnement humain et aux changements et aux nouvelles technologies et à la rigueur au niveau des standards qu'on applique.
+   Parce que mon métier implique aussi, du coup, de créer des standards, ce qui veut dire qu'on apprend à tous les collaborateurs à travailler d'une même manière afin d'éviter, justement, certains types de déviances.
+   Si quelqu'un fait A, puis B, puis C, on ne veut pas qu'il y en ait un qui fasse C, B, A.
+   Donc, en fait, on crée un standard pour que tout le monde applique.
+   C'est une règle, en fait.
+   Le standard, on peut dire grossièrement que c'est une règle.
+
+4.  Quelles sont les connaissances et compétences requises pour bien réussir dans ce métier ?
+   Alors pour exercer mon métier, qui avant était donc du coup VPS engineer et qui prochainement sera responsable de projet IA, le plus important, c'est déjà de savoir communiquer.
+   Parce qu'en fait, surtout en France, la communication est très, très, très importante dans une société.
+   Ce n'est pas que ce n'est pas le cas, mais ce qui est moins le cas au Japon, on est dans une société qui est très hiérarchisée.
+   Donc, en fait, si ton patron, il dit de faire quelque chose, l'employé le fera.
+   Alors qu'en France, on va avoir tendance à beaucoup remettre en question.
+   Donc, la communication est très importante pour faire passer des idées.
+   Très loin de la manipulation, mais très proche de convaincre.
+   C'est presque un peu un sentiment commercial.
+   En fait, si tu vends ton idée à quelqu'un, et il doit l'adopter en fait.
+   Tu dois faire en sorte qu'il adopte.
+   Donc il faut de la communication.
+   Il faut une logique, mais c'est purement objectif.
+   Il faut comprendre que 1 plus 1 fait 2 et il faut faire avec.
+   Il faut garder toujours une logique en tête et il faut avoir aussi un esprit d'analyse, un bel esprit d'analyse.
+   Et une organisation.
+   Ça, c'est les compétences qu'on appelle souvent soft skills qu'il faut pour ces métiers-là.
+   Et je dis ces quatre soft skills parce qu'ils valent aussi bien pour l'ancien métier que je faisais que pour le prochain.
+   Après, en termes de hard skills, il faut la gestion déjà de tout ce qui est outils numériques de base, à savoir Microsoft 365, Google Workspace, etc.
+   Il faut dans les deux cas savoir utiliser l'IA à un certain niveau, je dirais un niveau intermédiaire.
+   Et il faut savoir faire un petit peu de code, notamment pour tout ce qui est, parce que souvent, en fait, on n'a pas besoin de gros outils, mais on a besoin de petits scripts, par exemple, de petits scripts java que tu peux faire avec Google Workspace pour automatiser des fiches de données, etc.
+   Et pour mon futur métier, on a la compréhension des structures et des modèles IA.
+   Et la gestion en fait surtout de l'attribution des tâches et du personnel, et le management est aussi bien un soft skill qu'un hard skill, parce qu'en fait il y a des choses qui s'apprennent et des choses qui se ressentent en management, et il faut savoir faire les deux pour ce type de métier.
+
+6.  Qu'aimez-vous dans votre métier ?
+   Alors ce que je trouve qui est intéressant dans mon métier, c'est de quantifier.
+   C'est-à-dire qu'on ne se rend pas forcément compte du temps qu'on va perdre dans une journée ou de l'argent qu'on va perdre dans une journée dans la situation dans laquelle on est en fait.
+   Les gens, les collaborateurs, les personnes du monde entier ont tendance, c'est l'humain qui fait ça, à s'habituer à une situation qui n'est pas forcément bonne.
+   Mais ça nous semble normal.
+   Et en fait, ce qui est intéressant dans mon métier, ce que j'adore faire, c'est de remettre les pendules à l'heure sur qu'est-ce que ça devrait être, pourquoi ce n'est pas le cas actuellement, qu'est-ce que ça nous coûte, que ce soit en temps, en argent, en ressources, et comment l'améliorer.
+   C'est vraiment la partie qui est intéressante.
+   C'est une fois qu'on sait la situation actuelle et qu'on l'a quantifiée, comment on fait pour l'améliorer ?
+   Et une fois qu'on l'a améliorée, c'est de savoir quantifier en fait après pour pouvoir se dire : là, j'ai fait un CVX, on a économisé 200 000 euros par an.
+   On a économisé 3000 kilos de telle matière première par an.
+   Ça, c'est la partie sympa.
+   Et ce qui vaut d'ailleurs aussi pour mon futur job en responsable IA, c'est que l'IA va permettre de nous faire avancer en efficience, donc on va pouvoir calculer notre efficience de base sur le terrain, de faire en fait un état des lieux, et de partir d'un postulat jour 1 jusqu'à en fait la fin des améliorations, quand j'aurai fini ma mission là-bas, et que je pourrai dire : bon bah, on a gagné 70% d'efficience sur telle ligne de production grâce à l'IA, parce qu'elle fait les contrôles caméra, vision.
+
+7.  Avec qui êtes-vous susceptible de travailler (collègues / autres entreprises / clients) ?
+   Dans mon cas actuel, je suis susceptible de travailler avec notamment des collaborateurs, donc d'autres ingénieurs.
+   Mais ce qui est assez intéressant dans ce type de travail, c'est que c'est un travail qui est assez transversal quand on est dans la gestion.
+   C'est-à-dire qu'un ingénieur IA de base, il va souvent rester avec d'autres ingénieurs informatiques.
+   Parce que dans leur langage et dans leur façon de développer, on a besoin qu'ils communiquent entre eux pour leur tâche commune.
+   Mais dès qu'on rentre dans un travail de gestion, un travail un peu transversal, il faut travailler avec tout le monde.
+   Donc en fait, il faut travailler avec les collaborateurs pour leur expliquer le projet, pour, comme je disais un peu le côté commercial, les amener vers ton idée.
+   Il faut discuter avec le service des ressources humaines pour organiser des formations.
+   Il faut travailler avec le service logistique quand tu vas vouloir améliorer via l'IA le système de supply chain, et donc supply chain, c'est la chaîne d'approvisionnement.
+   Il va falloir travailler avec le responsable de production parce que tu vas lui prendre une heure de tous ses gars pour le former sur la nouvelle amélioration que tu es en train de faire.
+   Et tu vas aussi du coup travailler du point de vue externe avec ton fournisseur de modèles IA, qui sera pour mon cas donc Google, afin d'affiner tes besoins en fait.
+
+8.  Imaginez que vous voudriez prendre un alternant pour votre entreprise, quel devrais être son profil ?
+   Si je devais prendre un alternant dans mon métier, déjà, je ne m'attendrais pas à ce qu'il soit forcément d'un profil informatique.
+   Premièrement, parce que je trouve ça hypocrite, parce que je ne suis pas un profil informatique de base.
+   Et ce qui m'a mené là aujourd'hui, c'est surtout beaucoup de curiosité.
+   Par contre, il faut de la curiosité.
+   Donc ça, ça serait un des points que j'attendrais en soft skills.
+   C'est de s'intéresser, d'essayer de comprendre, etc.
+   Et je dirais que si je devais quand même avoir des hard skills, parce qu'il en faut quand on recrute quelqu'un, c'est d'avoir quelqu'un qui a des connaissances de base sur l'informatique, mais qui n'est pas forcément informaticien.
+   Il y a de la différence à faire.
+   Et quelqu'un qui a dans son parcours, d'une manière ou d'une autre, fait de la gestion.
+   Que ce soit de personnes, de ressources ou même monétaire en fait.
+   Mais il faut qu'il ait fait de la gestion pour comprendre ce que ça implique de gérer quelque chose.
+   Et comprendre ce que ça fait d'avoir plusieurs parties prenantes qui jouent dans un même rôle, parce qu'en fait l'IA c'est pas isolé dans une entreprise, c'est censé rendre service à tout le monde donc il faut quelqu'un qui a cette ouverture d'esprit.
+
+9.  Quel est votre salaire actuel et y a-t-il eu une évolution selon l'expérience accumulé au fil du temps ?
+   Alors, mon salaire précédent, c'était un salaire d'alternant.
+   Donc, c'est simple.
+   Il suffit d'aller voir sur internet les grilles d'alternance.
+   Surtout avec la loi Bayrou qui est passée, où on a été imposé depuis l'année dernière en plus.
+   Donc, on a plus perdu de l'argent qu'autre chose.
+   Mais bon, ce n'est pas totalement vrai.
+   Valeo étant un groupe qui paie un peu mieux ses alternants que les groupes obligatoires, c'est un salaire qui est très correct pour un alternant.
+   Et là, mon prochain salaire, il est difficile à donner ou en tout cas, il ne servira pas de base.
+   Mais mon prochain salaire, il est de 2700 euros net par mois.
+   Net d'impôt, mais je ne suis pas imposable du tout parce que je suis indemnisé par l'Europe.
+   Et avec le logement payé, les vols payés, etc.
+   Donc, si tu fais un package, je dois être à 4000 euros par mois.
+   Le programme s'appelle VIE, Volontariat International Européen.
+   Il faut se renseigner.
+   En fait, c'est des barèmes géographiques.
+   Tu es payé en fonction du pays dans lequel tu vas.
+   C'est indexé sur le niveau de vie de la ville la plus chère du pays.
+   Pour moi, c'est Tokyo.
+   Je suis indexé en fonction du niveau de vie de Tokyo.
+   Et donc, moi, vu que je suis au nord de Tokyo, je suis à une heure au nord de Tokyo, dans la préfecture de Gunma, eh bien, je fais un peu de savings du coup, parce que ça ne me coûtera pas aussi cher de vivre là où je vais vivre que si je vivais à Tokyo.
+   Mais pourtant, j'ai la même indemnité.
+
+10. Que pensez-vous du marché de l'emplois dans ce domaine ?
+   Je pense que le marché de l'emploi est saturé.
+   Pour ce domaine, peut-être moins qu'un autre.
+   Mais je trouve qu'aujourd'hui, déjà, c'est très difficile pour quelqu'un de faire de l'alternance.
+   Pour avoir galéré à avoir la mienne, je peux témoigner.
+   Et je pense qu'aujourd'hui, avoir un diplôme, ça ne veut plus rien dire.
+   Ce qu'il faut, c'est aller chercher plus loin et aller chercher des diplômes ou des certifications annexes.
+   Il ne faut pas hésiter à faire des mocks, qui sont des petites certifications, check edX ou Coursera.
+   Par exemple, là, je compte faire la prochaine certif IBM en cybersécu et IA, qui sont en fait des certifs que tu fais depuis la maison sur ton temps libre.
+   Qui peuvent durer de deux semaines à plusieurs mois, six mois, que tu vas payer x euros, mais qui sera une certification reconnue par l'État.
+   Et je pense qu'au niveau du marché de l'emploi aujourd'hui, si tu n'as pas de certification, tu ne peux pas avancer.
+   Moi, pas plus tard que la semaine dernière, j'étais en train de passer mon TOEIC pour certifier mon niveau d'anglais.
+   J'ai eu un score de 900 sur 990, ce qui fait anglais courant.
+   Ce n'est pas le C1, c'est un B2, mais du coup, c'est l'anglais courant à partir de 900.
+   Donc en fait, il faut attester de ses compétences aujourd'hui et avoir un diplôme, ça ne suffit plus.
+   En fait, c'est ça qu'il faut comprendre et c'est ce que je me tue moi à dire à tout le monde, aux potes du même âge, parce que j'ai 23 ans et qu'on est tous en train d'essayer de chercher nos premiers taffs, etc.
+   C'est si t'as pas des certifs à côté, si t'as pas un niveau de vie à côté qui montre que t'es curieux, ça marchera pas.
+   Moi, je suis parti à l'étranger, y bosser ou pour le loisir, donc une certaine ouverture d'esprit.
+   J'ai fait l'armée, une certaine rigueur dans la manière d'être, et en plus de ça une déformation xy en langue machin, etc.
+   C'est ça qui va vraiment aider à différencier aujourd'hui dans un poste et c'est ça que je recommande à tout le monde.
+   Fais ce que tu aimes faire, mais si tu aimes le faire, fais-toi certifier en fait.
+   Même si vous aimez parler mandarin, ben allez au bout des choses et faites une certification comme quoi vous parlez mandarin, et demain c'est ça qui vous amènera des postes qui sont intéressants, qui vous feront sortir du lot, parce qu'à 23 ans, j'ai la plupart de mes amis qui se trouvent dans des sociétés de service, dont je ne dirais pas les noms, mais qui sont en fait des sociétés où ils sont payés au lance-pierre, alors que les mecs, ils sortent d'école d'ingé.
+   Mais parce qu'aujourd'hui, en fait, on a tellement de monde qui font des écoles d'ingé que ça ne veut plus rien dire aujourd'hui.
+   Un ingénieur, avant, c'était un mec respecté, qui gagnait un certain salaire tous les mois, qui était vu comme quelqu'un de très intelligent, etc.
+   Mais aujourd'hui, ce n'est plus forcément le cas.
+   Les diplômes sont assez faciles d'accès, en fait.
+   Et si tu veux te différencier en ayant un poste qui est intéressant, il faut faire ce qu'il faut à côté, donc la certification, etc.
+
+11. Quels conseils pourriez-vous donnez à un étudiant en informatique s'il veut se lancer dans ce domaine ?
+   Alors pour tous les étudiants d'informatique qui aimeraient se lancer dans l'IA, il faut qu'ils sachent une chose, c'est pas parce qu'ils sont dans l'informatique que ça va les aider.
+   C'est pas forcément vrai, parce que je suis la preuve que non, parce que j'ai pas fait d'informatique et pourtant aujourd'hui j'ai un poste qui est assez intéressant dans l'IA.
+   Et ce qui fait vraiment la différence entre deux personnes, c'est la curiosité qu'on va avoir à comprendre les fonctionnements.
+   C'est en fait tout ce qu'on va faire en dehors des heures de vie, que ce soit à l'école, à l'université, au travail, c'est qu'est-ce qu'on va faire derrière pour apprendre plus que les autres.
+   Voilà, c'est le vrai conseil aujourd'hui.
+   Il faut être curieux, il faut avoir une certaine ouverture d'esprit, il faut vérifier ses sources, ne pas croire tout ce qu'on raconte sur internet, etc.
+   Et il faut aussi avoir un peu de cran, et ne pas hésiter à se lancer en fait.
+   Quand on pense que moi par exemple, je pensais pas qu'un jour je serai pris en responsable IA, et pourtant c'est ce qui s'est passé dans les trois derniers mois.
+   Mais c'est tout ça parce qu'en fait un jour j'ai envoyé un message à ma RH du groupe en disant en fait ça m'intéresse, j'ai envie de le faire.
+   Et jusque-là, après, un entretien arrive, on en parle, on en discute, et puis, en fait, tu montres que t'es intéressé et du coup, ça améliore les choses et t'as plus de chances d'être pris là où tu veux être pris.
+   Et au-delà de ça, il y a un peu de ce courage-là et il y a la détermination aussi.
+   Parce qu'avant d'être pris pour ce poste-là, j'ai dû faire 120 demandes.
+   Mais en fait, 120 demandes, si tu t'organises bien, ça va vite.
+   Et si tu t'y prends assez à l'avance, ça tombe pile-poil au moment.
+   Parce que je n'ai jamais perdu une année dans mon parcours, que ce soit scolaire, professionnel, personnel, etc., j'ai toujours enchaîné des projets intéressants ou des pans de ma vie avec tel ou tel type d'études.
+   Et aujourd'hui, parce que je m'y suis pris quasiment deux ans à l'avance pour partir en VIE, je pars en VIE trois mois après avoir fini mes études.
+   C'est parfait.
+   Je n'ai pas de temps de latence entre deux.
