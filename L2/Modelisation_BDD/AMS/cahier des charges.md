@@ -1,6 +1,6 @@
 # Cahier des charges fonctionnel détaillé (CCFD)
 
-Bonjour, voici le cahier des charges concernant la modélisation et la mise en place de la base de donnée pour votre entreprise `L'Elan & Spa`. J'espère que mes propositions seront répondre à vos demandes et je reste à votre disposition pour effectuer des modifications sur ce cahier des charges.
+Bonjour, voici le cahier des charges concernant la modélisation et la mise en place de la base de donnée pour votre entreprise **L'Elan & Spa**. J'espère que mes propositions seront répondre à vos demandes et je reste à votre disposition pour effectuer des modifications sur ce cahier des charges.
 
 ## 1. Règles de gestion
 
@@ -21,20 +21,20 @@ Bonjour, voici le cahier des charges concernant la modélisation et la mise en p
 - **RG10** : un adhérent a exactement une formule applicable par mois.
 - **RG11** : l'adhérent peut demander un changement de formule au plus une fois par mois.
 - **RG12** : le changement de formule prend effet le 1er du mois suivant la demande. Jusqu'à cette date, la formule en cours reste applicable et la facturation de même.
-- **RG13** : un cours réservé et annulé dans le délai autorisé (RG23) ne consomme pas de quota.
+- **RG13** : un cours réservé et annulé avant l'heure de ce dernier (RG23) ne consomme pas de quota.
 - **RG14** : une réservation au-delà du quota est possible en hors-forfait : le système affiche le tarif supplémentaire du cours et demande une confirmation explicite avant d'enregistrer. Le cours est ensuite facturé en supplément.
 
 ### 1.3 Planning et réservations
 
 - **RG15** : la journée est découpée en 12 créneaux d'une heure, de 8h00 à 20h00.
-- **RG16** : un cours collectif est défini par un créneau (jour, heure), un intitulé, un coach, une salle et une capacité maximale. Le planning prévisionnel est établi par l'administrateur pour le semestre.
+- **RG16** : un cours collectif est défini par un créneau (jour, heure), un intitulé, un coach, une salle et une capacité maximale. Le planning prévisionnel est établi par le responsable pour le semestre.
 - **RG17** : le nombre de réservations d'un cours collectif ne peut pas dépasser sa capacité maximale.
 - **RG18** : un cours particulier dure un créneau d'une heure, a un coach dédié et une salle, et sa capacité est strictement de 1 adhérent.
 - **RG19** : un coach ne peut pas être affecté à deux cours qui se chevauchent et une salle ne peut pas accueillir deux cours qui se chevauchent.
-- **RG20** : un coach ne peut être affecté qu'à un type de cours pour lequel il est habilité. Les habilitations sont gérées par l'administrateur.
+- **RG20** : un coach ne peut être affecté qu'à un type de cours pour lequel il est habilité. Les habilitations sont gérées par le responsable.
 - **RG21** : un cours particulier ne peut être réservé que dans les disponibilités hebdomadaires du coach, et la réservation se fait par coach.
 - **RG22** : un adhérent ne peut pas avoir deux réservations (collectif ou particulier) dont les horaires se chevauchent.
-- **RG23** : l'adhérent peut modifier ou annuler une réservation jusqu'à un délai limite avant le cours (ex. 2 heures). Passé ce délai, le cours est décompté.
+- **RG23** : l'adhérent peut modifier ou annuler une réservation jusqu'au dernier moment avant le cours (ex. 2 heures). Passé ce délai, le cours est décompté.
 - **RG24** : un type de cours est associé aux salles ou espaces compatibles (ex. aquagym en piscine).
 
 ### 1.4 Boutique et matériel
@@ -52,23 +52,23 @@ Bonjour, voici le cahier des charges concernant la modélisation et la mise en p
 
 ## 2. Cas d'utilisation
 
-| Cas d'utilisation | Acteur principal | Règles liées |
-| --- | --- | --- |
-| Inscrire un adhérent (accueil) | Accueil | RG01–RG03, RG05 |
-| S'inscrire en ligne | Adhérent | RG01–RG03, RG05 |
-| Modifier ses informations personnelles | Adhérent / Accueil | RG02, RG03 |
-| Changer de formule | Adhérent / Accueil | RG10–RG12 |
-| Réserver un cours collectif | Adhérent / Accueil | RG13, RG14, RG16, RG17, RG19, RG22, RG24 |
-| Réserver un cours particulier | Adhérent / Accueil | RG13, RG14, RG18–RG22, RG24 |
-| Modifier ou annuler une réservation | Adhérent / Accueil | RG13, RG23 |
-| Enregistrer un achat | Accueil | RG25, RG26, RG28, RG29 |
-| Enregistrer un prêt et son retour | Accueil | RG25, RG27–RG29 |
-| Générer les factures mensuelles | Système | RG30, RG31 |
-| Consulter ses factures, achats et prêts | Adhérent | RG04, RG31 |
-| Gérer le planning des cours collectifs | Administrateur | RG15–RG17, RG19, RG20, RG24 |
-| Gérer coachs, habilitations et disponibilités | Administrateur | RG19–RG21 |
-| Gérer formules, tarifs et catalogue | Administrateur | RG06, RG25 |
-| Consulter ses cours et inscrits | Coach | RG16, RG18 |
+| Cas d'utilisation                             | Acteur principal   | Règles liées                             |
+| :-------------------------------------------- | :----------------- | :--------------------------------------- |
+| Inscrire un adhérent (accueil)                | Accueil            | RG01–RG03, RG05                          |
+| S'inscrire en ligne                           | Adhérent           | RG01–RG03, RG05                          |
+| Modifier ses informations personnelles        | Adhérent / Accueil | RG02, RG03                               |
+| Changer de formule                            | Adhérent / Accueil | RG10–RG12                                |
+| Réserver un cours collectif                   | Adhérent / Accueil | RG13, RG14, RG16, RG17, RG19, RG22, RG24 |
+| Réserver un cours particulier                 | Adhérent / Accueil | RG13, RG14, RG18–RG22, RG24              |
+| Modifier ou annuler une réservation           | Adhérent / Accueil | RG13, RG23                               |
+| Enregistrer un achat                          | Accueil            | RG25, RG26, RG28, RG29                   |
+| Enregistrer un prêt et son retour             | Accueil            | RG25, RG27–RG29                          |
+| Générer les factures mensuelles               | Système            | RG30, RG31                               |
+| Consulter ses factures, achats et prêts       | Adhérent           | RG04, RG31                               |
+| Gérer le planning des cours collectifs        | Responsable        | RG15–RG17, RG19, RG20, RG24              |
+| Gérer coachs, habilitations et disponibilités | Responsable        | RG19–RG21                                |
+| Gérer formules, tarifs et catalogue           | Responsable        | RG06, RG25                               |
+| Consulter ses cours et inscrits               | Coach              | RG16, RG18                               |
 
 ## 3. Parcours utilisateurs
 
@@ -105,7 +105,7 @@ Légende :
 - **M** : modifier 
 - **X** : annuler 
 
-| Donnée / Action                    | Adhérent                 | Coach                           | Accueil                    | Administrateur | Système                        |
+| Donnée / Action                    | Adhérent                 | Coach                           | Accueil                    | Responsable    | Système                        |
 | :--------------------------------- | :----------------------- | :------------------------------ | :------------------------- | :------------- | :----------------------------- |
 | Fiche adhérent (identité, contact) | L M (sa fiche)           | L (nom, prénom de ses inscrits) | L C M                      | L C M          |                                |
 | Coordonnées bancaires              | L M (les siennes)        |                                 | L (masquées) C M           | L (masquées) M |                                |
@@ -125,4 +125,4 @@ Légende :
 | Retours de matériel                |                          |                                 | L C M                      | L              |                                |
 | Factures (les siennes)             | L                        |                                 | L                          | L              | C                              |
 
-**Notes** : « les siens » désigne les données rattachées à l'utilisateur connecté ; l'accueil et l'administrateur accèdent à celles de tous les adhérents et le coach n'accède qu'à ses propres cours. Les factures sont créées uniquement par le système (RG30). Le système a tous les droits mais ici on précise les actions effectués.
+**Notes** : « les siens » désigne les données rattachées à l'utilisateur connecté ; l'accueil et le responsable accèdent à celles de tous les adhérents et le coach n'accède qu'à ses propres cours. Les factures sont créées uniquement par le système (RG30). Le système a tous les droits mais ici on précise les actions effectués.
