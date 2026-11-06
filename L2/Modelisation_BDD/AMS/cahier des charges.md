@@ -6,7 +6,7 @@ Bonjour, voici le cahier des charges concernant la modélisation et la mise en p
 
 ### 1.1 Adhérents et inscription
 
-- **RG01** : tout adhérent possède un numéro d'adhérent unique, attribué par le système lors de son inscription. Ce numéro est son identifiant de connexion.
+- **RG01** : tout adhérent possède un numéro d'adhérent unique, attribué par le système lors de son inscription.
 - **RG02** : le dossier d'un adhérent comprend obligatoirement : nom, prénom, date de naissance, adresse postale (adresse, code postal, ville), téléphone, email, formule initiale, coordonnées bancaires (titulaire du compte, IBAN, BIC).
 - **RG03** : le titulaire du compte bancaire peut être différent de l'adhérent.
 - **RG04** : l'inscription peut se faire à l'accueil ou en ligne.
@@ -15,7 +15,7 @@ Bonjour, voici le cahier des charges concernant la modélisation et la mise en p
 ### 1.2 Comptes et accès
 
 - **RG06** : chaque adhérent, membre du personnel d'accueil, coach et responsable dispose d'un espace personnel pour se connecter et effectuer les actions auxquelles son rôle lui donne accès (section 4).
-- **RG07** : l'adhérent choisit lui-même son mot de passe lors de son inscription.
+- **RG07** : l'identifient unique de connection de l'adhérent est son adresse mail renseigné dans s afiche d'inscription et il choisit lui-même son mot de passe.
 - **RG08** : les identifiants et mots de passe du personnel d'accueil et des coachs sont imposés par le responsable.
 - **RG09** : tout changement de mot de passe, quel que soit l'utilisateur (adhérent, accueil, coach), s'effectue par l'intermédiaire du responsable.
 
@@ -52,7 +52,7 @@ Bonjour, voici le cahier des charges concernant la modélisation et la mise en p
 
 ### 1.6 Boutique et matériel
 
-- **RG32** : le catalogue contient des articles (serviettes, chaussures, claquettes, maillots, lunettes, etc.) avec une catégorie, une désignation, une taille éventuelle, un tarif d'achat, un tarif de prêt journalier et un stock.
+- **RG32** : le catalogue contient des articles (serviettes, chaussures, claquettes, maillots, lunettes, etc.), un tarif d'achat, un tarif de prêt journalier et un stock.
 - **RG33** : un achat est enregistré à l'accueil, rattaché à un adhérent, daté, avec quantité, prix unitaire et il décrémente le stock.
 - **RG34** : un prêt est enregistré à l'accueil, rattaché à un adhérent, daté, au tarif de prêt (distinct du tarif d'achat). L'article est restitué le jour même et le retour est enregistré.
 - **RG35** : un article ne peut être ni acheté ni prêté si son stock disponible est nul.
@@ -124,28 +124,27 @@ Légende :
 - **X** : annuler ou désinscrire 
 - **S** : supprimer 
 
-| Donnée / Action                                                          | Adhérent                      | Coach                           | Accueil                     | Responsable                    | Système                              |
-| :----------------------------------------------------------------------- | :---------------------------- | :------------------------------ | :-------------------------- | :----------------------------- | :----------------------------------- |
-| Fiche adhérent (identité, contact)                                       | L M (sa fiche)                | L (nom, prénom de ses inscrits) | L C M                       | L C M                          |                                      |
-| Coordonnées bancaires                                                    | L M (les siennes)             |                                 | L (masquées) C M            | L (masquées) M                 |                                      |
-| Compte de l'adhérent (numéro d'adhérent, mot de passe)                   | C (choix de son mot de passe) |                                 | C (inscription à l'accueil) | M (changement de mot de passe) | C (attribution du numéro d'adhérent) |
-| Comptes du personnel d'accueil et des coachs (identifiant, mot de passe) |                               |                                 |                             | C M                            |                                      |
-| Historique des activités                                                 | L (le sien)                   |                                 | L                           | L                              | C                                    |
-| Changement de formule                                                    | L C (1 par mois)              |                                 | L C                         | L C M                          | M (application au 1er du mois)       |
-| Désinscription d'un adhérent                                             |                               |                                 | X                           | X                              |                                      |
-| Coordonnées personnelles d'un adhérent désinscrit                        |                               |                                 |                             |                                | S (2 mois après la désinscription)   |
-| Formules et tarifs                                                       | L                             |                                 | L                           | L C M X                        | L                                    |
-| Planning des cours collectifs                                            | L                             | L                               | L                           | L C M X                        | L                                    |
-| Réservations (les siennes)                                               | L C M X                       | L (ses cours)                   | L C M X (pour un adhérent)  | L C M X                        | M (décompte du quota)                |
-| Liste des inscrits à un cours                                            |                               | L (ses cours)                   | L                           | L                              |                                      |
-| Fiches coachs et spécialités                                             | L                             | L (sa fiche)                    | L                           | L C M X                        |                                      |
-| Habilitations des coachs                                                 |                               | L (siennes)                     | L                           | L C M X                        |                                      |
-| Disponibilités des coachs                                                | L                             | L C M (siennes)                 | L                           | L C M X                        |                                      |
-| Salles et espaces                                                        | L                             | L                               | L                           | L C M X                        |                                      |
-| Catalogue des articles                                                   | L                             |                                 | L                           | L C M X                        |                                      |
-| Stock des articles                                                       |                               |                                 | L M                         | L C M                          | M (mouvements)                       |
-| Achats et prêts (les siens)                                              | L                             |                                 | L C X                       | L X                            |                                      |
-| Retours de matériel                                                      |                               |                                 | L C M                       | L                              |                                      |
-| Factures (les siennes)                                                   | L                             |                                 | L                           | L                              | C                                    |
+| Donnée / Action | Adhérent | Coach | Accueil | Responsable | Système |
+| --- | --- | --- | --- | --- | --- |
+| Fiche adhérent (identité, contact) | L M (sa fiche) | L (nom, prénom de ses inscrits) | L C M | L C M | |
+| Coordonnées bancaires | L M (les siennes) | | L (masquées) C M | L (masquées) M | | | Compte de l'adhérent (numéro d'adhérent, mot de passe) | C (choix de son mot de passe) | | C (inscription à l'accueil) | M (changement de mot de passe) | C (attribution du numéro d'adhérent) |
+| Comptes du personnel d'accueil et des coachs (identifiant, mot de passe) | | | | C M | |
+| Historique des activités | L (le sien) | | L | L | C |
+| Changement de formule | L C (1 par mois) | | L C | L C M | M (application au 1er du mois) |
+| Désinscription d'un adhérent | | | X | X | |
+| Coordonnées personnelles d'un adhérent désinscrit | | | | | S (2 mois après la désinscription) |
+| Formules et tarifs | L | | L | L C M X | L |
+| Planning des cours collectifs | L | L | L | L C M X | L |
+| Réservations (les siennes) | L C M X | L (ses cours) | L C M X (pour un adhérent)  | L C M X | M (décompte du quota) |
+| Liste des inscrits à un cours | | L (ses cours) | L | L | |
+| Fiches coachs et spécialités | L | L (sa fiche) | L | L C M X | |
+| Habilitations des coachs | | L (siennes) | L | L C M X | |
+| Disponibilités des coachs | L | L C M (siennes) | L | L C M X | |
+| Salles et espaces | L | L | L | L C M X | |
+| Catalogue des articles | L | | L | L C M X | |
+| Stock des articles | | | L M | L C M | M (mouvements) |
+| Achats et prêts (les siens) | L | | L C X | L X | |
+| Retours de matériel | | | L C M | L | |
+| Factures (les siennes) | L | | L | L | C |
 
 **Notes** : « les siens » désigne les données rattachées à l'utilisateur connecté ; l'accueil et le responsable accèdent à celles de tous les adhérents et le coach n'accède qu'à ses propres cours. Les factures sont créées uniquement par le système (RG37). Tout changement de mot de passe passe par le responsable (RG09). Le système a tous les droits mais ici on précise les actions effectués.
