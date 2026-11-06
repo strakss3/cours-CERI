@@ -1,17 +1,29 @@
 
-public class Commercial extends Employee {
+public class Commercial extends Person implements Worker, Pay {
 
 	public double fixSalary;
-	public double ownRevenue;
+	public double ownTurnover;
+	public static double TOTAL_TURNOVER;	
 	
-	public Commercial(String name, double hourlyRate, double standardNumberHour, double fixSalary, double ownRevenue) {
-		super(name, hourlyRate, standardNumberHour);
-		this.ownRevenue = ownRevenue;
+	public Commercial(String name, double fixSalary, double ownTurnover) {
+		super(name);
 		this.fixSalary = fixSalary;
+		this.ownTurnover = ownTurnover;
+		Commercial.TOTAL_TURNOVER += this.ownTurnover;
 	}
 
 	@Override
-	public double payment() {
-		return this.fixSalary + 0.01*this.ownRevenue;
+	public double computeSalary() {
+		return this.fixSalary;
+	}
+
+	@Override
+	public double computeBonus() {
+		return this.ownTurnover * 0.01;
+	}
+
+	@Override
+	public double computePayment() {
+		return this.computeSalary() + this.computeBonus();
 	}
 }

@@ -1,4 +1,5 @@
 
 public interface Pay {
-	public double payment();
+	public double computeSalary();
+	public double computeBonus();
 }

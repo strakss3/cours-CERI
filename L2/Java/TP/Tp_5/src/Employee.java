@@ -1,24 +1,34 @@
 
-public class Employee implements Pay {
+public class Employee extends Person implements Worker, Pay {
 
-	public String name;
 	public double hourlyRate;
 	public double numberHour;
-	public double standardNumberHour;
-	public double bonus;
+	public double bonusRate;
 
-	public Employee(String name, double hourlyRate, double standardNumberHour) {
-		super();
-		this.name = name;
+	public Employee(String name, double hourlyRate, double numberHour, double bonusRate) {
+		super(name);
 		this.hourlyRate = hourlyRate;
-		this.numberHour = 0;
-		this.standardNumberHour= standardNumberHour;
-		this.bonus = 0;
+		this.numberHour = numberHour;
+		this.bonusRate = bonusRate;
 	}
 
 	@Override
-	public double payment() {
-		if (this.numberHour < this.standardNumberHour) return this.numberHour * this.numberHour;
-		else return this.numberHour * this.numberHour + this.bonus;
+	public double computeSalary() {
+		return this.hourlyRate * this.numberHour;
+	}
+
+	@Override
+	public double computeBonus() {
+		if(this.numberHour > 35) {			
+			return this.numberHour * this.bonusRate;
+		}
+		else {
+			return 0;
+		}
+	}
+
+	@Override
+	public double computePayment() {
+		return this.computeSalary() + this.computeBonus();
 	}
 }

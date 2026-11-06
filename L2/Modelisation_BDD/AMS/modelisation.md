@@ -17,6 +17,8 @@ Bonjour, voici la modélisation de la base de donnée pour votre entreprise **El
 - quantite_locat
 - Salle |
 
+*penser à rajouter quelque chose pour le login*
+
 ## Squelette :
 ```
     Historique_achat | Adhérant | Formule |
@@ -73,23 +75,23 @@ Bonjour, voici la modélisation de la base de donnée pour votre entreprise **El
 
 ## Arbre de décomposition :
 
-*L'arbre ci dessous n'est pas encore fini...*
+*L'arbre ci dessous n'est pas encore fini... et surtout doit être refait...*
 
 ```mermaid
 flowchart TD
     R("R(id_hist_achat(...), id_hist_locat(...), id_cours_coll(...), id_cours_part(...), id_article_achat(...), id_article_locat(...), habilitation, quantite_achat, quantite_locat) {df01-df10, dm01-dm04}")
-    R1["R1(id_coach, habilitation) { }"]
+    R1["R1(id_coach, habilitation) { }"]
     R2("R2(id_hist_achat(...), id_hist_locat(...), id_cours_coll(...), id_cours_part(...), id_article_achat(...), id_article_locat(...), quantite_achat, quantite_locat) {df01-df10, dm02-dm04}")
     R3("R3(id_cours_coll, id_adherant(...)) {df01, df07}")
     R4["R4(id_hist_achat(...), id_hist_locat(...), id_cours_coll(...), id_cours_part(...), id_article_achat(...), id_article_locat(...), quantite_achat, quantite_locat) {df01-df10, dm03-dm04}"]
     R5["R5(id_formule, nom, acces, nbr_cours_coll, nbr_cours_part) {df07}"]
     R6("R6(id_cours_coll, id_adherant(...id_formule(-))) {df01}")
     R7["R7(id_adherant, nom, prenom, adresse, email, RIB, id_formule(-), date_inscipt, date_modif_formule) {df01}"]
-    R8["R8(id_cours_coll, id_adherant(-)) { }"]
+    R8["R8(id_cours_coll, id_adherant(-)) { }"]
     R9("R9(id_hist_achat, id_article_achat(...), quantite_achat) {df02}")
     R10("R10(id_hist_achat(...), id_hist_locat(...), id_cours_coll(...), id_cours_part(...), id_article_locat(...), quantite_locat) {df01-df10, dm04}")
     R11["R11(id_article_achat, nom, prix, stock) {df02}"]
-    R12["R12(id_hist_achat, id_article_achat(-), quantite_achat) { }"]
+    R12["R12(id_hist_achat, id_article_achat(-), quantite_achat) { }"]
     R13("R13(id_hist_locat, id_article_locat(...), quantite_locat) {df03}")
     R14("R14(id_hist_achat(...), id_hist_locat(...), id_cours_coll(...), id_cours_part(...)) {df01-df10}")
     R15["R15(id_article_locat, nom, prix, etat, statut) {df03}"]
