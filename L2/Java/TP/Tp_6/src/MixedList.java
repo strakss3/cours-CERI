@@ -1,16 +1,16 @@
 
-public class List<T> {
+public class MixedList {
+	
+	public Link firstElement;
+	public Link currentLink;
 
-	public Link<T> firstElement;
-	public Link<T> currentLink;
-
-	public List() {
+	public MixedList() {
 		super();
 		this.firstElement = null;
 	}
 
-	public void add(T value) {
-		this.firstElement = new Link<T>(value, firstElement);
+	public void add(Display value) {
+		this.firstElement = new Link(value, firstElement);
 	}
 
 	public void initialise() {
@@ -21,7 +21,7 @@ public class List<T> {
 		this.currentLink = this.currentLink.nextLink;
 	}
 
-	public T getCurrentValue() {
+	public Display getCurrentValue() {
 		return this.currentLink.value;
 	}
 
@@ -32,7 +32,8 @@ public class List<T> {
 	public void display() {
 		this.initialise();
 		while(!this.endOfList()) {
-			System.out.println(this.getCurrentValue());
+			System.out.print(this.getCurrentValue().getClass() + " : ");
+			this.getCurrentValue().display();
 			this.next();
 		}
 	}

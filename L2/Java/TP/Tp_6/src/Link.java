@@ -1,12 +1,12 @@
 
-public class Link<T>{
-	
-	public T value;
-	public Link<T> nextLink;
-	
-	public Link(T value, Link<T> nextLink) {
+public class Link {
+
+	public Display value;
+	public Link nextLink;
+
+	public Link(Display value, Link nextLink) {
 		super();
 		this.value = value;
 		this.nextLink = nextLink;
-	}	
+	}
 }

@@ -3,21 +3,20 @@
 Bonjour, voici la modélisation de la base de donnée pour votre entreprise **Elan&Spa**. J'espère que mes propositions seront répondre à vos demandes et je reste à votre disposition pour effectuer des modifications sur ce cahier des charges.
 
 ## Entitées / attributs isolés:
+- Accès |
 - Adhérant |
 - Article_achat |
 - Article_location |
 - Coach |
-- Cours_collectif |
-- Cours_particulier |
+- Cours |
+- Facture | 
 - Formule |
+- habilitation
 - Historique_achat |
 - Historique_location |
-- habilitation
+- Login |
 - quantite_achat
-- quantite_locat
 - Salle |
-
-*penser à rajouter quelque chose pour le login*
 
 ## Squelette :
 ```
@@ -25,51 +24,59 @@ Bonjour, voici la modélisation de la base de donnée pour votre entreprise **El
 
     Historique_location | Adhérant | Formule |
 
-    Cours_collectif | Salle |
-                    | Coach |
+    Cours | Salle |
+          | Coach |
     
-    Cours_particulier | Salle |
-                     | Coach |
-                     | Adhérant | Formule |
+    Facture | Adhérant | Formule | 
     
     Article_achat |
 
     Article_location |
 
+    Login | Accès |
+
     habilitation
+    
+    quantite_achat
 ```
 
 ## Dépendances Fonctionnelles:
 
-- **df01:** id_adherant -> nom, prenom, adresse, email, RIB, id_formule, date_inscipt, date_modif_formule
+- **df01:** id_acces -> nom, ...
 
-- **df02:** id_article_achat -> nom, prix, stock
+- **df02:** id_adherant -> nom, prenom, adresse, email, RIB, id_formule, date_inscipt, date_modif_formule, etat
 
-- **df03:** id_article_locat -> nom, prix, etat, statut
+- **df03:** id_article_achat -> nom, prix, stock
 
-- **df04:** id_coach -> nom, prenom
+- **df04:** id_article_locat -> nom, prix, etat, statut
 
-- **df05:** id_cours_coll -> type_cours, date, creneau, id_coach, id_salle, capacite
+- **df05:** id_coach -> nom, prenom
 
-- **df06:** id_cours_part -> type_cours, date, creneau, id_coach, id_salle, id_adherant
+- **df06:** id_cours -> type_cours, date, creneau, id_coach, id_salle, capacite, prix
 
-- **df07:** id_formule -> nom, acces, nbr_cours_coll, nbr_cours_part
+- **df07:** id_facture -> id_adherant, date
+
+- **df08:** id_formule -> nom, acces, nbr_cours_coll, nbr_cours_part
 
 - **df08:** id_hist_achat -> id_adherant, date
 
 - **df09:** id_hist_locat -> id_adherant, date_location
 
-- **df10:** id_salle -> nom, type, capacite
+- **df10:** identifient -> password, id_acces
+
+- **df11:** id_salle -> nom, type, capacite
 
 ## Dépendances Multivaluées:
     
 - **dm01:** id_coach ->-> habilitation
 
-- **dm02** id_cours_coll ->-> id_adherant(...)
+- **dm02** id_cours ->-> id_adherant(...)
 
 - **dm03** id_hist_achat ->-> id_article_achat(...), quantite_achat
 
-- **dm04** id_hist_locat ->-> id_article_locat(...), quantite_locat
+- **dm04** id_hist_locat ->-> id_article_locat(...)
+
+- **dm05** id_facture ->-> id_hist_achat(...), id_hist_locat(...), id_cours(...)
 
 <div style="page-break-after: always;"></div>
 
