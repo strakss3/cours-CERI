@@ -2,7 +2,7 @@
 
 **Projet de Modélisation et Programmation Orientée Objet A rendre avant le mercredi 9 décembre 2026 à 16h00 sur la plateforme ENT (lien du dépôt est à la suite de ce sujet)**
 
-![Relative date](https://img.shields.io/date/1796828400?style=for-the-badge&label=Date%20de%20rendu)
+![Relative date](https://img.shields.io/date/1796842800?style=for-the-badge&label=Date%20de%20rendu)
 
 Vous réaliserez le projet en conditions d'examen chez vous, c'est à dire que vous aurez accès à internet uniquement pour consulter la javadoc d'Oracle :
 
