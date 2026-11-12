@@ -12,15 +12,16 @@ using namespace std;
 /************************************************/
 int main(int argc,char** argv)
 {	
-	if(argc < 2)
+	if(argc < 2) {
 		cout << "Nombre d'arguments insuffisants" << endl;
+		return 1;
+	}
 	else{
 		sudoku sudo(argv[1]);
 		sudo.affichage();
 		cout << "Solution de la grille du fichier" << endl;
 		sudo.solution();
-		sudo.affichage();		
+		sudo.affichage();
 	}
-
-	return(1);
+	return 0;
 }
