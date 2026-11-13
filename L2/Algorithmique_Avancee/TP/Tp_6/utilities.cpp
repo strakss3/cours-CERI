@@ -1,6 +1,7 @@
 
 #include "utilities.h"
 
+bool backtracking(int a[], bool x[], int n, int i, int K);
 
 /**
  * Backtracking Somme
@@ -13,17 +14,20 @@
  * 
  * @return true ssi il existe un sous-ensemble d'éléments de a dont la somme donne K et faux sinon
  */
-
 bool somme(int a[], bool x[], int n, int K) {
+	return backtracking(a, x, n, 0, K);
+}
+
+bool backtracking(int a[], bool x[], int n, int i, int K) {
 	int sum = 0;
 	for(int j = 0 ; j < n ; j++) {
 		if (x[j]) sum += a[j];
 	}
 	if(sum == K) return true;
-	for(int i = 0 ; i < n ; i++) {
-		if(!x[i] && (sum + a[i] <= K)) {
+	for(; i < n ; i++) {
+		if(sum + a[i] <= K) {
 			x[i] = true;
-			if(somme(a, x, n, K)) return true;
+			if(backtracking(a, x, n, i+1, K)) return true;
 			x[i] = false;
 		}
 	}
