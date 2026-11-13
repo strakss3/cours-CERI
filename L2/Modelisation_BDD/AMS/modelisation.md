@@ -199,6 +199,7 @@ erDiagram
         date date_modif_formule
     }
     Formule ||--o{ Adherant : a
+    Login ||--o{ Adherant : a
 
     Reservation_cours {
         int id_cours PK
@@ -240,6 +241,7 @@ erDiagram
         varchar nom
         varchar prenom
     }
+    Login ||--o{ Coach : a
 
     Salle {
         int id_salle PK
