@@ -6,6 +6,6 @@ public class NatErr extends Exception {
 	}
 
 	public NatErr(String message) {
-		super(message);
+		super("NatErr -> " + message);
 	}
 }

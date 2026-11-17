@@ -6,6 +6,6 @@ public class ConstErr extends NatErr {
 	}
 
 	public ConstErr(String message) {
-		super(message);
+		super("ConstErr ->" + message);
 	}
 }
