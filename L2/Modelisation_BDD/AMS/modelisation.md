@@ -40,6 +40,8 @@ Bonjour, voici la modélisation de la base de donnée pour votre entreprise **El
     quantite_achat
 ```
 
+<div style="page-break-after:always;"></div>
+
 ## Dépendances Fonctionnelles :
 
 - **df01:** type_acces -> placeholder
@@ -70,17 +72,17 @@ Bonjour, voici la modélisation de la base de donnée pour votre entreprise **El
     
 - **dm01:** id_coach ->-> habilitation
 
-- **dm02** id_cours ->-> id_adherant(...)
+- **dm02:** id_cours ->-> id_adherant(...)
 
-- **dm03** id_facture ->-> id_hist_achat(...)
+- **dm03:** id_facture ->-> id_hist_achat(...)
 
-- **dm04** id_facture ->-> id_hist_locat(...)
+- **dm04:** id_facture ->-> id_hist_locat(...)
 
-- **dm05** id_facture ->-> id_cours(...)
+- **dm05:** id_facture ->-> id_cours(...)
 
-- **dm06** id_hist_achat ->-> id_article_achat(...), quantite_achat
+- **dm06:** id_hist_achat ->-> id_article_achat(...), quantite_achat
 
-- **dm07** id_hist_locat ->-> id_article_locat(...)
+- **dm07:** id_hist_locat ->-> id_article_locat(...)
 
 <div style="page-break-after:always;"></div>
 
@@ -174,9 +176,9 @@ erDiagram
 
     Habilitation_coach {
         int id_coach PK, FK
-        varchar habilitation
+        varchar habilitation PK
     }
-    Coach ||--o{ Habilitation_coach : a
+    Coach ||--o{ Habilitation_coach : ""
     
     Formule {
         int id_formule PK
@@ -198,28 +200,28 @@ erDiagram
         date date_desinscription
         date date_modif_formule
     }
-    Formule ||--o{ Adherant : a
-    Login ||--o{ Adherant : a
+    Formule ||--o{ Adherant : ""
+    Login ||--o{ Adherant : ""
 
     Reservation_cours {
         int id_cours PK
         int id_adherant PK, FK
     }
-    Adherant ||--o{ Reservation_cours : a
+    Adherant ||--o{ Reservation_cours : ""
 
     Historique_achat {
         int id_hist_achat PK
         int id_adherant FK
         date date
     }
-    Adherant ||--o{ Historique_achat : a
+    Adherant ||--o{ Historique_achat : ""
 
     Facture_achat {
         int id_facture PK, FK
         int id_hist_achat PK, FK
     }
-    Historique_achat ||--o{ Facture_achat : a
-    Facture ||--o{ Facture_achat : a
+    Historique_achat ||--o{ Facture_achat : ""
+    Facture ||--o{ Facture_achat : ""
 
     Historique_location {
         int id_hist_locat PK
@@ -227,21 +229,21 @@ erDiagram
         date date_location
         date date_rendu
     }
-    Adherant ||--o{ Historique_location : a
+    Adherant ||--o{ Historique_location : ""
 
     Facture_location {
         int id_facture PK, FK
         int id_hist_locat PK, FK
     }
-    Historique_location ||--o{ Facture_location : a
-    Facture ||--o{ Facture_location : a
+    Historique_location ||--o{ Facture_location : ""
+    Facture ||--o{ Facture_location : ""
 
     Coach {
         int id_coach PK
         varchar nom
         varchar prenom
     }
-    Login ||--o{ Coach : a
+    Login ||--o{ Coach : ""
 
     Salle {
         int id_salle PK
@@ -260,15 +262,15 @@ erDiagram
         int capacite
         int prix
     }
-    Coach ||--o{ Cours : a
-    Salle ||--o{ Cours : a
+    Coach ||--o{ Cours : ""
+    Salle ||--o{ Cours : ""
 
     Facture_cours {
         int id_facture PK, FK
         int id_cours PK, FK
     }
-    Cours ||--o{ Facture_cours : a
-    Facture ||--o{ Facture_cours : a
+    Cours ||--o{ Facture_cours : ""
+    Facture ||--o{ Facture_cours : ""
 
     Article_achat {
         int id_article_achat PK
@@ -282,8 +284,8 @@ erDiagram
         int id_article_achat PK, FK
         int quantite_achat
     }
-    Article_achat ||--o{ Historique_article_achat : a
-    Facture_achat ||--o{ Historique_article_achat : a
+    Article_achat ||--o{ Historique_article_achat : ""
+    Facture_achat ||--o{ Historique_article_achat : ""
 
     Article_location {
         int id_article_locat PK
@@ -296,7 +298,7 @@ erDiagram
         int id_hist_locat PK
         int id_article_locat PK, FK
     }
-    Article_location ||--o{ Historique_location : a
+    Article_location ||--o{ Historique_location : ""
 
     Acces {
         varchar type_acces PK
@@ -310,12 +312,12 @@ erDiagram
         varchar password
         varchar type_acces FK
     }
-    Acces ||--o{ Login : a
+    Acces ||--o{ Login : ""
 
     Facture {
         int id_facture PK 
         int id_adherant FK
         date date
     }
-    Adherant ||--o{ Facture : a
+    Adherant ||--o{ Facture : ""
 ```
