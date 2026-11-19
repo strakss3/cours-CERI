@@ -1,7 +1,5 @@
 # Modélisation :
 
-Bonjour, voici la modélisation de la base de donnée pour votre entreprise **Elan&Spa**. J'espère que mes propositions seront répondre à vos demandes et je reste à votre disposition pour effectuer des modifications sur ce cahier des charges.
-
 ## Entitées / attributs isolés :
 - Accès |
 - Adhérant |
@@ -44,7 +42,7 @@ Bonjour, voici la modélisation de la base de donnée pour votre entreprise **El
 
 ## Dépendances Fonctionnelles :
 
-- **df01:** type_acces -> placeholder
+- **df01:** type_acces -> fiche_adherant, coordonnées_bancaires, logins_coachs_acceuils, historique_cours, changement_formule, desinscription_adherant, coordonnees_adherant_desinscrit, formules_tarifs, planning_cours_coll, reservation_perso, liste_inscrits_cours, fiches_coachs, habilitations_coachs, disponibilites_coachs, salles_espaces, catalogue_articles, stock_articles, historique_achats_prêts, retours_articles, factures.
 
 - **df02:** id_adherant -> nom, prenom, adresse, email, RIB, id_formule, date_insciptn, date_desinscription, date_modif_formule
 
@@ -123,7 +121,7 @@ flowchart TD
     R30("R30(id_facture(...), identifiant(...)) {df01, df07, df11}")
     R31["R31(<u>id_article_locat</u>, nom, prix, etat) {df04}"]
     R32["R32(<u>id_hist_locat</u>, <u>id_article_locat</u>) { }"]
-    R33["R33(<u>type_acces</u>, placeholder) {df01}"]
+    R33["R33(<u>type_acces</u>, fiche_adherant, coordonnées_bancaires, logins_coachs_acceuils, historique_cours, changement_formule, desinscription_adherant, coordonnees_adherant_desinscrit, formules_tarifs, planning_cours_coll, reservation_perso, liste_inscrits_cours, fiches_coachs, habilitations_coachs, disponibilites_coachs, salles_espaces, catalogue_articles, stock_articles, historique_achats_prêts, retours_articles, factures) {df01}"]
     R34("R34(id_facture(...), identifiant(...)) {df07, df11}")
     R35["R35(<u>identifiant</u>, password, type_acces) {df11}"]
     R36["R36(<u>id_facture</u>, id_adherant, date) {d07}"]
@@ -302,9 +300,26 @@ erDiagram
 
     Acces {
         varchar type_acces PK
-        boolean placeholder1
-        boolean placeholder2
-        boolean placeholder3
+        int fiche_adherant
+        int coordonnées_bancaires
+        int logins_coachs_acceuils
+        int historique_cours
+        int changement_formule
+        int desinscription_adherant
+        int coordonnees_adherant_desinscrit
+        int formules_tarifs
+        int planning_cours_coll
+        int reservation_perso
+        int liste_inscrits_cours
+        int fiches_coachs
+        int habilitations_coachs
+        int disponibilites_coachs
+        int salles_espaces
+        int catalogue_articles
+        int stock_articles
+        int historique_achats_prêts
+        int retours_articles
+        int factures
     }
 
     Login {
