@@ -44,7 +44,7 @@
 
 - **df01:** type_acces -> fiche_adherant, coordonnées_bancaires, logins_coachs_acceuils, historique_cours, changement_formule, desinscription_adherant, coordonnees_adherant_desinscrit, formules_tarifs, planning_cours_coll, reservation_perso, liste_inscrits_cours, fiches_coachs, habilitations_coachs, disponibilites_coachs, salles_espaces, catalogue_articles, stock_articles, historique_achats_prêts, retours_articles, factures.
 
-- **df02:** id_adherant -> nom, prenom, adresse, email, RIB, id_formule, date_insciptn, date_desinscription, date_modif_formule
+- **df02:** id_adherant -> nom, prenom, adresse, email, RIB, id_formule, date_insciption, date_desinscription, date_modif_formule
 
 - **df03:** id_article_achat -> nom, prix, stock
 
@@ -95,7 +95,7 @@ flowchart TD
     R4("R4(id_article_achat(...), id_article_locat(...), id_cours(...), id_facture(...), id_hist_achat(...), id_hist_locat(...), identifiant(...), quantite_achat) {df01, df03-df07, df09-df12 dm03-dm07}")
     R5["R5(<u>id_formule</u>, nom, acces, nbr_cours_coll, nbr_cours_part) {df08}"]
     R6("R6(id_cours, id_adherant(...)) {df02}")
-    R7["R7(<u>id_adherant</u>, nom, prenom, adresse, email, RIB, id_formule, date_insciptn, date_desinscription, date_modif_formule) {df02}"]
+    R7["R7(<u>id_adherant</u>, nom, prenom, adresse, email, RIB, id_formule, date_insciption, date_desinscription, date_modif_formule) {df02}"]
     R8["R8(<u>id_cours</u>, <u>id_adherant</u>) { }"]
     R9("R9(id_facture, id_hist_achat(...)) {df09}")
     R10("R10(id_article_achat(...), id_article_locat(...), id_cours(...), id_facture(...), id_hist_locat(...), identifiant(...), quantite_achat) {df01, df03-df07, df10-df12 dm04-dm07}")
@@ -173,7 +173,7 @@ flowchart TD
 erDiagram
 
     Habilitation_coach {
-        int id_coach PK, FK
+        varchar id_coach PK, FK
         varchar habilitation PK
     }
     Coach ||--o{ Habilitation_coach : ""
@@ -191,10 +191,10 @@ erDiagram
         varchar nom
         varchar prenom
         varchar adresse
-        varchar email
+        varchar email FK
         varchar RIB
         int id_formule FK
-        date date_insciptn
+        date date_insciption
         date date_desinscription
         date date_modif_formule
     }
@@ -237,7 +237,7 @@ erDiagram
     Facture ||--o{ Facture_location : ""
 
     Coach {
-        int id_coach PK
+        varchar id_coach PK
         varchar nom
         varchar prenom
     }
@@ -255,7 +255,7 @@ erDiagram
         varchar type_cours
         date date
         int creneau
-        int id_coach FK
+        varchar id_coach FK
         int id_salle FK
         int capacite
         int prix
@@ -283,7 +283,7 @@ erDiagram
         int quantite_achat
     }
     Article_achat ||--o{ Historique_article_achat : ""
-    Facture_achat ||--o{ Historique_article_achat : ""
+    Historique_achat ||--o{ Historique_article_achat : ""
 
     Article_location {
         int id_article_locat PK
@@ -292,11 +292,12 @@ erDiagram
         varchar etat
     }
 
-    Historique_location {
+    Historique_article_location {
         int id_hist_locat PK
         int id_article_locat PK, FK
     }
-    Article_location ||--o{ Historique_location : ""
+    Article_location ||--o{ Historique_article_location : ""
+    Historique_location ||--o{ Historique_article_location : ""
 
     Acces {
         varchar type_acces PK
@@ -323,7 +324,7 @@ erDiagram
     }
 
     Login {
-        int identifiant PK
+        varchar identifiant PK
         varchar password
         varchar type_acces FK
     }
