@@ -37,12 +37,12 @@ public String getFrom();
 
 public void setFrom(String from);
 
-public String getDets();
+public String getDest();
 
-public void setDets(String dest);
+public void setDest(String dest);
 ```
 
-L'accès (création et récupération) d'un DNO se fera via une classe utilitaire “DistinguishedNameObjectFactory” (DNOF) permettant la création d’un DNO de n’importe quel type et disposant de n’importe quel algorithme d’encodage. On ne pourra créer qu'un seul DNOF.
+L'accès (création et récupération) d'un DNO se fera via une classe “DistinguishedNameObjectFactory” (DNOF) permettant la création d’un DNO de n’importe quel type et disposant de n’importe quel algorithme d’encodage. On ne pourra créer qu'un seul DNOF.
 
 Pour finaliser ce package, vous ajoutez une classe “DistinguishedNameObjectList” deviant de ArrayList permettant à chaque client de disposer de l’ensemble des DNO créés et de pouvoir les transférer au serveur de manière unifiée.
 
@@ -155,5 +155,3 @@ Vous devrez proposer une modélisation adaptée et respectant l’ensemble des c
 > [Exemple Encodage](CaesarEncoderDecoder.java) JAVA
 
 <time datetime="2026-11-11T12:27:00+01:00">Nov 11, 2026</time>
-
-

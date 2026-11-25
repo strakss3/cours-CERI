@@ -1,5 +1,4 @@
 - javaDoc en fr
-- génération du code à partir de quoi ?
 - https://mermaid.js.org/syntax/classDiagram.html
 - on fait des threads pour le serveur
 - le code sert à chiffrer le nom de l'objet pour pas qu'il soit en clair dans les transcriptions
@@ -7,6 +6,7 @@
 
 ```mermaid
 classDiagram
+direction RL
 
 %% + Public
 %% - Private
@@ -16,8 +16,13 @@ classDiagram
 DNO --* DN : compostion
 DNO --* objetDuMessage : compostion
 interfacePourObjet <|-- objetDuMessage: implémente
-ArrayList ()-- DNOL
+ArrayList --|> DNOL
+ArrayList --|> DNL
 DNOL --* DNO : composition
+DNL --* DN : composition
+Serializable <|-- DNL : implémente
+Serializable <|-- DNO : implémente
+DNOF --* DNOL : composition
 
 namespace Package DNO {
     class interfacePourObjet {
@@ -27,8 +32,8 @@ namespace Package DNO {
         +setObject() void
         +getFrom() String
         +setFrom() void
-        +getDets() String
-        +setDets() void
+        +getDest() String
+        +setDest() void
     }
 
     class DNO {
@@ -41,7 +46,14 @@ namespace Package DNO {
         code
     }
 
+    class DNL {
+        indexOf(String) int 
+    }
+
     class objetDuMessage {
+        -object
+        -from
+        -dets
         +display() void
         +getObject() Object
         +setObject() void
@@ -52,32 +64,106 @@ namespace Package DNO {
     }
 
     class DNOF {
-        <<singleton, abstract>>
+        <<singleton>>
+        Instance
+        DNOL
+        getInstace()
+        createDNO(type, object, objectName) DNO
+        createDNOString(object, objectName) DNO
+        createDNOFile(object, objectName) DNO
+        getDNO(String code) DNO
     }
 
-    class DNOL
+    class DNOL {
+        generateDNL() ArrayList < DN >
+        remove(String objectName) void
+    }
+    
+    class ArrayList
+
+    class Serializable {
+        <<Interface>>
+    }
 }
+```
 
+```mermaid
+classDiagram
+direction RL
 
-ClientError <|-- ConnectError
-Exception ()-- ClientError
-Exception ()-- ServeurError
+InterfaceEncodage <|-- cesar : implémente
+InterfaceEncodage <|-- vigenere : implémente
+
+namespace Package Encodage {
+    class InterfaceEncodage {
+        <<Interface>>
+        getCodeFromName()
+        getNameFromCode()
+    }
+
+    class cesar {
+        nombre
+        getNameFromCode()
+        getCodeFromName()
+    }
+
+    class vigenere {
+        mot
+        getNameFromCode()
+        getCodeFromName()
+    }
+}
+```
+
+```mermaid
+classDiagram
+
+class MainClient {
+    DNOF
+    clientName
+    +connect() void
+    +add() void
+    +file() void
+    +del() void
+    +list() void
+    +display() void
+    +get() void
+    +private() void
+    +main() void
+}
+class MainServer {
+    HashMap < hashedName, Pair< socket, DNL >>
+    +main() void
+}
+```
+
+```mermaid
+classDiagram
+direction RL
+
+ClientError --|> ConnectError
+ClientError --|> SyntaxError
+ClientError --|> DataError
+Exception --|> ClientError
+Exception --|> ServerError
 
 namespace Package Exception {
     
+    class Exception
+    
     class ClientError
     class ConnectError
-    class ServeurError
-    %% Supprimer un objet que l'on a pas créé
+    %% N'arrive pas a se connecter au serveur
+    %% Nom de client existe déjà
+    class SyntaxError
+    %% Mauvaise syntaxe de commande (client)
+    class DataError
+    %% Creation d'objet avec un nom déjà existant
     %% Ajouter un fichier qui n'existe pas
-    %% 
+    %% Supprimer un objet que l'on a pas créé
+
+    class ServerError
+    %% Faire un GET sur une personne qui n'existe pas
+    %% Faire un GET sur un code qui n'existe pas
 }
-
-namespace Package Encodage {
-    class cesar
-}
-
-class MainClient
-class MainServeur
-
 ```
