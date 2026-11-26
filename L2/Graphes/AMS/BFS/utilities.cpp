@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <queue>
 #include "utilities.h"
 
 using namespace std;
@@ -36,7 +37,7 @@ void affichage(int x, int n, int d[]) {
 	}
 }
 
-/* ----| A FAIRE !! |----
+/*
  * Objectif : Calcul des distances d'un sommet origine x vers tous les autres 
  * sommets d'un graphe simple.
  * - A : matrice d'adjacence du graphe
@@ -48,7 +49,20 @@ void affichage(int x, int n, int d[]) {
  * Dans le tableau pred, pred[x] = x comme en cours.
  */
 void distances(int A[][N], int x, int n, int d[N]) {
-
+	for(int i = 0 ; i < n ; i++) d[i] = -1;
+	d[x] = 0;
+	queue<int> open;
+	open.push(x);
+	while(!open.empty()) {
+		int v = open.front();
+		for(int u = 0 ; u < n ; u++) {
+			if (A[v][u] == 0) continue;
+			if (d[u] > 0) continue;
+			d[u] = d[v] + 1;
+			open.push(u);		
+		}
+		open.pop();
+	}
 }
 
 /* ----| A FAIRE !! |----

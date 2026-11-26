@@ -75,7 +75,7 @@ double hashtable::ecarttype() {
 	for(int i = 0 ; i < m ; i++) {
 		sum += (T[i].size() - n/m) * (T[i].size() - n/m);
 	}
-	return sqrt(sum/5);
+	return sqrt(sum/m);
 }
 
 /*

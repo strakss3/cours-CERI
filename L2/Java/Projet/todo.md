@@ -141,7 +141,7 @@ class MainServer {
 classDiagram
 direction RL
 
-ClientError --|> ConnectError
+ClientError --|> LoginError
 ClientError --|> SyntaxError
 ClientError --|> DataError
 Exception --|> ClientError
@@ -152,7 +152,7 @@ namespace Package Exception {
     class Exception
     
     class ClientError
-    class ConnectError
+    class LoginError
     %% N'arrive pas a se connecter au serveur
     %% Nom de client existe déjà
     class SyntaxError
@@ -161,6 +161,7 @@ namespace Package Exception {
     %% Creation d'objet avec un nom déjà existant
     %% Ajouter un fichier qui n'existe pas
     %% Supprimer un objet que l'on a pas créé
+    %% Cloner un DNOF
 
     class ServerError
     %% Faire un GET sur une personne qui n'existe pas
