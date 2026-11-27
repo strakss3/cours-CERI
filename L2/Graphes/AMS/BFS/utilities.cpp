@@ -65,28 +65,40 @@ void distances(int A[][N], int x, int n, int d[N]) {
 	}
 }
 
-/* ----| A FAIRE !! |----
+/*
  * Objectif : Calcul de l'excentricité du noeud i d'un graphe 
  * representé par la matrice d'adjacence A. 
  * - A : matrice d'adjacence du graphe
  * - n : nombre de sommets
  * - La fonction renvoie l'excentricité de i
  */
-int excentricite(int A[][N],int i, int n) {
-	return 0;
+int excentricite(int A[][N], int i, int n) {
+	int d[N];
+	int max = 0;
+	distances(A, i, n, d);
+	for(int i = 0 ; i < n ; i++) {
+		if (d[i] > max) max = d[i];
+	}
+	return max;
 }
 
-/* ----| A FAIRE !! |----
+/*
  * Objectif : Calcul du diamètre d'un graphe representé par la matrice d'adjacence A. 
  * - A : matrice d'adjacence du graphe
  * - n : nombre de sommets
  * - La fonction renvoie le diamètre
  */
 int diametre(int A[][N], int n) {
-	return 0;
+	int exc;
+	int max = 0;
+	for(int i = 0 ; i < n ; i++) {
+		exc = excentricite(A, i, n);
+		if(exc > max) max = exc;
+	}
+	return max;
 }
 
-/* ----| A FAIRE !! |----
+/*
  * Objectif : Calcul du rayon d'un graphe representé 
  * par la matrice d'adjacence A. 
  * - A : matrice d'adjacence du graphe
@@ -94,20 +106,43 @@ int diametre(int A[][N], int n) {
  * - La fonction renvoie le rayon
  */
 int rayon(int A[][N], int n) {
-	return 0;
+	int exc = excentricite(A, 0, n);
+	int min = exc;
+	for(int i = 1 ; i < n ; i++) {
+		exc = excentricite(A, i, n);
+		if(exc < min) min = exc;
+	}
+	return min;
 }
 
-/* ----| A FAIRE !! |----
+/*
  * Objectif : i et j sont des noeuds.
  * Si l'arête (i,j) existe alors :
- * - La fonction renvoie la longueur minimale d'un cycle contenant (i,j) ou 0 si aucun cycle ne contient 
- * (i,j).
+ * - La fonction renvoie la longueur minimale d'un cycle contenant (i,j)
+ * ou 0 si aucun cycle ne contient (i,j).
  * Si l'arête n'existe pas la fonction renvoie -1
  * - A : matrice d'adjacence du graphe
  * - n : nombre de sommets
  */
 int cycle(int A[][N], int i, int j, int n) {
-	return -1;
+	if(A[i][j] == 0) return -1;
+	A[i][j] = 0;
+	int d[n];
+	for(int k = 0 ; k < n ; k++) d[k] = -1;
+	d[i] = 0;
+	queue<int> open;
+	open.push(i);
+	while(!open.empty()) {
+		int v = open.front();
+		for(int u = 0 ; u < n ; u++) {
+			if (A[v][u] == 0) continue;
+			if (d[u] > 0) continue;
+			d[u] = d[v] + 1;
+			open.push(u);		
+		}
+		open.pop();
+	}
+	return d[j] + 1;
 }
 
 /* ----| A FAIRE !! |----

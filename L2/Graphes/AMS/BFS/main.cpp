@@ -64,7 +64,6 @@ int main() {
 	distances(A,x,n,d);
 	affichage(x,n,d);
 
-	x = 1;
 	cout << "............................................" << endl;
 	cout << "L'excentricité de " << x << " est : " << excentricite(A,x,n) << endl;
 	cout << "............................................" << endl;
@@ -76,8 +75,8 @@ int main() {
 	cout << "............................................" << endl;
 	cout << "Le plus petit cycle contenant (0,1) a une longueur : "<<  cycle(A,0,1,n) << endl;
 	cout << "............................................" << endl;
-	cout << "La circonférence du graphe est : " << circonference(A,n) << endl;
-	cout << "............................................" << endl;
+	// cout << "La circonférence du graphe est : " << circonference(A,n) << endl;
+	// cout << "............................................" << endl;
 
 
 }

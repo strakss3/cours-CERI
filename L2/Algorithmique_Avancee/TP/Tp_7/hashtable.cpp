@@ -18,8 +18,8 @@ using namespace std;
  * la valeur du parametre (a) de la fonction de compression
  * - filename2 : le fichier contenant les mots servant de cles (anglais.mots)
  * Il doit ouvrir filename1 pour obtenir m et a puis ouvrir filename2 où chaque mot est lû un a un
- *et insere dans la table de hachage T par la methode d'insertion (a faire aussi).
-*/
+ * et insere dans la table de hachage T par la methode d'insertion (a faire aussi).
+ */
 hashtable::hashtable(string filename1, string filename2) {
 	ifstream file1(filename1);
 	file1 >> m;
@@ -30,10 +30,9 @@ hashtable::hashtable(string filename1, string filename2) {
 	ifstream file2(filename2);
 	string word;
 	file2 >> word;
-	while(!file2.eof()) {
-		file2 >> word;
+	n = stoi(word);
+	while(file2 >> word) {
 		inserer(word);
-		n++;
 	}
 	file2.close();
 }
@@ -44,13 +43,13 @@ hashtable::hashtable(string filename1, string filename2) {
  * 2. Le resultat a retourner est la division modulo m de cette valeur
  */
 int hashtable::h(string s) {
-	int k = 0;
-	int p = 1;
+	long long k = 0;
+	long long p = 1;
 	for(unsigned char c : s) {
 		k = (k + c * p) % m;
 		p = (p * a) % m;
 	}
-	return k;
+	return (int)k;
 }
 
 /*
@@ -72,10 +71,11 @@ void hashtable::histogramme() {
  */
 double hashtable::ecarttype() {
 	double sum = 0;
+	double moyenne = (double)n / m; 
 	for(int i = 0 ; i < m ; i++) {
-		sum += (T[i].size() - n/m) * (T[i].size() - n/m);
+		sum += (T[i].size() - moyenne) * (T[i].size() - moyenne);
 	}
-	return sqrt(sum/m);
+	return sqrt(sum / m);
 }
 
 /*
