@@ -152,6 +152,34 @@ int cycle(int A[][N], int i, int j, int n) {
  * - A : matrice d'adjacence du graphe
  * - n : nombre de sommets
  */
+void backtrack(int A[][N], int start, int current, int depth, int visited[], int &maximum, int n) {
+	for(int next = 0 ; next < n ; next++) {
+		if(A[current][next] == 0) continue;
+
+		if(next == start) {
+			if(depth >= 3 && depth > maximum) {
+				maximum = depth;
+			}
+		}
+		else if(next >= start && !visited[next]) {
+			visited[next] = 1;
+			backtrack(A, start, next, depth + 1, visited, maximum, n);
+			visited[next] = 0;
+		}
+	}
+}
+
 int circonference(int A[][N], int n) {
-	return 0;
+	int maximum = 0;
+	int visited[N];
+
+	for(int start = 0; start < n; start++) {
+		for(int i = 0; i < n; i++) {
+			visited[i] = 0;
+		}
+		visited[start] = 1;
+		backtrack(A, start, start, 1, visited, maximum, n);
+	}
+
+	return maximum;
 }
