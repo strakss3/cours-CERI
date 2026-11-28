@@ -57,9 +57,9 @@ void distances(int A[][N], int x, int n, int d[N]) {
 		int v = open.front();
 		for(int u = 0 ; u < n ; u++) {
 			if (A[v][u] == 0) continue;
-			if (d[u] > 0) continue;
+			if (d[u] != -1) continue;
 			d[u] = d[v] + 1;
-			open.push(u);		
+			open.push(u);
 		}
 		open.pop();
 	}
@@ -136,9 +136,9 @@ int cycle(int A[][N], int i, int j, int n) {
 		int v = open.front();
 		for(int u = 0 ; u < n ; u++) {
 			if (A[v][u] == 0) continue;
-			if (d[u] > 0) continue;
+			if (d[u] != -1) continue;
 			d[u] = d[v] + 1;
-			open.push(u);		
+			open.push(u);
 		}
 		open.pop();
 	}
